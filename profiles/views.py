@@ -11,6 +11,7 @@ from django.contrib import messages
 from django.contrib.auth import logout
 from .forms import *
 
+
 @login_required
 def profile_view(request,username):
 
@@ -94,7 +95,7 @@ def profile_view_ajax(request,username,data):
                 item = json.loads(notif)  # get ride of [].
                 dataList.append(item[0]['fields'])
             jsonData = {
-                    "notifications": dataList,
+                    "dataList": dataList,
                     "count": len(dataList)
                     }
 
@@ -106,15 +107,15 @@ def profile_view_ajax(request,username,data):
                 notif = serializers.serialize('json',[notification.msg,])  # json data with wrapper with [].
                 item = json.loads(notif)  # get ride of [].
                 dataList.append(item[0]['fields'])
-            print(dataList)
+
             jsonData = {
-                    "notifications": dataList,
+                    "dataList": dataList,
                     "count": len(dataList)
                 }
 
         else:
             empty = _("No data found.")
-            return JsonResponse({"count":0 , "empty":empty},status = 200)
+            return JsonResponse({"count":0 , "dataList":empty},status = 200)
 
         return JsonResponse(jsonData,status=200)
 

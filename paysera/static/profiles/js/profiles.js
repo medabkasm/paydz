@@ -31,6 +31,8 @@ window.addEventListener('load',function(){
     });
 
 
+  //var text = $("#test").text("alert('hello')");
+  var texte = document.getElementById("test");
   var show_messages = document.getElementById("show-messages");
   var show_offers = document.getElementById("show-offers");
   var show_profile = document.getElementById("show-profile");
@@ -43,6 +45,7 @@ window.addEventListener('load',function(){
   var alertBlock = document.getElementById("alertBlock");
   var editError = document.getElementById("editError");
   var editSuccess = document.getElementById("editSuccess");
+  var noDataAlert = document.getElementById("no-data-alert");
 
 
   initialize();
@@ -54,7 +57,6 @@ window.addEventListener('load',function(){
           change(editProfileForm);
           var edit = $("#edit-profile-form");
           var url = edit.attr("data-url");
-          console.log(url);
           if(edit){
             edit.submit(function(event){
               event.preventDefault();
@@ -131,26 +133,113 @@ window.addEventListener('load',function(){
   if(show_offers){
 
     show_offers.onclick = function(event){
-      if(offers.style.display == "none"){
-        change(offers);
-      }
-      else{
-        initialize();
-      }
+      var url = show_offers.getAttribute("value");
+      show_data(offers,url,"offer");
+
     };
   }
   if(show_messages){
     show_messages.onclick = function(event){
-      if(messages.style.display == "none"){
-        change(messages);
-      }
-      else{
-        initialize();
-      }
+      var url = show_messages.getAttribute("value");
+      show_data(messages,url,"message");
     };
   }
 
 }
+
+
+function show_data(element,url,dataType){  // show data(messages or offers ) by setting the display attribute to block.
+  if(element.style.display == "none"){
+    change(element);
+    get_data(element,url,dataType);
+  }
+  else{
+    initialize();
+  }
+}
+
+
+
+function get_data(dataContainer,url,dataType){   // get data(messages or offers ) form the server using ajax.
+
+  $.ajax({
+    type : "POST",
+    url : url,
+    data : "no data",
+    success : function(data,status,xhr){
+      collect_data(dataContainer,dataType,data);
+    },
+    error : function(xhr,status,data){
+      console.error("can't get your data.");
+    }
+
+
+  });
+
+}
+
+function collect_data(dataContainer,dataType,data){ // collect ajax data , and build their box.
+
+  dataContainer.innerHTML = '';  // empty all the child elements.
+
+  if( data.count > 0 ){
+
+    var data = data.dataList;
+    for(var i = 0 ; i < data.length ; i ++ ){
+
+      var col = document.createElement("div");
+      var list = document.createElement("div");
+      var a = document.createElement("a");
+      var flex = document.createElement("div");
+      var h_4 = document.createElement("h4");
+      var date = document.createElement("small");
+      var p = document.createElement("p");
+      var type = document.createElement("small");
+      var br = document.createElement("br");
+
+      col.setAttribute("class","col-12");
+      list.setAttribute("class","list-group");
+      a.setAttribute("class","list-group-item list-group-item-action");
+      flex.setAttribute("class","d-flex w-100 justify-content-between");
+      h_4.setAttribute("class","mb-1");
+      p.setAttribute("class","mb-1");
+      type.setAttribute("class","type-class");
+
+      if(dataType == "message"){
+        h_4.textContent = data[i].content;
+        date.textContent = data[i].date;
+        p.textContent = data[i].contactMessage;
+        type.textContent = dataType;
+      }
+      else{
+        h_4.textContent = data[i].activitiy + " - " + data[i].currency;
+        date.textContent = data[i].date;
+        p.textContent = data[i].message;
+        type.textContent = dataType;
+      }
+
+
+
+      flex.appendChild(h_4);
+      flex.appendChild(date);
+      a.appendChild(flex);
+      a.appendChild(br);
+      a.appendChild(p);
+      a.appendChild(type);
+      list.appendChild(a);
+      col.appendChild(list);
+
+      dataContainer.appendChild(col);
+    }
+
+  }
+  else{
+    change(noDataAlert);
+  }
+
+}
+
+
 
 function initialize(profileDisp="none",editProfileDisp="none",messagesDisp="none",offersDisp="none",alertBlockDisp = "none"){
       // to prevent double clicking.
@@ -161,6 +250,7 @@ function initialize(profileDisp="none",editProfileDisp="none",messagesDisp="none
     alertBlock.style.display = alertBlockDisp;
     editSuccess.style.display = "none";
     editError.style.display = "none";
+    noDataAlert.style.display = "none";
 }
 function change(item){
   initialize();

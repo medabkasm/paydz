@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Hepta+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+
 .container-fluid{
   padding: 1em;
   overflow: hidden;
   height: 100%;
+  font-family: 'Hepta Slab', serif;
 }
 a{
   text-decoration: none;
@@ -85,11 +89,15 @@ h3>.icon{
 a.list-group-item{
   margin: 0.4em;
   margin-bottom: 1em;
+  padding-bottom: 2em;
 }
 h4.mb-1{
   color: green;
 }
 
+.list-group-item{
+  background: #f1f4e8;
+}
 #alertBlock{
  text-align: center;
  margin: 2em;
@@ -118,4 +126,23 @@ h4.mb-1{
 #editSuccess{
   margin: 2em;
   display: none;
+}
+.mb-1{
+  word-break: break-word;
+}
+p.mb-1{
+  padding: 0.5em;
+}
+#no-data-alert{
+  display: none;
+  text-align: center;
+  margin: 2em;
+}
+@media screen and (max-width:760px) {
+  .form-row{
+    margin-top: 2em;
+  }
+}
+.type-class{
+  color: rgba(239, 155, 86, 0.8);
 }

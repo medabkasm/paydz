@@ -42,7 +42,7 @@ class Profile(models.Model):
     gender = models.CharField(_('gender') , choices = GENDER ,max_length = 10 ,default = _("Gender"))
     profileImage = models.ImageField(_('profile image'),upload_to = 'usersImages' , blank = True,null=True)
     coverImage = models.ImageField(_('cover image'),upload_to = 'usersImages' , blank = True,null=True)
-    birthday = models.DateField(_('birthday'),blank = True , null = True)
+    birthday = models.DateField(_('birthday'),blank = True , null = True )
     wilaya = models.CharField(_('wilaya'),max_length = 30 ,blank = True ,null = True , default = _("wilaya"))
     pofileUsage = models.CharField(_('profile usage'),choices = USAGE ,max_length = 15 , default = _("Profile Usage"))
     profileComplete = models.BooleanField(default ='False')

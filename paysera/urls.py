@@ -25,6 +25,7 @@ urlpatterns = [
     path('notification/',include('notifications.urls',namespace = 'notifications')),
     path('profiles/<username>/delete/',profile_delete_view_ajax,name = 'profile_delete_ajax'),
     path('profiles/<username>/edit/',profile_edit_view_ajax,name = 'profile_edit_ajax'),
+    path('profiles/<username>/data/<data>/',profile_view_ajax , name = 'profile_data_ajax'),
 ]
 
 urlpatterns += i18n_patterns(
