@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}dash board {% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static "/paysera/css/dash_board.css" %}">
+{% endblock css %}
+
+{% block content %}
+</div>
+</div>
+<div class="container-fluid" id="board">
+  <div class="row">
+    <div class="col-12">
+      <h2 id="offers" class="title">Offers</h2>
+    </div>
+  </div>
+  <div class="row"  id="offersBlock">
+        {% for offer in offers %}
+            <div class="row">
+                <div class="col-12">
+                    <div class="ui items">
+                        <div class="item">
+                          <div class="ui small image">
+                            <img src=" {% static "/images/user.jpeg" %}"message.msg>
+                          </div>
+                          <div class="content">
+                            <div class="header">{{offer.notif.user.username}} - ( {{offer.notif.user.phone}} )</div>
+                            <div class="meta">
+                              <span class="price"><span class="important">{{offer.notif.activitiy}}</span> {{offer.notif.amount}}{{offer.notif.currency}} with {{offer.notif.price}}DA</span>
+                              <span class="stay">{{offer.notif.date}}</span>
+                            </div>
+                            <div class="description">
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis eum, perferendis, cum itaque totam officia debitis enim iste fugit voluptatibus atque reiciendis illo molestiae fuga quae aperiam iure ratione dolores?</p>
+                            </div>
+                            <div class="extra">
+                                <div class="ui label"><span class="remove-check" value="offer/remove/{{offer.notif.pk}}/">Remove</span></div>
+                                <div class="ui label">
+                                  {% if offer.seen == False %}
+                                  <span class="remove-check" value="offer/check/{{offer.notif.pk}}/">Check</span>
+                                  {% else %}
+                                  <span class="remove-check checked" value="offer/check/{{offer.notif.pk}}/">Checked</span>
+                                  {% endif %}
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  </div>
+                </div>
+        {% endfor %}
+  </div>
+
+    <div class="row">
+      <div class="col-12">
+        <h2 id="messages" class="title">Messages</h2>
+      </div>
+    </div>
+    <div class="row data"  id="messagesBlock">
+          {% for message in messages %}
+                <div class="row">
+                  <div class="col-12">
+                      <div class="ui items">
+                          <div class="item">
+                            <div class="ui small image">
+                              <img src=" {% static "/images/user.jpeg" %}">
+                            </div>
+                            <div class="content">
+                              <div class="header">{{message.msg.user.username}} - ( {{message.msg.user.phone}})</div>
+                              <div class="meta">
+                                <span class="price"><span class="important">{{message.msg.content}}</span></span>
+                                <span class="stay">{{message.msg.date}}</span>
+                              </div>
+                              <div class="description">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero culpa aliquam ad, maxime sint esse iusto. Ea placeat dignissimos odio officiis, rem corporis magni, esse incidunt eaque, numquam cum dicta.</p>
+                              </div>
+                              <div class="extra">
+                                <div class="ui label"><span class="remove-check" value="message/remove/{{message.msg.pk}}/">Remove</span></div>
+                                <div class="ui label">
+                                  {% if message.seen == False %}
+                                  <span class="remove-check" value="messsage/check/{{message.msg.pk}}/">Check</span>
+                                  {% else %}
+                                  <span class="remove-check checked" value="messsage/checked/{{message.msg.pk}}/">Checked</span>
+                                  {% endif %}
+                                  </div>
+                                </div>
+                            </div>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+          {% endfor %}
+      </div>
+
+
+    </div>
+
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static "/paysera/js/dash_board.js" %}"></script>
+
+{% endblock js %}

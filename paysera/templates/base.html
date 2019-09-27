@@ -1,0 +1,232 @@
+{% load i18n  %}
+{% load staticfiles %}
+<!doctype html>
+<html >
+
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=320, height=device-height, target-densitydpi=medium-dpi" />
+    <link rel="stylesheet" href="{% static "/home/base.css" %}">
+    <link rel="stylesheet" type="text/css" href=" {% static "/frameworks/semantic/semantic.min.css" %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- each child template css -->
+    {% block css %}{% endblock css %}
+    <!-- each child template title -->
+      <link rel="stylesheet" href="{% static "login/css/style.css" %}">
+    <title>{% block title %}{% endblock title %}</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light ">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  <a class="navbar-brand" href="{% url "home:posts" %}" id="home"><i class="black tie icon"></i>PayDz</a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Offers</a>
+        <div class="dropdown-menu item" aria-labelledby="navbarDropdown">
+          {% if user.is_authenticated %}
+            <a class="dropdown-item item" data-toggle="modal" data-target="#buy"  id="buyOffer" href="#"><i class="cc visa icon"></i>Buy</a>
+            <hr>
+            <a class="dropdown-item item" data-toggle="modal" data-target="#sell"  id="sellOffer" href="#"><i class="money bill alternate icon"></i>Sell</a>
+          {% else %}
+          <a class="dropdown-item item"  href="{% url "accounts:login" %}"><i class="cc visa icon"></i>Buy</a>
+          <hr>
+          <a class="dropdown-item item"  href="{% url "accounts:login" %}"><i class="money bill alternate icon"></i>Sell</a>
+          {% endif %}
+
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle " href="#" id="moreId" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
+      <div class="dropdown-menu item" aria-labelledby="navbarDropdown">
+        {% if user.is_authenticated %}
+          <a class="dropdown-item item" data-toggle="modal" data-target="#contanct"  id="contanctId" href="#"><i class="question circle icon"></i>Contanct Us</a>
+        {% else %}
+        <a class="dropdown-item item"  href="{% url "accounts:login" %}"><i class="question circle icon"></i>Contanct Us</a>
+        {% endif %}
+        <hr>
+          <a class="dropdown-item item" data-toggle="modal" data-target="#about"  id="aboutId" href="#"><i class="users icon"></i>About Us</a>
+      </div>
+    </li>
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="lanId" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {% trans "Language" %}
+      </a>
+      {%	get_current_language	as	LANGUAGE_CODE	%}
+      <div class="dropdown-menu item" aria-labelledby="navbarDropdown">
+      <!-- if English is the current Language -->
+        {% if LANGUAGE_CODE == 'en' %}
+        <a href="/ar/" class="dropdown-item item"><i class="dz flag"></i>{% trans "Arabic" %}</a>
+        <hr>
+        <a href="/fr/" class="dropdown-item item"><i class="france flag"></i>  {% trans "French" %}</a>
+        <!-- else -->
+        {% elif LANGUAGE_CODE == 'ar' %}
+        <a href="/en/" class="dropdown-item item"><i class="us flag"></i> {% trans "English" %}</a>
+        <hr>
+        <a href="/fr/" class="dropdown-item item"><i class="france flag"></i> {% trans "French" %}</a>
+        {% else %}
+        <a href="/ar/" class="dropdown-item item"><i class="dz flag"></i> {% trans "Arabic" %}</a>
+        <hr>
+        <a href="/en/" class="dropdown-item item"><i class="us flag"></i> {% trans "English" %}</a>
+        {% endif %}
+      </div>
+      </li>
+
+      </ul>
+
+      <br>
+
+
+      <ul class="navbar-nav ml-auto">
+
+      {% if user.is_superuser %}
+      <li class="nav-item dropdown" >
+        <a class="nav-link notif" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <p id="notifCount"></p><i class="bell icon"></i>
+        </a>
+        <div class="dropdown-menu item scrollable-menu" id="notifId" aria-labelledby="navbarDropdown">
+
+        </div>
+
+      </li>
+      <li class="nav-item dropdown" >
+        <a class="nav-link notif" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <p id="msgCount"></p><i class="comment icon"></i>
+        </a>
+          <div class="dropdown-menu item scrollable-menu" id="msgId" aria-labelledby="navbarDropdown">
+
+          </div>
+      </li>
+      {% endif %}
+
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="registerId" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {% if user.is_authenticated %}
+          <img class="ui avatar image" src="{% static "/images/user.jpeg" %}"> {{user.username}}
+        {% else %}
+        <i class="user icon"></i>Registration
+        {% endif %}
+      </a>
+      <div class="dropdown-menu item" aria-labelledby="navbarDropdown">
+        {% if user.is_authenticated %}
+            <a href="{% url "dash_board" %}" class="dropdown-item item">Profile</a>
+            <hr>
+            <a href="{% url "profiles:profile" user.username %}" class="dropdown-item item">Settings</a>
+            <hr>
+            <a href="{% url "accounts:logout" %}" class="dropdown-item item">Logout</a>
+        {% else %}
+            <a href="{% url "accounts:login" %}" class="dropdown-item item">Login</a>
+            <hr>
+            <a href="{% url "accounts:register" %}" class="dropdown-item item">Register</a>
+        {% endif %}
+      </div>
+
+      </li>
+    </ul>
+
+  </div>
+  </nav>
+
+  <!-- for bootstrap modals -->
+  {% include "./offers/modals.html" %}
+
+
+
+
+
+
+ <div id="main">
+  {% block content %}
+  {% endblock %}
+</div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <script src="{% static "/offers/offer.js" %}"></script>
+      <script src="{% static "/frameworks/semantic/semantic.min.js" %}"></script>
+
+      <script type="text/javascript">
+
+        {% if user.is_superuser %}
+            var username = $("#username").val();
+            var url = "ws://" + window.location.host + "/ws/notification/"+ username + "/";
+            socket = new WebSocket(url);
+
+            socket.onmessage = function(event){
+              var data = JSON.parse(event.data);
+              if(data.type == "message"){
+                var messageCount = document.getElementById("msgCount");
+                if( data.count > 0 ){
+                  messageCount.innerHTML = data.count;
+                  var msgId = document.getElementById("msgId");
+                  msgId.innerHTML = "";
+                  for(var i = 0 ; i < data.count ; i++){
+                    var anchor = document.createElement("a");
+                    var hr = document.createElement("hr");
+                    anchor.className = "dropdown-item item";
+                    anchor.setAttribute("href","url");
+                    anchor.textContent = data.content[i].username;
+                    msgId.appendChild(anchor);
+                    msgId.appendChild(hr);
+                  }
+                }
+
+              }
+              else if(data.type == "notification"){
+                var notificationCount = document.getElementById("notifCount");
+                if(data.count > 0 ){
+                  notificationCount.innerHTML = data.count;
+                  var notifId = document.getElementById("notifId");
+                  notifId.innerHTML = "";
+                  for(var i = 0 ; i < data.count ; i++){
+                    var anchor = document.createElement("a");
+                    var hr = document.createElement("hr");
+                    anchor.className = "dropdown-item item";
+                    anchor.setAttribute("href","url");
+                    anchor.textContent = data.content[i].username;
+                    notifId.appendChild(anchor);
+                    notifId.appendChild(hr);
+                  }
+                }
+              }
+              else if(data.type == "no notifications"){
+                var notificationCount = document.getElementById("notifCount");
+                notificationCount.innerHTML = "";
+              }
+              else{
+                var messageCount = document.getElementById("msgCount");
+                messageCount.innerHTML = "";
+              }
+
+              //console.log(data.type , data.count  , data.content[data.count-1])
+            }
+            socket.onclose = function(event){
+              console.log("connection closed.");
+            };
+        {% endif %}
+
+
+      </script>
+
+
+    <!-- each child template js -->
+    {% block js %}{% endblock js %}
+
+
+
+  </body>
+</html>

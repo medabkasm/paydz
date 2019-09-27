@@ -1,0 +1,13 @@
+{%	extends	"base.html"	%}
+{%	block	title	%}Delete {{user.username}}'s Account{%	endblock	%}
+{%	block	content	%}
+{% load i18n %}
+
+<div class="mainMesg">
+	<div class="alert alert-success alertMessage" role="alert">
+	  <h4 class="alert-heading">{% trans "Delete Account" %}</h4>
+		<p> {% trans "Confirm you deletion by clicking on Confirm ." %}</p><hr>
+			<a	href="{%	url 'profiles:confirm_delete_profile'	user.username %}" class="alert-link">{% trans "Confirm" %}</a>
+</div>
+</div>
+{%	endblock	%}

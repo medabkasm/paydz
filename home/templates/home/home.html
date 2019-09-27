@@ -1,0 +1,58 @@
+
+{% extends "base.html" %}
+
+{% block title %}PayDz{% endblock title %}
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href=" {% static "/home/home_style.css" %}">
+{% endblock css %}
+{% block content %}
+    <div class="row" id="presentation">
+        <div class="container-fluid">
+          <div class="row-fluid">
+            <div class="col " id="intro">
+              <h5><i class="black tie icon"></i>PayDz</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad sequi, consequuntur, ratione ab ullam temporibus voluptas aliquid tempore cupiditate quibusdam soluta placeat. Numquam voluptate, ab minus consectetur explicabo sunt molestias.</p>
+              </div>
+            </div>
+
+          <div class="row">
+            <div class="col col-lg-3 col-md-6 col-sm-12 col-12 field"><h3><i class="cc visa icon"></i>Buy</h3>
+              <p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad sequi, consequuntur, ratione ab ullam temporibus voluptas aliquid tempore cupiditate quibusdam soluta placeat. Numquam voluptate, ab minus consectetur explicabo sunt molestias.</strong></p>
+            </div>
+            <div class="col col-lg-3 col-md-6 col-sm-12 col-12 field">
+              <h3><i class="money bill alternate icon"></i>Sell</h3>
+                <p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad sequi, consequuntur, ratione ab ullam temporibus voluptas aliquid tempore cupiditate quibusdam soluta placeat. Numquam voluptate, ab minus consectetur explicabo sunt molestias.</strong></p>
+            </div>
+              <div class="col col-lg-3 col-md-6 col-sm-12 col-12 field">
+                <h3><i class="handshake outline icon"></i>Partnership</h3>
+                  <p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad sequi, consequuntur, ratione ab ullam temporibus voluptas aliquid tempore cupiditate quibusdam soluta placeat. Numquam voluptate, ab minus consectetur explicabo sunt molestias.</strong></p>
+                </div>
+                <div class="col col-lg-3 col-md-6 col-sm-12 col-12 field"><h3><i class="heart icon"></i>Donate</h3>
+                  <p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad sequi, consequuntur, ratione ab ullam temporibus voluptas aliquid tempore cupiditate quibusdam soluta placeat. Numquam voluptate, ab minus consectetur explicabo sunt molestias.</strong></p>
+                </div>
+          </div>
+    </div> <!-- container -->
+  </div> <!-- presentation -->
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col col-lg-4 col-lg-md-4 col-sm-12 col-12">
+          <i class="phone icon"></i>0656935000
+        </div>
+          <div class="col col-lg-4 col-lg-md-4 col-sm-12 col-12">
+            <button class="ui circular facebook icon button"><i class="facebook icon"></i>
+            </button>PayDz
+          </div>
+          <div class="col col-lg-4 col-lg-md-4 col-sm-12 col-12">
+            <i class="envelope icon"></i>medabkasm@gmail.com
+          </div>
+          </div>
+        </div>
+
+  </footer>
+
+
+
+
+{% endblock %}

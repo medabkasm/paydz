@@ -1,0 +1,121 @@
+.container-fluid{
+  padding: 1em;
+  overflow: hidden;
+  height: 100%;
+}
+a{
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: none;
+}
+#profile{
+  height: 22em;
+  background: #f1f4e8;
+  border-radius: 20px;
+  margin: 0.5em 0 ;
+  padding: 2em;
+  display: none;
+}
+#edit_profile{
+  background: #f1f4e8;
+  border-radius: 20px;
+  margin: 0.5em 0 ;
+  padding: 3em;
+  overflow: auto;
+  text-align: center;
+  display: none;
+}
+.btn{
+  margin-top: 1em;
+}
+.form-control{
+  margin-bottom: 0.3em;
+}
+#sidePanel{
+  width: 100%;
+  height: 43em;
+  padding: 1em;
+  margin-top: 0.5em;
+  border-top: 0.5px solid grey;
+  border-right: 0.5px solid grey;
+  background: #fff;
+  border-radius: 20px;
+}
+.topic{
+  margin: 0.5em;
+  padding: 1em;
+  list-style: none;
+}
+.topicItems{
+  font-size: 1em;
+  padding: 0.2em;
+  color: grey;
+  cursor: pointer;
+}
+.topicItems:hover{
+  color: rgba(239, 155, 86, 0.8);
+}
+.topicItems>a{
+  text-decoration: none;
+  color: grey;
+}
+.topicItems>a:hover{
+  color: rgba(239, 155, 86, 0.8);
+  text-decoration: none;
+}
+.topicTitle{
+  margin-top: 1em;
+}
+h3>.icon{
+  margin-right: 0.3em;
+}
+
+#show{
+  text-align: center;
+  margin: 1em;
+  padding: 1em 0 1em 0;
+  height: 40em;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-top: 0.1px solid grey;
+  border-radius: 20px;
+}
+
+a.list-group-item{
+  margin: 0.4em;
+  margin-bottom: 1em;
+}
+h4.mb-1{
+  color: green;
+}
+
+#alertBlock{
+ text-align: center;
+ margin: 2em;
+ display: none;
+}
+
+#delete-alert{
+  cursor: pointer;
+}
+#messages{
+  display: none;
+}
+#offers{
+  display: none;
+}
+
+#edit_profile{
+  display: none;
+}
+
+#editError{
+  margin: 2em;
+  display: none;
+}
+
+#editSuccess{
+  margin: 2em;
+  display: none;
+}

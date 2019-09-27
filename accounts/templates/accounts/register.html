@@ -1,0 +1,121 @@
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}Register{% endblock title %}
+  {% block css %}
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static "login/fonts/material-icon/css/material-design-iconic-font.min.css" %}">
+
+    <!-- Main css -->
+
+
+  {% endblock css %}
+  {% block content %}
+
+    <div class="main">
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+              {% include "accounts/messages.html" %}
+                <div class="signup-content">
+
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign up</h2>
+                        <form method="POST" class="register-form" id="register-form" >{% csrf_token %}
+                            <div class="form-group">
+                              <label for="username"><i class="user secret icon"></i></label>
+                                <input type="text" name="username" id="name" placeholder="Your user Name"/>
+
+                              </div>
+
+                                  {% if form.errors and form.username.errors %}
+                                      <div class="alert alert-danger" role="alert">
+                                      {% for error in form.username.errors %}
+                                        {{error}}
+                                      {% endfor %}<br>
+                                    </div>
+                                  {% endif %}
+
+                            <div class="form-group">
+                                <label for="email"><i class="envelope icon"></i></label>
+                                <input type="email" name="email" id="email" placeholder="Your Email"/>
+                            </div>
+
+                            {% if form.errors and form.email.errors%}
+                              <div class="alert alert-danger" role="alert">
+                                    {% for error in form.email.errors %}
+                                    {{error}}<br>
+                              </div>
+                                      {% endfor %}
+                              {% endif %}
+                              <div class="form-group">
+                                  <label for="phone"><i class="phone icon"></i></label>
+                                  <input type="phone" name="phone" id="email" placeholder="Your Dz Phone Number"/>
+                              </div>
+
+                              {% if form.errors and form.phone.errors%}
+                              <div class="alert alert-danger" role="alert">
+                                      {% for error in form.phone.errors %}
+                                      {{error}}<br>
+                                </div>
+                                        {% endfor %}
+                                {% endif %}
+                            <div class="form-group">
+                                <label for="password1"><i class="eye slash outline icon"></i></i></label>
+                                <input type="password" name="password1" id="pass" placeholder="Password"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password2"><i class="eye slash outline icon"></i></label>
+                                <input type="password" name="password2" id="re_pass" placeholder="Repeat your password"/>
+                            </div>
+
+                            {% if form.errors and form.password2.errors%}
+                              <div class="alert alert-danger" role="alert">
+                                    {% for error in form.password2.errors %}
+                                    {{error}}<br>
+                              </div>
+                                      {% endfor %}
+                              {% endif %}
+                            <div class="form-group">
+                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                            </div>
+
+                            {% if agreeError %}
+                              <div class="alert alert-danger" role="alert">
+                                    {{agreeError}}<br>
+                              </div>
+                              {% endif %}
+                            <script src='https://www.google.com/recaptcha/api.js'></script>
+                              <div class="g-recaptcha" data-sitekey="6LcTAbYUAAAAADpKaLmGHPy_qkMHfhqZPnKrkhor"></div>
+                              {% if recaptcha %}
+                            <div class="alert alert-danger" role="alert">
+                                    {{recaptcha}}<br>
+                              </div>
+                              {% endif %}
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="ui grey button" value="Register"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="{% static "/images/photo5-1.jpeg" %}" alt="sing up image"></figure>
+                        <a href="{% url "accounts:login" %}" class="signup-image-link">I am already member</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+</div>
+
+
+{% endblock content %}
+    <!-- JS -->
+    {% block js %}
+    <script src="{% static "login/vendor/jquery/jquery.min.js" %}"></script>
+    <script src="{% static "login/js/main.js" %}"></script>
+    <script	src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js">
+    </script>
+    {% endblock js %}

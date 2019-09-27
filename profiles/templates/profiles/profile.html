@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load staticfiles %}
+{% load beautiful_tag %}
+{% block title %}{{user.username}}{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static "/profiles/css/profiles.css" %}">
+{% endblock css %}
+
+{% block content %}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col col-lg-3 col-md-3 col-sm-12 col-12">
+            <ul id="sidePanel">
+              <h3 class="topicTitle"><i class="user circle icon"></i>Profile</h3>
+              <ul class="topic">
+                <a href="#profile"><li class="topicItems" id="show-profile"><i class="info circle icon"></i>Show Profile</li></a>
+                <a href="#alertBlock"><li class="topicItems" id="delete_profile" value="/profiles/{{user.username}}/delete/">
+                  <i class="ban icon" ></i>Delete Profile</li>
+                <a href="#show"><li class="topicItems"><a href="{% url "accounts:logout" %}">
+                  <i class="power off icon"></i>Logout</a>
+                </li></a>
+              </ul>
+
+              <h3 class="topicTitle"><i class="cogs icon"></i>Settngs</h3>
+              <ul class="topic">
+                <a href="#edit_profile"><li class="topicItems" id="edit-profile"><i class="pencil alternate icon"></i>change profile information</li></a>
+                <a href="#show"><li class="topicItems" ><a href="{% url "profiles:password_change" user.username %}">
+                  <i class="unlock alternate icon"></i>change password</a>
+                </li></a>
+              </ul>
+
+                <h3 class="topicTitle" ><i class="coffee icon"></i>Activities</h3>
+              <ul class="topic">
+                <a href="#show"><li class="topicItems" value="/profiles/{{user.username}}/notification/message/" id="show-messages"><i class="envelope outline icon"></i>Messages</li></a>
+                <a href="#show"><li class="topicItems" value="/profiles/{{user.username}}/notification/offer/" id="show-offers"><i class="dollar sign icon"></i>Offers</li></a>
+              </ul>
+
+            </ul>
+          </div>
+
+        <div class="col">
+          <div class="row" id="profile">
+          </div>
+
+          <div class="row">
+              <div class="col" id="alertBlock">
+                  <div class="alert alert-danger" role="alert">
+                      <h4 class="alert-heading">Confirm Account Deletion</h4>
+                      <br>
+                      <p>This step will delete your account and you will not be able to use it again ,
+                      click on Confirm to accomplish this step.</p>
+                      <hr>
+                      <p class="mb-0" id="delete-alert"><strong>Confirm</strong></p>
+                    </div>
+              </div>
+            </div>
+
+
+
+          <div class="row" id="edit_profile">
+            <form method="POST" action="." id="edit-profile-form" data-url = "/profiles/{{user.username}}/edit/">{% csrf_token %}
+                        <div class="form-row">
+                          <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                            <input type="text" class="form-control" id="username" placeholder="User name" value = {{user.username}} disabled>
+
+                            <div id="username-error" role="alert"></div>
+                          </div>
+                          <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                            <input type="email" class="form-control" id="email" placeholder="Email" value={{user.email}} disabled>
+
+                            <div id="email-error" role="alert"></div>
+                          </div>
+                          <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                            <input type="text" class="form-control" id="phone" placeholder="Phone" value={{user.phone}} disabled>
+                            <div id="phone-error" role="alert"></div>
+                          </div>
+                        </div>
+
+                        <div class="form-row">
+                        <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                          <input type="text" class="form-control" id="first-name" name="firstName" placeholder="Fist Name" value={{user.profile.firstName}}>
+                          <div id="first-name-error" role="alert"></div>
+                        </div>
+                        <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                          <input type="text" class="form-control" id="last-name" name="lastName" placeholder="Last Name" value={{user.profile.lastName}}>
+                          <div id="last-name-error" role="alert"></div>
+                        </div>
+                        <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                          <select type="text" class="form-control" name="pofileUsage" id="profile-usage">
+                              <option value="BUY">BUY</option>
+                              <option value="SELL">SELL</option>
+                              <option value="BOTH">BOTH</option>
+                            </select>
+                          <div id="profile-usage-error" role="alert"></div>
+                        </div>
+                        </div>
+                        <div class="form-row">
+                        <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                          <select type="text" class="form-control" name="gender" id="gender">
+                              <option value="MALE">MALE</option>
+                              <option value="FEMALE">FEMALE</option>
+                            </select>
+                          <div id="gender-error" role="alert"></div>
+                        </div>
+                        <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                          <input type="text" class="form-control" id="wilaya" name="wilaya" placeholder="Wilaya" value={{user.profile.wilaya}}>
+                          <div id="wilaya-error" role="alert"></div>
+                        </div>
+                        <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                          <input type="date" class="form-control" id="gender" name="birthday" placeholder="Birth Day" value="{{user.profile.birthday|date:"d-m-Y"}}">
+                          <div id="birth-day-error" role="alert"></div>
+                        </div>
+                        </div>
+
+                        <button type="submit" id="save" class="btn btn-outline-secondary btn-block btn-md">Save Changes</button>
+                      </form>
+                      <div class="alert alert-danger" id="editError" role="alert">Some Errors occured when you tried to save your changes.</div>
+                      <div class="alert alert-success" id="editSuccess" role="alert">Changes Saved successfully.</div>
+          </div>
+
+
+    </div>
+
+
+
+        <div class="row">
+        <div class="col" id="show">
+
+
+          <div id="messages">
+          {% for message in messages %}
+              <div class="col-12">
+                    <div class="list-group">
+                      <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                          <h4 class="mb-1">{{message.msg.content}}</h4>
+                          <small>{{message.msg.date}}</small>
+                        </div><br>
+                        <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum natus dolor nemo fugit repellat expedita, delectus debitis vero placeat voluptate officia consequatur odio architecto, perspiciatis perferendis eveniet, non fugiat ipsa omnis modi impedit veritatis nesciunt aperiam. Laboriosam, deleniti, impedit? Recusandae, accusamus, aspernatur? Odio reiciendis laboriosam nisi sit voluptatum accusamus quisquam?</p>
+                        <small style="color:rgba(239, 155, 86, 0.8);">{{message.type}}</small>
+                      </a>
+                    </div>
+              </div>
+          {% endfor %}
+          </div>
+
+          <div id="offers">
+            {% for offer in offers %}
+              <div class="col-12">
+                    <div class="list-group">
+                      <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                          <h4 class="mb-1">{{offer.notif.activitiy}} - {{offer.notif.currency}}</h4>
+                          <small>{{offer.notif.date}}</small>
+                        </div>
+                        <p class="mb-1">
+                        <strong>Amount</strong> : {{offer.notif.amount}} <br> <strong>Price</strong> : {{offer.notif.price}} DA
+                        <br><br>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad corporis commodi ducimus voluptas nobis, necessitatibus quis officiis facilis fuga eius tenetur repellat sint. Minus odio commodi nisi quae inventore iure!
+                        </p>
+                        <small style="color:rgba(239, 155, 86, 0.8);">{{offer.type}}</small>
+                      </a>
+                    </div>
+              </div>
+            {% endfor %}
+          </div>
+
+
+        </div> <!-- show -->
+    </div> <!-- parent row -->
+
+
+</div> <!--container-->
+
+
+{% endblock %}
+
+{% block js %}
+  <script src="{% static "/profiles/js/profiles.js" %}">
+
+  </script>
+{% endblock js %}

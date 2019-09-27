@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Hepta+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+
+.title{
+  padding: 0.2em;
+}
+
+.row h2 {
+  font-family: 'Hepta Slab', serif;
+  text-align: center;
+  border-radius: 1em;
+  color: #ef9b56;
+  background: grey;
+  margin: 1.5em;
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.description p {
+  padding: 1em;
+}
+
+.remove-check{
+  cursor: pointer;
+}
+.remove-check.checked{
+  color: green;
+  cursor: pointer;
+}
+
+.important{
+  color: green;
+  font-size: 1.5em;
+}
+
+.row#messagesBlock{
+  display : none;
+}
+.row#offersBlock{
+  display  : none;
+}
+.ui.items{
+  background: #fff;
+  margin: 3em;
+  padding: 1em;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.col-12{
+  margin: 1em;
+}

@@ -1,0 +1,122 @@
+from django.shortcuts import render , redirect
+from notifications.models import *
+from accounts.models import *
+from django.core import serializers
+import json
+from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+from	django.utils.translation	import	gettext_lazy	as	_
+from django.contrib import messages
+from django.contrib.auth import logout
+from .forms import *
+
+@login_required
+def profile_view(request,username):
+
+    if request.user.username == username:
+        offers = Notification.objects.filter(msg=None).order_by('-date')
+        messages = Notification.objects.filter(notif=None).order_by('-date')
+        user = User.objects.get(username = username)
+        profile = Profile.objects.get(user = user)
+        offersCount = offers.count()
+        messagesCount = messages.count()
+        profileForm = profileEditForm(instance = user)
+        userForm = userEditForm(instance = profile)
+        return render(request,'profiles/profile.html',
+                    {
+                        'offers' : offers,
+                        'messages' : messages,
+                        'offersCount' : offersCount ,
+                         'messagesCount' : messagesCount,
+                         'userForm': userForm,
+                         'profileForm': profileEditForm
+                    })
+    else:
+       return redirect("home:posts")
+
+
+
+@login_required
+@require_POST
+def profile_edit_view_ajax(request,username):
+    if request.method == "POST" and request.is_ajax():
+        user = request.user
+        profile = Profile.objects.get(user = user)
+        profileEdit = profileEditForm(instance = profile , data = request.POST)
+
+        if profileEdit.is_valid():
+            print(profile)
+            profileEdit.save()
+            return JsonResponse({"data":"done"},status = 200)
+        else:
+            return JsonResponse({"data":profileEdit.errors},status = 500)
+    else:
+        return redirect("home:posts")
+
+
+
+
+@login_required
+@require_POST
+def profile_delete_view_ajax(request,username):
+    if request.method == "POST" and request.is_ajax():
+        if request.user.username == username:
+            User.objects.get(username = username).delete()
+            message = _("Your Account was deleted successfully.")
+            messages.info(request,message)
+            return JsonResponse({"data":"success"},status = 200)
+        else:
+            return redirect("home:posts")
+    else:
+        return redirect("home:posts")
+
+
+
+
+
+
+
+
+
+
+@login_required
+@require_POST
+def profile_view_ajax(request,username,data):
+
+    if request.method == "POST" and request.is_ajax():
+
+        if data == "offer" and Notification.objects.filter(msg=None).count() > 0 :
+            notifications = Notification.objects.filter(msg=None).order_by('-date')
+            dataList = []
+            for notification in notifications:
+                notif = serializers.serialize('json',[notification.notif,])  # json data with wrapper with [].
+                item = json.loads(notif)  # get ride of [].
+                dataList.append(item[0]['fields'])
+            jsonData = {
+                    "notifications": dataList,
+                    "count": len(dataList)
+                    }
+
+        elif data == "message" and Notification.objects.filter(notif=None).count() > 0 :
+            notifications = Notification.objects.filter(notif=None).order_by('-date')
+            dataList = []
+            dataDict = {}
+            for notification in notifications:
+                notif = serializers.serialize('json',[notification.msg,])  # json data with wrapper with [].
+                item = json.loads(notif)  # get ride of [].
+                dataList.append(item[0]['fields'])
+            print(dataList)
+            jsonData = {
+                    "notifications": dataList,
+                    "count": len(dataList)
+                }
+
+        else:
+            empty = _("No data found.")
+            return JsonResponse({"count":0 , "empty":empty},status = 200)
+
+        return JsonResponse(jsonData,status=200)
+
+    else:
+        return redirect("home:posts")

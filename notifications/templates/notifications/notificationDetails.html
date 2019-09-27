@@ -1,0 +1,14 @@
+
+
+{% block title %}notification details {% endblock title %}
+
+{% block content %}
+<ul>
+  <li>{{offer}}</li>
+  <li>{{offer.user.username}}</li>
+  <li>{{offer.price}}</li>
+  <li>{{offer.date}}</li>
+  <li>{{offer.amount}}</li>
+  <li>{{offer.activitiy}}</li>
+</ul>
+{% endblock content %}
