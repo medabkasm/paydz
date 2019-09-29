@@ -16,22 +16,14 @@ from .forms import *
 def profile_view(request,username):
 
     if request.user.username == username:
-        offers = Notification.objects.filter(msg=None).order_by('-date')
-        messages = Notification.objects.filter(notif=None).order_by('-date')
         user = User.objects.get(username = username)
         profile = Profile.objects.get(user = user)
-        offersCount = offers.count()
-        messagesCount = messages.count()
         profileForm = profileEditForm(instance = user)
         userForm = userEditForm(instance = profile)
         return render(request,'profiles/profile.html',
                     {
-                        'offers' : offers,
-                        'messages' : messages,
-                        'offersCount' : offersCount ,
-                         'messagesCount' : messagesCount,
                          'userForm': userForm,
-                         'profileForm': profileEditForm
+                         'profileForm': profileEditForm,
                     })
     else:
        return redirect("home:posts")
@@ -41,7 +33,7 @@ def profile_view(request,username):
 @login_required
 @require_POST
 def profile_edit_view_ajax(request,username):
-    if request.method == "POST" and request.is_ajax():
+    if request.method == "POST" and request.is_ajax() and request.user.username == username :
         user = request.user
         profile = Profile.objects.get(user = user)
         profileEdit = profileEditForm(instance = profile , data = request.POST)
@@ -49,8 +41,11 @@ def profile_edit_view_ajax(request,username):
         if profileEdit.is_valid():
             print(profile)
             profileEdit.save()
-            return JsonResponse({"data":"done"},status = 200)
+            profileJson = serializers.serialize('json',[user.profile,])  # json data with wrapper with [].
+            profile = json.loads(profileJson)
+            return JsonResponse({"profile" : profile[0]['fields']},status = 200)
         else:
+            print(profileEdit.errors)
             return JsonResponse({"data":profileEdit.errors},status = 500)
     else:
         return redirect("home:posts")

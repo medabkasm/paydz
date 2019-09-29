@@ -3,13 +3,29 @@
 {% load i18n %}
 {% load staticfiles %}
 {% load beautiful_tag %}
+
+{{dateForm.media}}
+{{profileForm.media}}
 {% block title %}{{user.username}}{% endblock title %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static "/profiles/css/profiles.css" %}">
+
+
+
+  <link rel="stylesheet" href="{% static "/profiles/css/profiles.css" %}">
+
+
+
+
+
+
 {% endblock css %}
 
 {% block content %}
+
+
+
+
     <div class="container-fluid">
 
       <div class="row">
@@ -43,8 +59,11 @@
           </div>
 
         <div class="col">
-          <div class="row" id="profile">
-          </div>
+
+
+
+
+
 
           <div class="row">
             <div class="col" id="no-data-alert">
@@ -66,7 +85,47 @@
               </div>
             </div>
 
+            <div class="row" id="profile">
+                <form id="profileForm">
+                            <div class="form-row">
+                              <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                                <input type="text" class="form-control" value = {{user.username}}   disabled>
+                              </div>
+                              <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                                <input type="email" class="form-control" value={{user.email}}  disabled>
+                              </div>
+                              <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                                <input type="text" class="form-control" value={{user.phone}}  disabled>
+                              </div>
+                            </div>
 
+                            <div class="form-row">
+                            <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                              <input type="text" class="form-control first-name" id="first-name"  value={{user.profile.firstName}} disabled>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                              <input type="text" class="form-control last-name" id="last-name"  value={{user.profile.lastName}} disabled>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                                <input type="text" class="form-control profile-usage" value={{user.profile.pofileUsage}} id="profile-usage"  disabled>
+                            </div>
+                            </div>
+                            <div class="form-row">
+                            <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                                  <input type="text" class="form-control gender" id="gender" value={{user.profile.gender}} disabled>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                              <textarea name="address" class="form-control address" id="address" rows="1" cols="100" disabled>{{user.profile.address}}</textarea>
+                            </div>
+
+                            <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                            <input type="number" class="form-control age" id="age" value="{{user.profile.age}}" disabled>
+                              </div>
+                            </div>
+                            <button type="submit" class="btn btn-outline-secondary btn-block btn-md submited">Edit information</button>
+                          </form>
+
+              </div>
 
           <div class="row" id="edit_profile">
             <form method="POST" action="." id="edit-profile-form" data-url = "/profiles/{{user.username}}/edit/">{% csrf_token %}
@@ -89,74 +148,76 @@
 
                         <div class="form-row">
                         <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                          <input type="text" class="form-control" id="first-name" name="firstName" placeholder="Fist Name" value={{user.profile.firstName}}>
+                          <input type="text" class="form-control first-name" id="first-name-edit" name="firstName" placeholder="Fist Name" value={{user.profile.firstName}}>
                           <div id="first-name-error" role="alert"></div>
                         </div>
                         <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                          <input type="text" class="form-control" id="last-name" name="lastName" placeholder="Last Name" value={{user.profile.lastName}}>
+                          <input type="text" class="form-control last-name" id="last-name-edit" name="lastName" placeholder="Last Name" value={{user.profile.lastName}}>
                           <div id="last-name-error" role="alert"></div>
                         </div>
                         <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                          <select type="text" class="form-control" name="pofileUsage" id="profile-usage">
+                      <select type="text" class="form-control profile-usage" name="pofileUsage" id="profile-usage-edit">
                               <option value="BUY">BUY</option>
                               <option value="SELL">SELL</option>
                               <option value="BOTH">BOTH</option>
                             </select>
+
                           <div id="profile-usage-error" role="alert"></div>
                         </div>
                         </div>
                         <div class="form-row">
                         <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                          <select type="text" class="form-control" name="gender" id="gender">
+                          <select type="text" class="form-control gender" name="gender" id="gender-edit">
                               <option value="MALE">MALE</option>
                               <option value="FEMALE">FEMALE</option>
                             </select>
                           <div id="gender-error" role="alert"></div>
                         </div>
                         <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                          <input type="text" class="form-control" id="wilaya" name="wilaya" placeholder="Wilaya" value={{user.profile.wilaya}}>
-                          <div id="wilaya-error" role="alert"></div>
-                        </div>
-                        <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                        <!--  <input type="text" class="form-control" id="gender" name="birthday" placeholder="Birth Day" value="{{user.profile.birthday}}"> -->
-                        <!--  <input type="text" class="form-control" id="datepicker" value="{{user.profile.birthday}}">
-                          <div id="birth-day-error" role="alert"></div> -->
-                          {{profileForm.birthday}}
-                        </div>
+                          <textarea name="address" value="{{user.profile.address}}" class="form-control address" placeholder="Address" id="address-edit" rows="1" cols="100">{{user.profile.address}}</textarea>
+                          <div id="address-error" role="alert"></div>
                         </div>
 
-                        <button type="submit" id="save" class="btn btn-outline-secondary btn-block btn-md">Save Changes</button>
+                        <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                        <input type="number" class="form-control age" id="age-edit" name="age" placeholder="Age" value="{{user.profile.age}}">
+                          </div>
+                        </div>
+                        <button type="submit"  class="btn btn-outline-secondary btn-block btn-md submited">Save Changes</button>
                       </form>
-                      <div class="alert alert-danger" id="editError" role="alert">Some Errors occured when you tried to save your changes.</div>
+                      <div class="alert alert-danger" id="editError" role="alert">Some Errors occured when you tried to save your changes. <hr>
+                         <strong>
+                           <span id="resetInfo"> reset to my last correct information</span>
+                         </strong>
+                       </div>
                       <div class="alert alert-success" id="editSuccess" role="alert">Changes Saved successfully.</div>
           </div>
 
+          <div id="show">
+            <div id="messages">
+            </div>
+
+            <div id="offers">
+            </div>
+          </div> <!-- show -->
 
     </div>
 
+
+
+
+
 </div>
 
-        <div class="row">
-        <div class="col" id="show">
+
+    </div> <!--container-->
 
 
-          <div id="messages">
-          </div>
 
-          <div id="offers">
-          </div>
-
-
-        </div> <!-- show -->
-    </div> <!-- parent row -->
-
-
-</div> <!--container-->
 
 
 {% endblock %}
 
 {% block js %}
-  <script src="{% static "/profiles/js/profiles.js" %}"></script>
 
+      <script src="{% static "/profiles/js/profiles.js" %}"></script>
 {% endblock js %}

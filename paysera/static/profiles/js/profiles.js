@@ -30,9 +30,7 @@ window.addEventListener('load',function(){
         }
     });
 
-
-  //var text = $("#test").text("alert('hello')");
-  var texte = document.getElementById("test");
+  var show = document.getElementById("show");
   var show_messages = document.getElementById("show-messages");
   var show_offers = document.getElementById("show-offers");
   var show_profile = document.getElementById("show-profile");
@@ -46,9 +44,18 @@ window.addEventListener('load',function(){
   var editError = document.getElementById("editError");
   var editSuccess = document.getElementById("editSuccess");
   var noDataAlert = document.getElementById("no-data-alert");
+  var editProfileSubmit = $("#profileForm");
 
 
   initialize();
+
+
+  if(editProfileSubmit){
+    editProfileSubmit.submit(function(event){
+      event.preventDefault();
+      edit_profile.click();
+    });
+  }
 
   if(edit_profile){
     edit_profile.onclick = function(event){
@@ -66,12 +73,29 @@ window.addEventListener('load',function(){
                 data : $(this).serialize(),
                 success : function(data,status,xhr){
                   editError.style.display = "none";
-                  location.reload(true);
                   editSuccess.style.display = "block";
+
+                  $("#first-name").val(data.profile.firstName);
+                  $("#last-name").val(data.profile.lastName);
+                  $("#profile-usage").val(data.profile.pofileUsage);
+                  $("#gender").val(data.profile.gender);
+                  $("#age").val(data.profile.age);
+                  $("#address").val(data.profile.address);
+
                 },
                 error : function(xhr,status,data){
                   editSuccess.style.display = "none";
                   editError.style.display = "block";
+                  $("#resetInfo").click(function(){
+
+                    $("#first-name-edit").val($("#first-name").val());
+                    $("#last-name-edit").val($("#last-name").val());
+                    $("#profile-usage-edit").val($("#profile-usage").val());
+                    $("#gender-edit").val($("#gender").val());
+                    $("#age"-edit).val($("#age").val());
+                    $("#address-edit").val($("#address").val());
+                  });
+
                 }
               });
 
@@ -162,6 +186,7 @@ function show_data(element,url,dataType){  // show data(messages or offers ) by 
 
 function get_data(dataContainer,url,dataType){   // get data(messages or offers ) form the server using ajax.
 
+  show.style.display = "block";
   $.ajax({
     type : "POST",
     url : url,
@@ -241,11 +266,12 @@ function collect_data(dataContainer,dataType,data){ // collect ajax data , and b
 
 
 
-function initialize(profileDisp="none",editProfileDisp="none",messagesDisp="none",offersDisp="none",alertBlockDisp = "none"){
+function initialize(profileDisp="none",showDisp = "none" ,editProfileDisp="none",messagesDisp="none",offersDisp="none",alertBlockDisp = "none"){
       // to prevent double clicking.
     profile.style.display = profileDisp;
     messages.style.display = messagesDisp;
     offers.style.display = offersDisp;
+    show.style.display = showDisp;
     editProfileForm.style.display = editProfileDisp;
     alertBlock.style.display = alertBlockDisp;
     editSuccess.style.display = "none";

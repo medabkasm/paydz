@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.template.defaultfilters import slugify
 from django.db.models.signals import post_save
+from django import forms
 from django.dispatch import receiver
 from django.urls import reverse
 from .validators import *
@@ -42,8 +43,10 @@ class Profile(models.Model):
     gender = models.CharField(_('gender') , choices = GENDER ,max_length = 10 ,default = _("Gender"))
     profileImage = models.ImageField(_('profile image'),upload_to = 'usersImages' , blank = True,null=True)
     coverImage = models.ImageField(_('cover image'),upload_to = 'usersImages' , blank = True,null=True)
-    birthday = models.DateField(_('birthday'),blank = True , null = True )
-    wilaya = models.CharField(_('wilaya'),max_length = 30 ,blank = True ,null = True , default = _("wilaya"))
+    #birthday = models.DateField(_('birthday'),blank = True , null = True )
+    age = models.IntegerField(_('age'),blank = True , null = True)
+
+    address = models.CharField(_('addess'),max_length = 100 ,blank = True ,null = True , default = _("address"))
     pofileUsage = models.CharField(_('profile usage'),choices = USAGE ,max_length = 15 , default = _("Profile Usage"))
     profileComplete = models.BooleanField(default ='False')
 

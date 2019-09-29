@@ -3,6 +3,7 @@
 
 {% block title %}PayDz{% endblock title %}
 {% load staticfiles %}
+{% load i18n %}
 {% block css %}
     <link rel="stylesheet" type="text/css" href=" {% static "/home/home_style.css" %}">
 {% endblock css %}
@@ -12,24 +13,25 @@
           <div class="row-fluid">
             <div class="col " id="intro">
               <h5><i class="black tie icon"></i>PayDz</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad sequi, consequuntur, ratione ab ullam temporibus voluptas aliquid tempore cupiditate quibusdam soluta placeat. Numquam voluptate, ab minus consectetur explicabo sunt molestias.</p>
+                <p>{% trans "PayDz , for the first time , a small company that can provide some usefull services for the algerien people in the field of Paysera  , to make their search about paysera credit a lot easier , with fast and secure deals." %}</p>
               </div>
             </div>
 
           <div class="row">
             <div class="col col-lg-3 col-md-6 col-sm-12 col-12 field"><h3><i class="cc visa icon"></i>Buy</h3>
-              <p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad sequi, consequuntur, ratione ab ullam temporibus voluptas aliquid tempore cupiditate quibusdam soluta placeat. Numquam voluptate, ab minus consectetur explicabo sunt molestias.</strong></p>
+              <p><strong>{% trans "You need a Paysera credit but you can't find it or you can't trust dealers out there , send us a request and we will offer you a fast and secure deal !" %}</strong></p>
             </div>
             <div class="col col-lg-3 col-md-6 col-sm-12 col-12 field">
               <h3><i class="money bill alternate icon"></i>Sell</h3>
-                <p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad sequi, consequuntur, ratione ab ullam temporibus voluptas aliquid tempore cupiditate quibusdam soluta placeat. Numquam voluptate, ab minus consectetur explicabo sunt molestias.</strong></p>
+                <p><strong>{% trans "You have a Paysera credit ? , you want to make a secure and fast deal to sell it , send us a request and we will make you happy !" %}</strong></p>
             </div>
               <div class="col col-lg-3 col-md-6 col-sm-12 col-12 field">
                 <h3><i class="handshake outline icon"></i>Partnership</h3>
-                  <p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad sequi, consequuntur, ratione ab ullam temporibus voluptas aliquid tempore cupiditate quibusdam soluta placeat. Numquam voluptate, ab minus consectetur explicabo sunt molestias.</strong></p>
+                  <p><strong>{% trans " we are always searching about new contributors to push this company to the limit , to make it vast and rich in the field of providing financial services ." %} <br>
+                  {% trans " we accept all kind of offers and ideas , so be happy to share it with us ." %}</strong></p>
                 </div>
                 <div class="col col-lg-3 col-md-6 col-sm-12 col-12 field"><h3><i class="heart icon"></i>Donate</h3>
-                  <p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad sequi, consequuntur, ratione ab ullam temporibus voluptas aliquid tempore cupiditate quibusdam soluta placeat. Numquam voluptate, ab minus consectetur explicabo sunt molestias.</strong></p>
+                  <p><strong>{% trans "hard work needs some help , right ?, so we will be very happy and appreciate if you can give us some. " %}</strong></p>
                 </div>
           </div>
     </div> <!-- container -->

@@ -1,8 +1,8 @@
 
 {% extends "base.html" %}
 {% load staticfiles %}
-
-{% block title %}Register{% endblock title %}
+{% load i18n %}
+{% block title %}{% trans "Register" %}{% endblock title %}
   {% block css %}
     <!-- Font Icon -->
     <link rel="stylesheet" href="{% static "login/fonts/material-icon/css/material-design-iconic-font.min.css" %}">
@@ -25,7 +25,7 @@
                         <form method="POST" class="register-form" id="register-form" >{% csrf_token %}
                             <div class="form-group">
                               <label for="username"><i class="user secret icon"></i></label>
-                                <input type="text" name="username" id="name" placeholder="Your user Name"/>
+                                <input type="text" name="username" id="name" placeholder={% trans "Your user Name" %} />
 
                               </div>
 
@@ -39,7 +39,7 @@
 
                             <div class="form-group">
                                 <label for="email"><i class="envelope icon"></i></label>
-                                <input type="email" name="email" id="email" placeholder="Your Email"/>
+                                <input type="email" name="email" id="email" placeholder={% trans "Your Email" %} />
                             </div>
 
                             {% if form.errors and form.email.errors%}
@@ -51,7 +51,7 @@
                               {% endif %}
                               <div class="form-group">
                                   <label for="phone"><i class="phone icon"></i></label>
-                                  <input type="phone" name="phone" id="email" placeholder="Your Dz Phone Number"/>
+                                  <input type="phone" name="phone" id="email" placeholder={% trans "Your Dz Phone Number" %} />
                               </div>
 
                               {% if form.errors and form.phone.errors%}
@@ -63,12 +63,12 @@
                                 {% endif %}
                             <div class="form-group">
                                 <label for="password1"><i class="eye slash outline icon"></i></i></label>
-                                <input type="password" name="password1" id="pass" placeholder="Password"/>
+                                <input type="password" name="password1" id="pass" placeholder={% trans "Password" %} />
                             </div>
 
                             <div class="form-group">
                                 <label for="password2"><i class="eye slash outline icon"></i></label>
-                                <input type="password" name="password2" id="re_pass" placeholder="Repeat your password"/>
+                                <input type="password" name="password2" id="re_pass" placeholder={% trans "Repeat your password" %} />
                             </div>
 
                             {% if form.errors and form.password2.errors%}
@@ -80,7 +80,8 @@
                               {% endif %}
                             <div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                                <label for="agree-term" class="label-agree-term"><span><span></span></span>
+                                <a href="#" class="term-service">  {% trans "I agree all statements in  Terms of service" %}</a></label>
                             </div>
 
                             {% if agreeError %}
@@ -96,13 +97,13 @@
                               </div>
                               {% endif %}
                             <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="ui grey button" value="Register"/>
+                                <input type="submit" name="signup" id="signup" class="ui grey button" value={% trans "Register" %} />
                             </div>
                         </form>
                     </div>
                     <div class="signup-image">
                         <figure><img src="{% static "/images/photo5-1.jpeg" %}" alt="sing up image"></figure>
-                        <a href="{% url "accounts:login" %}" class="signup-image-link">I am already member</a>
+                        <a href="{% url "accounts:login" %}" class="signup-image-link">{% trans "already have an account" %}</a>
                     </div>
                 </div>
             </div>

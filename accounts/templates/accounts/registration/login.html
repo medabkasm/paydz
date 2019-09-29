@@ -1,14 +1,14 @@
 
 {% extends "base.html" %}
 {% load staticfiles %}
-
-{% block title %}Login {% endblock title %}
+{% load i18n %}
+{% block title %}{% trans "Login" %} {% endblock title %}
   {% block css %}
     <!-- Font Icon -->
     <link rel="stylesheet" href="{% static "login/fonts/material-icon/css/material-design-iconic-font.min.css" %}">
 
     <!-- Main css -->
-  
+
 
   {% endblock css %}
   {% block content %}
@@ -21,23 +21,23 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="{% static "/images/photo5-1.jpeg" %}" alt="sing up image"></figure>
-                        <a href="{% url "accounts:register" %}" class="signup-image-link">Create an account</a>
+                        <a href="{% url "accounts:register" %}" class="signup-image-link">{% trans "Create an account" %}</a>
                         <hr>
-                        <a href="{% url "accounts:password_reset" %}" class="signup-image-link">Forgot password ? </a>
+                        <a href="{% url "accounts:password_reset" %}" class="signup-image-link">{% trans "Forgot password ?" %} </a>
                         <hr>
                     </div>
 
                     <div class="signin-form">
                       {%	if	form.errors	%}
                     			<div class="alert alert-danger" role="alert">
-                    						Your	username	and	password	didn't	match. Please	try	again.
+                    						{% trans "Your	username	and	password	didn't	match. Please	try	again." %}
                     				</div>
                     		{%	endif	%}
-                        <h2 class="form-title">Sign up</h2>
+                        <h2 class="form-title">{% trans "Sign up" %}</h2>
                         <form method="POST" class="register-form" id="login-form">{% csrf_token %}
                             <div class="form-group">
                                 <label for="username"><i class="user secret icon"></i></label>
-                                <input type="text" name="username" id="your_name" placeholder="Your Email"/>
+                                <input type="text" name="username" id="your_name" placeholder={% trans "Your Email" %}/>
                             </div>
                             {% if form.errors and form.username.errors%}
                               <div class="alert alert-danger" role="alert">
@@ -49,7 +49,7 @@
                               {% endif %}
                             <div class="form-group">
                                 <label for="passoword"><i class="eye slash outline icon"></i></label>
-                                <input type="password" name="password" id="your_pass" placeholder="Password"/>
+                                <input type="password" name="password" id="your_pass" placeholder={% trans "Password" %}/>
                             </div>
                             {% if form.errors and form.password.errors%}
                               <div class="alert alert-danger" role="alert">
@@ -63,11 +63,11 @@
                                 <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="ui grey button " value="Log in"/>
+                                <input type="submit" name="signin" id="signin" class="ui grey button " value={% trans "Login" %} />
                             </div>
                         </form>
                         <br>
-                        <p>or sign up with </p>
+                        <p>{% trans "or login with" %}</p>
                         <br>
                         <button type="button" id = "facebookbtn" class="btn btn-outline-primary btn-block"><a href="{% url 'social:begin' 'facebook' %}"><i class="facebook icon"></i>Facebook</a></button>
                         <button type="button" id = "facebookbtn" class="btn btn-outline-danger btn-block"><a href="{% url 'social:begin' 'google-oauth2' %}"><i class="google plus icon"></i>Google+</a></button>
