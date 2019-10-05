@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block title %}dash board {% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Dash Board" %}{% endblock %}
 {% block css %}
 <link rel="stylesheet" href="{% static "/paysera/css/dash_board.css" %}">
 {% endblock css %}
@@ -11,7 +12,7 @@
 <div class="container-fluid" id="board">
   <div class="row">
     <div class="col-12">
-      <h2 id="offers" class="title">Offers</h2>
+      <h2 id="offers" class="title">{% trans "Offers" %}</h2>
     </div>
   </div>
   <div class="row"  id="offersBlock">
@@ -26,19 +27,22 @@
                           <div class="content">
                             <div class="header">{{offer.notif.user.username}} - ( {{offer.notif.user.phone}} )</div>
                             <div class="meta">
-                              <span class="price"><span class="important">{{offer.notif.activitiy}}</span> {{offer.notif.amount}}{{offer.notif.currency}} with {{offer.notif.price}}DA</span>
-                              <span class="stay">{{offer.notif.date}}</span>
+                              <span class="price"><span class="important">{{offer.notif.activitiy}}</span>
+                              <strong>{{offer.notif.amount}} - {{offer.notif.currency}} </strong>{% trans "with" %}  <strong> {{offer.notif.price}}DA</strong>
+
+                              </span>
+                              <span class="stay">{% blocktrans %}{{offer.notif.date}}{% endblocktrans %}</span>
                             </div>
                             <div class="description">
                               <p class="mb-1">{{offer.notif.message}}</p>
                             </div>
                             <div class="extra">
-                                <div class="ui label"><span class="remove-check" value="offer/remove/{{offer.notif.pk}}/">Remove</span></div>
+                                <div class="ui label"><span class="remove-check" value="offer/remove/{{offer.notif.pk}}/">{% trans "Remove" %}</span></div>
                                 <div class="ui label">
                                   {% if offer.seen == False %}
-                                  <span class="remove-check" value="offer/check/{{offer.notif.pk}}/">Check</span>
+                                  <span class="remove-check" value="offer/check/{{offer.notif.pk}}/">{% trans "Check" %}</span>
                                   {% else %}
-                                  <span class="remove-check checked" value="offer/check/{{offer.notif.pk}}/">Checked</span>
+                                  <span class="remove-check checked" value="offer/check/{{offer.notif.pk}}/">{% trans "Checked" %}</span>
                                   {% endif %}
                                 </div>
                               </div>
@@ -52,7 +56,7 @@
 
     <div class="row">
       <div class="col-12">
-        <h2 id="messages" class="title">Messages</h2>
+        <h2 id="messages" class="title">{% trans "Messages" %}</h2>
       </div>
     </div>
     <div class="row data"  id="messagesBlock">
@@ -68,18 +72,18 @@
                               <div class="header">{{message.msg.user.username}} - ( {{message.msg.user.phone}})</div>
                               <div class="meta">
                                 <span class="price"><span class="important">{{message.msg.content}}</span></span>
-                                <span class="stay">{{message.msg.date}}</span>
+                                <span class="stay">{% blocktrans %}{{message.msg.date}}{% endblocktrans %}</span>
                               </div>
                               <div class="description">
                                 <p class="mb-1">{{message.msg.contactMessage}}</p>
                               </div>
                               <div class="extra">
-                                <div class="ui label"><span class="remove-check" value="message/remove/{{message.msg.pk}}/">Remove</span></div>
+                                <div class="ui label"><span class="remove-check" value="message/remove/{{message.msg.pk}}/">{% trans "Remove" %}</span></div>
                                 <div class="ui label">
                                   {% if message.seen == False %}
-                                  <span class="remove-check" value="messsage/check/{{message.msg.pk}}/">Check</span>
+                                  <span class="remove-check" value="messsage/check/{{message.msg.pk}}/">{% trans "Check" %}</span>
                                   {% else %}
-                                  <span class="remove-check checked" value="messsage/checked/{{message.msg.pk}}/">Checked</span>
+                                  <span class="remove-check checked" value="messsage/checked/{{message.msg.pk}}/">{% trans "Checked" %}</span>
                                   {% endif %}
                                   </div>
                                 </div>

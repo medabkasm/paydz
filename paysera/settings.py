@@ -52,9 +52,14 @@ INSTALLED_APPS = [
 
 
 ]
-BOOTSTRAP4 = {
-    'include_jquery': True,
-}
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+MIDDLEWARE_CLASSES = (
+    # Simplified static file serving.
+    # https://warehouse.python.org/project/whitenoise/
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -67,8 +72,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
+
+
 
 ROOT_URLCONF = 'paysera.urls'
 ASGI_APPLICATION = "paysera.routing.application"
@@ -278,5 +286,6 @@ SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 #static file directory inclusion
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'paysera/static') ,]

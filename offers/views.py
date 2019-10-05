@@ -7,7 +7,7 @@ import requests
 from	django.utils.translation	import	gettext_lazy	as	_
 from .decorators import *
 from .forms import *
-# Create your views here.
+
 
 
 
@@ -15,6 +15,7 @@ from .forms import *
 @login_required
 @require_POST
 def offer_view(request,offer):
+
 
     if request.method == "POST" and request.is_ajax():
 

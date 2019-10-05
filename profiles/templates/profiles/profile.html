@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% load i18n %}
 {% load staticfiles %}
-{% load beautiful_tag %}
+
 
 {{dateForm.media}}
 {{profileForm.media}}
@@ -31,28 +31,28 @@
       <div class="row">
         <div class="col col-lg-3 col-md-3 col-sm-12 col-12">
             <ul id="sidePanel">
-              <h3 class="topicTitle"><i class="user circle icon"></i>Profile</h3>
+              <h3 class="topicTitle"><i class="user circle icon"></i>{% trans "Profile" %}</h3>
               <ul class="topic">
-                <a href="#profile"><li class="topicItems" id="show-profile"><i class="info circle icon"></i>Show Profile</li></a>
+                <a href="#profile"><li class="topicItems" id="show-profile"><i class="info circle icon"></i>{% trans "Show Profile" %}</li></a>
                 <a href="#alertBlock"><li class="topicItems" id="delete_profile" value="/profiles/{{user.username}}/delete/">
-                  <i class="ban icon" ></i>Delete Profile</li>
+                  <i class="ban icon" ></i>{% trans "Delete Profile" %}</li>
                 <a href="#show"><li class="topicItems"><a href="{% url "accounts:logout" %}">
-                  <i class="power off icon"></i>Logout</a>
+                  <i class="power off icon"></i>{% trans "Logout" %}</a>
                 </li></a>
               </ul>
 
-              <h3 class="topicTitle"><i class="cogs icon"></i>Settngs</h3>
+              <h3 class="topicTitle"><i class="cogs icon"></i>{% trans "Settngs" %}</h3>
               <ul class="topic">
-                <a href="#edit_profile"><li class="topicItems" id="edit-profile"><i class="pencil alternate icon"></i>change profile information</li></a>
-                <a href="#show"><li class="topicItems" ><a href="{% url "profiles:password_change" user.username %}">
-                  <i class="unlock alternate icon"></i>change password</a>
+                <a href="#edit_profile"><li class="topicItems" id="edit-profile"><i class="pencil alternate icon"></i>{% trans "change profile information" %}</li></a>
+                <a href="#show"><li class="topicItems" ><a href='{% url "profiles:password_change" user.username %}'>
+                  <i class="unlock alternate icon"></i>{% trans "change password" %}</a>
                 </li></a>
               </ul>
 
-                <h3 class="topicTitle" ><i class="coffee icon"></i>Activities</h3>
+                <h3 class="topicTitle" ><i class="coffee icon"></i>{% trans "Activities" %}</h3>
               <ul class="topic">
-                <a href="#messages"><li class="topicItems" value="/profiles/{{user.username}}/data/message/" id="show-messages"><i class="envelope outline icon"></i>Messages</li></a>
-                <a href="#offers"><li class="topicItems" value="/profiles/{{user.username}}/data/offer/" id="show-offers"><i class="dollar sign icon"></i>Offers</li></a>
+                <a href="#messages"><li class="topicItems" value="/profiles/{{user.username}}/data/message/" id="show-messages"><i class="envelope outline icon"></i>{% trans "Messages" %}</li></a>
+                <a href="#offers"><li class="topicItems" value="/profiles/{{user.username}}/data/offer/" id="show-offers"><i class="dollar sign icon"></i>{% trans "Offers" %}</li></a>
               </ul>
 
             </ul>
@@ -68,98 +68,57 @@
           <div class="row">
             <div class="col" id="no-data-alert">
                 <div class="alert alert-secondary" role="alert">
-                    <h3> No data found !</h3>
+                    <h3>{% trans " No data found !" %}</h3>
                     <hr>
                   </div>
             </div>
 
               <div class="col" id="alertBlock">
                   <div class="alert alert-danger" role="alert">
-                      <h4 class="alert-heading">Confirm Account Deletion</h4>
+                      <h4 class="alert-heading">{% trans "Confirm Account Deletion" %}</h4>
                       <br>
-                      <p>This step will delete your account and you will not be able to use it again ,
-                      click on Confirm to accomplish this step.</p>
+                      <p>{% trans "This step will delete your account and you will not be able to use it again ,click on Confirm to accomplish this step." %}</p>
                       <hr>
-                      <p class="mb-0" id="delete-alert"><strong>Confirm</strong></p>
+                      <p class="mb-0" id="delete-alert"><strong>{% trans "Confirm" %}</strong></p>
                     </div>
               </div>
             </div>
 
-            <div class="row" id="profile">
-                <form id="profileForm">
-                            <div class="form-row">
-                              <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                                <input type="text" class="form-control" value = {{user.username}}   disabled>
-                              </div>
-                              <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                                <input type="email" class="form-control" value={{user.email}}  disabled>
-                              </div>
-                              <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                                <input type="text" class="form-control" value={{user.phone}}  disabled>
-                              </div>
-                            </div>
 
-                            <div class="form-row">
-                            <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                              <input type="text" class="form-control first-name" id="first-name"  value={{user.profile.firstName}} disabled>
-                            </div>
-                            <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                              <input type="text" class="form-control last-name" id="last-name"  value={{user.profile.lastName}} disabled>
-                            </div>
-                            <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                                <input type="text" class="form-control profile-usage" value={{user.profile.pofileUsage}} id="profile-usage"  disabled>
-                            </div>
-                            </div>
-                            <div class="form-row">
-                            <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                                  <input type="text" class="form-control gender" id="gender" value={{user.profile.gender}} disabled>
-                            </div>
-                            <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                              <textarea name="address" class="form-control address" id="address" rows="1" cols="100" disabled>{{user.profile.address}}</textarea>
-                            </div>
-
-                            <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                            <input type="number" class="form-control age" id="age" value="{{user.profile.age}}" disabled>
-                              </div>
-                            </div>
-                            <button type="submit" class="btn btn-outline-secondary btn-block btn-md submited">Edit information</button>
-                          </form>
-
-              </div>
 
           <div class="row" id="edit_profile">
             <form method="POST" action="." id="edit-profile-form" data-url = "/profiles/{{user.username}}/edit/">{% csrf_token %}
                         <div class="form-row">
                           <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                            <input type="text" class="form-control" id="username" placeholder="User name" value = {{user.username}} disabled>
+                            <input type="text" class="form-control" id="username" placeholder='{% trans "User name" %}' value = {{user.username}} disabled>
 
                             <div id="username-error" role="alert"></div>
                           </div>
                           <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                            <input type="email" class="form-control" id="email" placeholder="Email" value={{user.email}} disabled>
+                            <input type="email" class="form-control" id="email" placeholder='{% trans "Email" %}' value={{user.email}} disabled>
 
                             <div id="email-error" role="alert"></div>
                           </div>
                           <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                            <input type="text" class="form-control" id="phone" placeholder="Phone" value={{user.phone}} disabled>
+                            <input type="text" class="form-control" id="phone" placeholder='{% trans "Phone" %}' value={{user.phone}} disabled>
                             <div id="phone-error" role="alert"></div>
                           </div>
                         </div>
 
                         <div class="form-row">
                         <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                          <input type="text" class="form-control first-name" id="first-name-edit" name="firstName" placeholder="Fist Name" value={{user.profile.firstName}}>
+                          <input type="text" class="form-control first-name" id="first-name-edit" name="firstName" placeholder='{% trans "Fist Name" %}' value={{user.profile.firstName}}>
                           <div id="first-name-error" role="alert"></div>
                         </div>
                         <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                          <input type="text" class="form-control last-name" id="last-name-edit" name="lastName" placeholder="Last Name" value={{user.profile.lastName}}>
+                          <input type="text" class="form-control last-name" id="last-name-edit" name="lastName" placeholder='{% trans "Last Name" %}' v%alue={{user.profile.lastName}}>
                           <div id="last-name-error" role="alert"></div>
                         </div>
                         <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
                       <select type="text" class="form-control profile-usage" name="pofileUsage" id="profile-usage-edit">
-                              <option value="BUY">BUY</option>
-                              <option value="SELL">SELL</option>
-                              <option value="BOTH">BOTH</option>
+                              <option value="BUY">{% trans "BUY" %}</option>
+                              <option value="SELL">{% trans "SELL"%}</option>
+                              <option value="BOTH">{% trans "BOTH"%}</option>
                             </select>
 
                           <div id="profile-usage-error" role="alert"></div>
@@ -168,8 +127,8 @@
                         <div class="form-row">
                         <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
                           <select type="text" class="form-control gender" name="gender" id="gender-edit">
-                              <option value="MALE">MALE</option>
-                              <option value="FEMALE">FEMALE</option>
+                              <option value="MALE">{% trans "MALE" %}</option>
+                              <option value="FEMALE">{% trans "FEMALE" %}</option>
                             </select>
                           <div id="gender-error" role="alert"></div>
                         </div>
@@ -179,17 +138,17 @@
                         </div>
 
                         <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                        <input type="number" class="form-control age" id="age-edit" name="age" placeholder="Age" value="{{user.profile.age}}">
+                        <input type="number" class="form-control age" id="age-edit" name="age" placeholder='{% trans "Age" %}' value="{{user.profile.age}}">
                           </div>
                         </div>
-                        <button type="submit"  class="btn btn-outline-secondary btn-block btn-md submited">Save Changes</button>
+                        <button type="submit"  class="btn btn-outline-secondary btn-block btn-md submited">{% trans "Save Changes" %}</button>
                       </form>
-                      <div class="alert alert-danger" id="editError" role="alert">Some Errors occured when you tried to save your changes. <hr>
+                      <div class="alert alert-danger" id="editError" role="alert">{% trans "Some Errors occured when you tried to save your changes." %} <hr>
                          <strong>
-                           <span id="resetInfo"> reset to my last correct information</span>
+                           <span id="resetInfo"> {% trans "get my last correct information" %}</span>
                          </strong>
                        </div>
-                      <div class="alert alert-success" id="editSuccess" role="alert">Changes Saved successfully.</div>
+                      <div class="alert alert-success" id="editSuccess" role="alert">{% trans "Changes Saved successfully." %}</div>
           </div>
 
           <div id="show">
@@ -207,7 +166,47 @@
 
 
 </div>
+<div class="row" id="profile">
+    <form id="profileForm">
+                <div class="form-row">
+                  <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                    <input type="text" class="form-control" value = {{user.username}}   disabled>
+                  </div>
+                  <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                    <input type="email" class="form-control" value={{user.email}}  disabled>
+                  </div>
+                  <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                    <input type="text" class="form-control" value={{user.phone}}  disabled>
+                  </div>
+                </div>
 
+                <div class="form-row">
+                <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                  <input type="text" class="form-control first-name" id="first-name"  value={{user.profile.firstName}} disabled>
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                  <input type="text" class="form-control last-name" id="last-name"  value={{user.profile.lastName}} disabled>
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                    <input type="text" class="form-control profile-usage" value={{user.profile.pofileUsage}} id="profile-usage"  disabled>
+                </div>
+                </div>
+                <div class="form-row">
+                <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                      <input type="text" class="form-control gender" id="gender" value={{user.profile.gender}} disabled>
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                  <textarea name="address" class="form-control address" id="address" rows="1" cols="100" disabled>{{user.profile.address}}</textarea>
+                </div>
+
+                <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                <input type="number" class="form-control age" id="age" value="{{user.profile.age}}" disabled>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-outline-secondary btn-block btn-md submited">{% trans "Edit information" %}</button>
+              </form>
+
+  </div>
 
     </div> <!--container-->
 

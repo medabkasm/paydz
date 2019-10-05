@@ -148,6 +148,7 @@ function handleSubmit(offer){
 
     offer.formId.submit(function(event){
         event.preventDefault();
+        $(".offer-submit").attr("disabled","disabled");
         var notValidData = ( notValidPrice || notValidAmount || notValidMessage );
         if( !notValidData ){
           $.ajax({
@@ -159,6 +160,7 @@ function handleSubmit(offer){
               if(data.error){
                   var errorMsg = data.errorMsg;
                   offer.messageAreaId.text(errorMsg).removeClass("alert alert-primary").addClass("alert alert-danger");
+                  $(".offer-submit").removeAttr("disabled");
               }
               else{
                   var message = data.message;
@@ -167,11 +169,13 @@ function handleSubmit(offer){
                   offer.amountErrorId.removeClass().text("");
                   offer.extraMessageErrorId.removeClass().text("");
                   offer.messageAreaId.text(message).removeClass("alert alert-danger").addClass("alert alert-primary");
+                  $(".offer-submit").removeAttr("disabled");
               }
 
             },
             error : function(xhr,status,data){
               console.log("Error with status : "+status);
+              $(".offer-submit").removeAttr("disabled");
             },
 
           });
@@ -182,6 +186,7 @@ function handleSubmit(offer){
         else{
           var errorMsg = "invalid Data , please check it again.";
           offer.messageAreaId.text(errorMsg).removeClass("alert alert-primary").addClass("alert alert-danger");
+          $(".offer-submit").removeAttr("disabled");
         }
 
 
@@ -214,6 +219,7 @@ function contactSubmit(formId , messageArea,messageError , contactMessage){
 
   formId.submit(function(event){
       event.preventDefault();
+      $(".offer-submit").attr("disabled","disabled");
       if( !notValidContactMessage ){
         $.ajax({
           type : "POST",
@@ -223,17 +229,20 @@ function contactSubmit(formId , messageArea,messageError , contactMessage){
             if(data.error){
                 var errorMsg = data.errorMsg;
                 messageArea.text(errorMsg).removeClass("alert alert-primary").addClass("alert alert-danger");
+                $(".offer-submit").removeAttr("disabled");
             }
             else{
                 var message = data.message;
                 formId.trigger("reset");
                 messageError.removeClass().text("");
                 messageArea.text(message).removeClass("alert alert-danger").addClass("alert alert-primary");
+                $(".offer-submit").removeAttr("disabled");
             }
 
           },
           error : function(xhr,status,data){
             console.log("Error with status : "+status);
+            $(".offer-submit").removeAttr("disabled");
           },
 
         });
@@ -242,6 +251,7 @@ function contactSubmit(formId , messageArea,messageError , contactMessage){
       else{
         var errorMsg = "invalid Data , please check it again.";
           messageArea.text(errorMsg).removeClass("alert alert-primary").addClass("alert alert-danger");
+          $(".offer-submit").removeAttr("disabled");
 
         }
 

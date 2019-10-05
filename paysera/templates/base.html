@@ -29,30 +29,30 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Offers</a>
+        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "Offers" %}</a>
         <div class="dropdown-menu item" aria-labelledby="navbarDropdown">
           {% if user.is_authenticated %}
-            <a class="dropdown-item item" data-toggle="modal" data-target="#buy"  id="buyOffer" href="#"><i class="cc visa icon"></i>Buy</a>
+            <a class="dropdown-item item" data-toggle="modal" data-target="#buy"  id="buyOffer" href="#"><i class="cc visa icon"></i>{% trans "Buy" %}</a>
             <hr>
-            <a class="dropdown-item item" data-toggle="modal" data-target="#sell"  id="sellOffer" href="#"><i class="money bill alternate icon"></i>Sell</a>
+            <a class="dropdown-item item" data-toggle="modal" data-target="#sell"  id="sellOffer" href="#"><i class="money bill alternate icon"></i>{% trans "Sell" %}</a>
           {% else %}
-          <a class="dropdown-item item"  href="{% url "accounts:login" %}"><i class="cc visa icon"></i>Buy</a>
+          <a class="dropdown-item item"  href="{% url "accounts:login" %}"><i class="cc visa icon"></i>{% trans "Buy" %}</a>
           <hr>
-          <a class="dropdown-item item"  href="{% url "accounts:login" %}"><i class="money bill alternate icon"></i>Sell</a>
+          <a class="dropdown-item item"  href="{% url "accounts:login" %}"><i class="money bill alternate icon"></i>{% trans "Sell" %}</a>
           {% endif %}
 
         </div>
       </li>
       <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle " href="#" id="moreId" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
+      <a class="nav-link dropdown-toggle " href="#" id="moreId" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "More" %}</a>
       <div class="dropdown-menu item" aria-labelledby="navbarDropdown">
         {% if user.is_authenticated %}
-          <a class="dropdown-item item" data-toggle="modal" data-target="#contanct"  id="contanctId" href="#"><i class="question circle icon"></i>Contanct Us</a>
+          <a class="dropdown-item item" data-toggle="modal" data-target="#contanct"  id="contanctId" href="#"><i class="question circle icon"></i>{% trans "Contanct Us" %}</a>
         {% else %}
-        <a class="dropdown-item item"  href="{% url "accounts:login" %}"><i class="question circle icon"></i>Contanct Us</a>
+        <a class="dropdown-item item"  href="{% url "accounts:login" %}"><i class="question circle icon"></i>{% trans "Contanct Us" %}</a>
         {% endif %}
         <hr>
-          <a class="dropdown-item item" data-toggle="modal" data-target="#about"  id="aboutId" href="#"><i class="users icon"></i>About Us</a>
+          <a class="dropdown-item item" data-toggle="modal" data-target="#about"  id="aboutId" href="#"><i class="users icon"></i>{% trans "About Us" %}</a>
       </div>
     </li>
 
@@ -112,20 +112,22 @@
         {% if user.is_authenticated %}
           <img class="ui avatar image" src="{% static "/images/user.jpeg" %}"> {{user.username}}
         {% else %}
-        <i class="user icon"></i>Registration
+        <i class="user icon"></i>{% trans "Registration" %}
         {% endif %}
       </a>
       <div class="dropdown-menu item" aria-labelledby="navbarDropdown">
+        {% if user.is_superuser %}
+        <a href="{% url "dash_board" %}" class="dropdown-item item">{% trans "Dash Board" %}</a>
+        <hr>
+        {% endif %}
         {% if user.is_authenticated %}
-            <a href="{% url "dash_board" %}" class="dropdown-item item">Profile</a>
+            <a href="{% url "profiles:profile" user.username %}" class="dropdown-item item">{% trans "Settings" %}</a>
             <hr>
-            <a href="{% url "profiles:profile" user.username %}" class="dropdown-item item">Settings</a>
-            <hr>
-            <a href="{% url "accounts:logout" %}" class="dropdown-item item">Logout</a>
+            <a href="{% url "accounts:logout" %}" class="dropdown-item item">{% trans "Logout" %}</a>
         {% else %}
-            <a href="{% url "accounts:login" %}" class="dropdown-item item">Login</a>
+            <a href="{% url "accounts:login" %}" class="dropdown-item item">{% trans "Login" %}</a>
             <hr>
-            <a href="{% url "accounts:register" %}" class="dropdown-item item">Register</a>
+            <a href="{% url "accounts:register" %}" class="dropdown-item item">{% trans "Register" %}</a>
         {% endif %}
       </div>
 

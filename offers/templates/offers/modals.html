@@ -1,8 +1,9 @@
+{% load i18n %}
 <div class="modal fade" id="buy" tabindex="-1" role="dialog" aria-labelledby="buy" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel"><i class="cc visa icon"></i>Buy Paysera</h5>
+          <h5 class="modal-title" id="exampleModalLabel"><i class="cc visa icon"></i>{% trans "Buy Paysera" %}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -19,18 +20,18 @@
               </div>
               <br>
             <div class="from-group">
-              <input type="text" name="amount" value="" id="buyAmount" placeholder="the amount">
+              <input type="text" name="amount" value="" id="buyAmount" placeholder='{% trans "the amount" %}'>
             </div>
             <br>
             <div  id="buyAmountError" role="alert"></div>
               <br>
               <div class="form-group">
-                <input type="text" name="price" value="" id="buyPrice" placeholder="your price in DA">
+                <input type="text" name="price" value="" id="buyPrice" placeholder='{% trans "your price in DA" %}'>
               </div>
               <div  id="buyPriceError" role="alert"></div>
               <br>
               <div class="form-group">
-                <textarea  class="form-control" name="message" rows="5" cols="38" id="messageBuy" placeholder="your extra message (Optional less than 250 characters)." style=" resize : none ;"></textarea>
+                <textarea  class="form-control" name="message" rows="5" cols="38" id="messageBuy" placeholder='{% trans "your extra message (Optional less than 250 characters)." %}' style=" resize : none ;"></textarea>
               </div>
               <div  id="messageErrorBuy" role="alert"></div>
               <hr>
@@ -39,17 +40,17 @@
               <br><hr>
               <div class="form-group">
               <script src='https://www.google.com/recaptcha/api.js'></script>
-      
+
                 <div class="g-recaptcha" data-sitekey="6LcTAbYUAAAAADpKaLmGHPy_qkMHfhqZPnKrkhor"></div>
               </div>
                 <hr>
                 <br>
-              <button type="submit" class="btn btn-outline-success btn-block" id = "buyBtn">Buy</button>
+              <button type="submit" class="btn btn-outline-success btn-block offer-submit" id = "buyBtn">{% trans "Buy" %}</button>
           </form>
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">{% trans "Cancel" %}</button>
 
         </div>
       </div>
@@ -61,7 +62,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"><i class="money bill alternate outline icon"></i>Sell Paysera</h5>
+            <h5 class="modal-title" id="exampleModalLabel"><i class="money bill alternate outline icon"></i>{% trans "Sell Paysera" %}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -79,18 +80,18 @@
                 <br>
 
               <div class="from-group">
-                <input type="text" name="amount" value="" id="sellAmount" placeholder="the amount">
+                <input type="text" name="amount" value="" id="sellAmount" placeholder='{% trans "the amount" %}'>
               </div>
               <br>
               <div  id="sellAmountError" role="alert"></div>
                 <br>
                 <div class="form-group">
-                  <input type="text" name="price" value="" id="sellPrice" placeholder="your price in DA">
+                  <input type="text" name="price" value="" id="sellPrice" placeholder='{% trans "your price in DA" %}'>
                 </div>
                 <div  id="sellPriceError" role="alert"></div>
                 <br>
                 <div class="form-group">
-                  <textarea  class="form-control" name="message" rows="5" cols="38" id="messageSell" placeholder="your extra message (Optional less than 250 characters)." style=" resize : none ;"></textarea>
+                  <textarea  class="form-control" name="message" rows="5" cols="38" id="messageSell" placeholder='{% trans "your extra message (Optional less than 250 characters)." %}' style=" resize : none ;"></textarea>
                 </div>
                 <div  id="messageErrorSell" role="alert"></div>
                 <hr>
@@ -103,12 +104,12 @@
                 </div>
                   <hr>
                   <br>
-                <button type="submit" class="btn btn-outline-success btn-block" id = "sellBtn">Sell</button>
+                <button type="submit" class="btn btn-outline-success btn-block offer-submit" id="sellBtn">{% trans "Sell" %}</button>
             </form>
 
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">{% trans "Cancel" %}</button>
 
           </div>
         </div>
@@ -120,7 +121,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel"><i class="question circle icon"></i>Contanct Us</h5>
+              <h5 class="modal-title" id="exampleModalLabel"><i class="question circle icon"></i>{% trans "Contanct Us" %}</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -130,15 +131,15 @@
               <form method="POST" action="." id="contactForm">{% csrf_token %}
                 <div class="form-group">
                   <select  class="form-control" name="content"><i class="dropdown icon"></i>
-                    <option>Bug</option>
-                    <option>Partenership</option>
-                    <option>Donate</option>
-                    <option>Other</option>
+                    <option>{% trans "Bug" %}</option>
+                    <option>{% trans "Partenership" %}</option>
+                    <option>{% trans "Donate" %}</option>
+                    <option>{% trans "Other" %}</option>
                       </select>
                   </div>
                   <br>
                   <div class="form-group">
-                    <textarea  class="form-control" name="contactMessage" rows="5" cols="38" id="contactMessage" placeholder="your message (More than 50 characters)." style=" resize : none ;"></textarea>
+                    <textarea  class="form-control" name="contactMessage" rows="5" cols="38" id="contactMessage" placeholder='{% trans "your message (More than 50 characters)." %}' style=" resize : none ;"></textarea>
                   </div>
                   <div  id="contactMessageError" role="alert"></div>
                   <hr>
@@ -151,12 +152,12 @@
                   </div>
                     <hr>
                     <br>
-                  <button type="submit" class="btn btn-outline-success btn-block" id = "sendBtn">Send</button>
+                  <button type="submit" class="btn btn-outline-success btn-block offer-submit" id="sendBtn">{% trans "Send" %}</button>
               </form>
 
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-outline-danger" data-dismiss="modal">{% trans "Cancel" %}</button>
 
             </div>
           </div>

@@ -5,6 +5,7 @@
   padding: 1em;
   overflow: hidden;
   height: 100%;
+  margin-bottom: 0;
   font-family: 'Hepta Slab', serif;
 }
 a{
@@ -43,7 +44,7 @@ a:hover{
 }
 #sidePanel{
   width: 100%;
-  height: 42.4em;
+  height: 43em;
   padding: 1em;
   margin-top: 0.5em;
   border-top: 0.5px solid grey;

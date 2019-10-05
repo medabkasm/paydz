@@ -21,11 +21,11 @@
                 <div class="signup-content">
 
                     <div class="signup-form">
-                        <h2 class="form-title">Sign up</h2>
+                        <h2 class="form-title">{% trans "Sign Up" %}</h2>
                         <form method="POST" class="register-form" id="register-form" >{% csrf_token %}
                             <div class="form-group">
                               <label for="username"><i class="user secret icon"></i></label>
-                                <input type="text" name="username" id="name" placeholder={% trans "Your user Name" %} />
+                                <input type="text" name="username" id="name" placeholder='{% trans "Your user Name" %}' />
 
                               </div>
 
@@ -39,7 +39,7 @@
 
                             <div class="form-group">
                                 <label for="email"><i class="envelope icon"></i></label>
-                                <input type="email" name="email" id="email" placeholder={% trans "Your Email" %} />
+                                <input type="email" name="email" id="email" placeholder='{% trans "Your Email" %}'/>
                             </div>
 
                             {% if form.errors and form.email.errors%}
@@ -51,7 +51,7 @@
                               {% endif %}
                               <div class="form-group">
                                   <label for="phone"><i class="phone icon"></i></label>
-                                  <input type="phone" name="phone" id="email" placeholder={% trans "Your Dz Phone Number" %} />
+                                  <input type="phone" name="phone" id="email" placeholder='{% trans "Your Dz Phone Number" %}' />
                               </div>
 
                               {% if form.errors and form.phone.errors%}
@@ -63,12 +63,12 @@
                                 {% endif %}
                             <div class="form-group">
                                 <label for="password1"><i class="eye slash outline icon"></i></i></label>
-                                <input type="password" name="password1" id="pass" placeholder={% trans "Password" %} />
+                                <input type="password" name="password1" id="pass" placeholder='{% trans "Password" %}' />
                             </div>
 
                             <div class="form-group">
                                 <label for="password2"><i class="eye slash outline icon"></i></label>
-                                <input type="password" name="password2" id="re_pass" placeholder={% trans "Repeat your password" %} />
+                                <input type="password" name="password2" id="re_pass" placeholder='{% trans "Repeat your password" %}' />
                             </div>
 
                             {% if form.errors and form.password2.errors%}
@@ -97,7 +97,7 @@
                               </div>
                               {% endif %}
                             <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="ui grey button" value={% trans "Register" %} />
+                                <input type="submit" name="signup" id="signup" class="ui grey button" value='{% trans "Register" %}' />
                             </div>
                         </form>
                     </div>

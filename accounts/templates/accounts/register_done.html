@@ -1,13 +1,13 @@
 {%	extends	"base.html"	%}
 {% load i18n %}
-{%	block	title	%}Welcome {%	endblock	%}
+{%	block	title	%}{% trans "Welcome" %}{%	endblock	%}
 {%	block	content	%}
 
 <div class="container">
   <div class="alert alert-success" role="alert">
     <h4 class="alert-heading">{% blocktrans %} Welcome	{{ new_user.username	}} {% endblocktrans %}</h4>
-    <p>Your	account	has	been	successfully	created" ,we sent you an email message with a confirmation link <br>
-          , Please check your emai and follow the link ,to make activate your PayDz account .</p>
+    <p>{% trans "Your	account	has	been	successfully	created" ,we sent you an email message with a confirmation link <br>
+          , Please check your emai and follow the link ,to make activate your PayDz account ." %}</p>
     <hr>
     <a	href="{%	url 'accounts:login'	%}" class="alert-link">{% trans  "log-in Now" %}	</a>
   </div>
