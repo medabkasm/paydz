@@ -137,7 +137,7 @@ def	RegisterView_ajax(request):
 
                 message = """
                             Your	account	has	been	successfully	created" ,we sent you an email message with a confirmation link
-                              , Please check your emai and follow the link ,to make activate your PayDz account .
+                              , Please check your email and follow the link ,to activate your PayDz account .
                         """
 
                 return JsonResponse({"message":message},status =200 )
@@ -173,7 +173,7 @@ def user_activation_view(request, uidb64, token):
     if user  and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
-        text = _('Your account has been activate successfully')
+        text = _('Your account has been activated successfully')
         messages.info(request,text)
         return redirect('accounts:login')
     else:
