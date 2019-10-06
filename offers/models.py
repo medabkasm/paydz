@@ -17,11 +17,11 @@ CURRENCY = (
 class Offer(models.Model):
     user = models.ForeignKey(User,on_delete = models.CASCADE)
     date = models.DateTimeField(auto_now_add = True)
-    activitiy = models.CharField(choices = ACTIVITE, null=True) # 5
+    activitiy = models.CharField(choices = ACTIVITE,max_length = 5, null=True) # 5
     price = models.FloatField(validators = [positive_number_validation,])
     amount = models.FloatField(validators = [positive_number_validation,])
     cost = models.FloatField(validators = [positive_number_validation,], null=True)
     currency = models.CharField(choices = CURRENCY , max_length = 4)
-    message = models.CharField(blank = True , default = "empty",null = True) # 255
+    message = models.CharField(blank = True ,max_length = 255, default = "empty",null = True) # 255
     def __str__(self):
         return self.user.username +"'s offer" + str(self.pk)
