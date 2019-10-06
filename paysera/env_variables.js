@@ -1,6 +1,6 @@
 [
     {
-        "SECRET_KEY":
+        "SECRET_KEY":"=jlhx*_k57wx6g3l1av_efdvl#=+&9@bihsfdff018go8w6d@&",
         "EMAIL_HOST_USER":"medabkasm@gmail.com",
         "EMAIL_HOST_PASSWORD":"nvbq mthi oszi hesn",
         "CAPTCHA_SITE":"6Ld2HbwUAAAAAKPzva1ucFAxSVGNU3gWUy31s433",
