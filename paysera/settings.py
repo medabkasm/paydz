@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 
-with open("env_variables.js") as envVars:
+with open(os.path.join(BASE_DIR,"paysera/env_variables.js")) as envVars:
     vars = json.loads(envVars.read())[0]
 
 # Quick-start development settings - unsuitable for production
