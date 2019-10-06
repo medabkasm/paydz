@@ -110,7 +110,7 @@
       <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="registerId" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         {% if user.is_authenticated %}
-          <img class="ui avatar image" src="{% static "/images/user.jpeg" %}"> {{user.username}}
+          <img class="ui avatar image" src="{% static "/images/user.png" %}"> {{user.username}}
         {% else %}
         <i class="user icon"></i>{% trans "Registration" %}
         {% endif %}
@@ -169,9 +169,9 @@
 
       <script type="text/javascript">
 
-        {% if user.is_superuser %}
+        /*{% if user.is_superuser %}
             var username = $("#username").val();
-            var url = "ws://" + window.location.host + "/ws/notification/"+ username + "/";
+            var url = "ws://" + window.location.host + "/wss/notification/"+ username + "/";
             socket = new WebSocket(url);
 
             socket.onmessage = function(event){
@@ -226,6 +226,7 @@
               console.log("connection closed.");
             };
         {% endif %}
+        */
 
 
       </script>

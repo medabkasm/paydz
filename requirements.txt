@@ -1,5 +1,8 @@
 requests
+python-dotenv
 aioredis==1.2.0
+django-heroku
+asgi-redis
 asgiref==2.3.2
 asn1crypto==0.24.0
 async-timeout==3.0.1
@@ -85,7 +88,6 @@ pyxdg==0.25
 queuelib==1.5.0
 regex==2019.6.8
 reportlab==3.3.0
-
 requests-oauthlib==1.2.0
 Scrapy==1.7.3
 selenium==3.141.0
@@ -95,6 +97,5 @@ social-auth-app-django==3.1.0
 social-auth-core==3.2.0
 sorl-thumbnail==12.4.1
 sqlparse==0.3.0
-ssh-import-id==5.5
 urllib3
 whitenoise==4.1.3

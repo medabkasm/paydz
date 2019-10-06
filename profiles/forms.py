@@ -2,7 +2,6 @@
 from django import forms
 from accounts.models import *
 from	django.utils.translation	import	gettext_lazy	as	_
-from bootstrap_datepicker_plus import DatePickerInput
 from django import forms
 
 

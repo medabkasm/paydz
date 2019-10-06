@@ -15,14 +15,14 @@ def save_new_message(sender, instance,**kwargs):
     instance.notification.type = "notification"
     instance.notification.save()
 
-    channel_layer = get_channel_layer()
+    '''channel_layer = get_channel_layer()
     async_to_sync(channel_layer.group_send)(
         "AdminGroup",
         {
             "type": "new.notification",
             "message": "new notification"
         }
-    )
+    )'''
 
 @receiver(post_delete, sender=Offer)
 def delete_offer(sender,instance,**kwargs):
@@ -46,14 +46,14 @@ def create_new_msgNotification(sender, instance, created, **kwargs):
 def save_new_msgNotification(sender, instance, **kwargs):
     instance.notification.type = "message"
     instance.notification.save()
-    channel_layer = get_channel_layer()
+    '''channel_layer = get_channel_layer()
     async_to_sync(channel_layer.group_send)(
         "AdminGroup",
         {
             "type": "new.message",
             "message": "new message"
         }
-    )
+    )'''
 
 @receiver(post_delete, sender=Message)
 def delete_message(sender,instance,**kwargs):

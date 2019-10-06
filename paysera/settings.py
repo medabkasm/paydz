@@ -13,22 +13,30 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 from django.contrib.messages import constants as messages
 from	django.utils.translation	import	gettext_lazy	as	_
+import json
+import django_heroku
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+
+with open("env_variables.js") as envVars:
+    vars = json.loads(envVars.read())[0]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = 'y6!-x=mp-2c(uiw(37*x!#%%1s7t7f8p_k4cfbiy1$g59^)bux'
-SECRET_KEY = 'y6!-x=mp-2c(uiw(37*x!#%%1s7t7f8p_k4cfbiy1$g59^)bux'
+#SECRET_KEY = 'y6!-x=mp-2c(uiw(37*x!#%%1s7t7f8p_k4cfbiy1$g59^)bux'
+SECRET_KEY = vars['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 #ALLOWED_HOSTS = ['192.168.43.246','127.0.0.1','localhost']
-ALLOWED_HOSTS = ['192.168.43.246', '127.0.0.1', 'localhost','6b6ee814.ngrok.io']
+ALLOWED_HOSTS = ['192.168.43.246', '127.0.0.1', 'localhost','6b6ee814.ngrok.io','paydz.herokuapp.com']
 PASSWORD_RESET_TIMEOUT_DAYS = 1
 
 # Application definition
@@ -53,16 +61,12 @@ INSTALLED_APPS = [
 
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MIDDLEWARE_CLASSES = (
-    # Simplified static file serving.
-    # https://warehouse.python.org/project/whitenoise/
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-)
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -72,8 +76,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-
 ]
 
 
@@ -208,22 +210,25 @@ LOGOUT_URL ='accounts:login'
 LOGIN_REDIRECT_URL = 'home:posts'
 
 
+
+
 # email configurations.
-'''
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'medabkasm@gmail.com'
-EMAIL_HOST_PASSWORD = 'nvbq mthi oszi hesn'
+EMAIL_HOST_USER = vars['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = vars['EMAIL_HOST_PASSWORD']
+
+
 '''
-
-
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
+'''
 
 # recaptcha configurations.
-CAPTCHA_SITE = '6LcTAbYUAAAAADpKaLmGHPy_qkMHfhqZPnKrkhor'
-GOOGLE_RECAPTCHA_SECRET_KEY = '6LcTAbYUAAAAAFTW6kvMWE_6x5DWhgcTLtz6pc7i'
+CAPTCHA_SITE = vars['CAPTCHA_SITE2']
+GOOGLE_RECAPTCHA_SECRET_KEY = vars['GOOGLE_RECAPTCHA_SECRET_KEY2']
 
 # social django configurations.
 SOCIAL_AUTH_PIPELINE = (
@@ -251,41 +256,36 @@ SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['name', 'email']
 
 
     # google+
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '513168660813-6bu8q6bpnevdmkkhdoq1jq09bm5ukdof.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '1ztbobfpj8SjuF6UFDAVwdld'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = vars['SOCIAL_AUTH_GOOGLE_OAUTH2_KEY']
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = vars['SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET']
 
 
-    # github.
-SOCIAL_AUTH_GITHUB_KEY = '825a30a924c2e0e4567d'
-SOCIAL_AUTH_GITHUB_SECRET = '3b4d62f182e050b2107e71bb5925d24454cffc2e'
 
     # facebook
-SOCIAL_AUTH_FACEBOOK_KEY = '373983913273604'
-SOCIAL_AUTH_FACEBOOK_SECRET = 'ea43f2d089e4a40244013074dd3d5f91'
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email','user_birthday','user_gender','user_hometown']
+SOCIAL_AUTH_FACEBOOK_KEY = vars['SOCIAL_AUTH_FACEBOOK_KEY2']
+SOCIAL_AUTH_FACEBOOK_SECRET = vars['SOCIAL_AUTH_FACEBOOK_SECRET2']
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-      'fields': 'id ,name, first_name , last_name , email, gender ,birthday , hometown ,picture.type(large)'
+      'fields': 'id ,name'
     }
 SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [                 # add this
         ('name', 'name'),
         ('email', 'email'),
-        ('first_name','first_name'),
-        ('last_name','last_name'),
-        ('gender','gender'),
-        ('birthday','birthday'),
-        ('picture', 'picture'),
-        ('hometown','hometown'),
     ]
 
 
 # social authantication configurations.
-SOCIAL_AUTH_LOGIN_ERROR_URL = '/'
+SOCIAL_AUTH_LOGIN_ERROR_URL = 'home:posts'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'home:posts'
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 #static file directory inclusion
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'paysera/static') ,]
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
