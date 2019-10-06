@@ -11,9 +11,9 @@ from	django.utils.translation	import	gettext_lazy	as	_
 
 
 class User(AbstractUser):
-    email = models.EmailField(unique = True , validators = [fake_email_validation,] )
-    username = models.CharField(unique = True )
-    phone = models.CharField(unique = True ,validators = [phone_number_validation,])
+    email = models.EmailField(max_length = 255,unique = True , validators = [fake_email_validation,] )
+    username = models.CharField(max_length = 20,unique = True )
+    phone = models.CharField(max_length = 10 ,unique = True ,validators = [phone_number_validation,])
     joined = models.DateTimeField(auto_now_add = True)
     is_active = models.BooleanField(default = True)
     is_staff = models.BooleanField(default = False)

@@ -161,9 +161,9 @@
 
       <script type="text/javascript">
 
-        /*{% if user.is_superuser %}
+        {% if user.is_superuser %}
             var username = $("#username").val();
-            var url = "ws://" + window.location.host + "/wss/notification/"+ username + "/";
+            var url = "ws://" + window.location.host + "/ws/notification/"+ username + "/";
             socket = new WebSocket(url);
 
             socket.onmessage = function(event){
@@ -218,7 +218,7 @@
               console.log("connection closed.");
             };
         {% endif %}
-        */
+
 
 
       </script>
