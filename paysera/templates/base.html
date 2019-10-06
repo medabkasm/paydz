@@ -47,9 +47,9 @@
       <a class="nav-link dropdown-toggle " href="#" id="moreId" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "More" %}</a>
       <div class="dropdown-menu item" aria-labelledby="navbarDropdown">
         {% if user.is_authenticated %}
-          <a class="dropdown-item item" data-toggle="modal" data-target="#contanct"  id="contanctId" href="#"><i class="question circle icon"></i>{% trans "Contanct Us" %}</a>
+          <a class="dropdown-item item" data-toggle="modal" data-target="#contanct"  id="contanctId" href="#"><i class="question circle icon"></i>{% trans "Contact Us" %}</a>
         {% else %}
-        <a class="dropdown-item item"  href="{% url "accounts:login" %}"><i class="question circle icon"></i>{% trans "Contanct Us" %}</a>
+        <a class="dropdown-item item"  href="{% url "accounts:login" %}"><i class="question circle icon"></i>{% trans "Contact Us" %}</a>
         {% endif %}
         <hr>
           <a class="dropdown-item item" data-toggle="modal" data-target="#about"  id="aboutId" href="#"><i class="users icon"></i>{% trans "About Us" %}</a>
@@ -64,17 +64,9 @@
       <div class="dropdown-menu item" aria-labelledby="navbarDropdown">
       <!-- if English is the current Language -->
         {% if LANGUAGE_CODE == 'en' %}
-        <a href="/ar/" class="dropdown-item item"><i class="dz flag"></i>{% trans "Arabic" %}</a>
-        <hr>
         <a href="/fr/" class="dropdown-item item"><i class="france flag"></i>  {% trans "French" %}</a>
         <!-- else -->
-        {% elif LANGUAGE_CODE == 'ar' %}
-        <a href="/en/" class="dropdown-item item"><i class="us flag"></i> {% trans "English" %}</a>
-        <hr>
-        <a href="/fr/" class="dropdown-item item"><i class="france flag"></i> {% trans "French" %}</a>
         {% else %}
-        <a href="/ar/" class="dropdown-item item"><i class="dz flag"></i> {% trans "Arabic" %}</a>
-        <hr>
         <a href="/en/" class="dropdown-item item"><i class="us flag"></i> {% trans "English" %}</a>
         {% endif %}
       </div>

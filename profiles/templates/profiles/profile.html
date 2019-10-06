@@ -41,7 +41,7 @@
                 </li></a>
               </ul>
 
-              <h3 class="topicTitle"><i class="cogs icon"></i>{% trans "Settngs" %}</h3>
+              <h3 class="topicTitle"><i class="cogs icon"></i>{% trans "Settings" %}</h3>
               <ul class="topic">
                 <a href="#edit_profile"><li class="topicItems" id="edit-profile"><i class="pencil alternate icon"></i>{% trans "change profile information" %}</li></a>
                 <a href="#show"><li class="topicItems" ><a href='{% url "profiles:password_change" user.username %}'>
@@ -107,7 +107,7 @@
 
                         <div class="form-row">
                         <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                          <input type="text" class="form-control first-name" id="first-name-edit" name="firstName" placeholder='{% trans "Fist Name" %}' value={{user.profile.firstName}}>
+                          <input type="text" class="form-control first-name" id="first-name-edit" name="firstName" placeholder='{% trans "First Name" %}' value={{user.profile.firstName}}>
                           <div id="first-name-error" role="alert"></div>
                         </div>
                         <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">

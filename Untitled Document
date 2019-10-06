@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-06 14:25+0000\n"
+"POT-Creation-Date: 2019-10-06 06:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,7 +69,7 @@ msgstr "FEMME"
 msgid "first name"
 msgstr "prénom"
 
-#: accounts/models.py:41 profiles/templates/profiles/profile.html:110
+#: accounts/models.py:41
 msgid "First Name"
 msgstr "Prénom "
 
@@ -177,9 +177,8 @@ msgstr "Se connecter maintenant"
 msgid ""
 " Hi %(user.username)s,\n"
 "Please click on the link to confirm your registration, "
-msgstr ""
-"Salut %(user.username)s,\n"
-"Veuillez cliquer sur le lien pour confirmer votre inscription,"
+msgstr "Salut %(user.username)s,\nVeuillez cliquer sur le lien pour confirmer votre inscription,"
+
 
 #: accounts/templates/accounts/registration/logged_out.html:3
 msgid "Logged\tout"
@@ -213,9 +212,7 @@ msgstr "Mot de passe oublié ?"
 
 #: accounts/templates/accounts/registration/login.html:33
 msgid "Your\tusername\tand\tpassword\tdidn't\tmatch. Please\ttry\tagain."
-msgstr ""
-"Votre nom d’utilisateur et votre mot de passe ne correspondent pas. Veuillez "
-"réessayer."
+msgstr "Votre nom d’utilisateur et votre mot de passe ne correspondent pas. Veuillez réessayer."
 
 #: accounts/templates/accounts/registration/login.html:36
 msgid "Sign up"
@@ -276,10 +273,8 @@ msgstr "Lien invalide"
 msgid ""
 "The\tpassword\treset\tlink\twas\tinvalid,\tpossibly\tbecause\tit\thas already"
 "\tbeen\tused.\tPlease\trequest\ta\tnew\tpassword\treset !"
-msgstr ""
-"Le lien de réinitialisation du mot de passe était invalide, peut-être parce "
-"qu’il a déjà été utilisé.Veuillez demander une nouvelle réinitialisation du "
-"mot de passe !"
+msgstr "Le lien de réinitialisation du mot de passe était invalide, peut-être parce qu’il a déjà été utilisé.Veuillez demander une nouvelle réinitialisation du mot de passe !"
+
 
 #: accounts/templates/accounts/registration/password_reset_confirm.html:44
 msgid "Reset your password"
@@ -295,17 +290,13 @@ msgstr "Email envoyé"
 
 #: accounts/templates/accounts/registration/password_reset_done.html:8
 msgid " We've\temailed\tyou\tinstructions\tfor\tsetting\tyour\tpassword."
-msgstr ""
-"Nous vous avons envoyé par Email des instructions pour définir votre mot de "
-"passe."
+msgstr "Nous vous avons envoyé par Email des instructions pour définir votre mot de passe."
 
 #: accounts/templates/accounts/registration/password_reset_done.html:10
 msgid ""
 "If\tyou\tdon't\treceive\tan\temail,\tplease\tmake\tsure\tyou've\tentered"
 "\tthe address\tyou\tregistered\twith."
-msgstr ""
-"Si vous ne recevez pas de Email, assurez-vous d’avoir entré l’adresse avec "
-"laquelle vous vous êtes inscrit."
+msgstr "Si vous ne recevez pas de Email, assurez-vous d’avoir entré l’adresse avec laquelle vous vous êtes inscrit."
 
 #: accounts/templates/accounts/registration/password_reset_email.html:2
 #, python-format
@@ -314,20 +305,14 @@ msgid ""
 "Someone\tasked\tfor\tpassword\treset\tfor\temail\t%(email)s.\tFollow\tthe"
 "\tlink\n"
 "below:\n"
-msgstr ""
-"\n"
-"Quelqu’un a demandé la réinitialisation du mot de passe pour l’email\t"
-"%(email)s.suivre le lien ci-dessous:\n"
+msgstr "Quelqu’un a demandé la réinitialisation du mot de passe pour l’email\t%(email)s.suivre le lien ci-dessous:"
 
 #: accounts/templates/accounts/registration/password_reset_email.html:7
 #, python-format
 msgid ""
 "\n"
 "Your\tusername,\tin\tcase\tyou've\tforgotten:\t%(user.get_username)s\n"
-msgstr ""
-"\n"
-"Votre nom d’utilisateur, au cas où vous auriez oublié :\t"
-"%(user.get_username)s\n"
+msgstr "Votre nom d’utilisateur, au cas où vous auriez oublié :\t%(user.get_username)s\n"
 
 #: accounts/validators.py:13 accounts/validators.py:20
 msgid "phone number is not correct"
@@ -359,75 +344,43 @@ msgid ""
 "PayDz , for the first time , a small company that can provide some usefull "
 "services for the algerien people in the field of Paysera  , to make their "
 "search about paysera credit a lot easier , with fast and secure deals."
-msgstr ""
-"Paydz , pour la première fois , une petite entreprise qui peut fournir "
-"quelques utiles services pour les algériens dans le domaine de Paysera , "
-"pour faire leurrecherche de crédit paysera beaucoup plus facile, avec des "
-"offres rapides et sécurisées."
+msgstr "Paydz , pour la première fois , une petite entreprise qui peut fournir quelques utiles services pour les algériens dans le domaine de Paysera , pour faire leurrecherche de crédit paysera beaucoup plus facile, avec des offres rapides et sécurisées."
 
-#: home/templates/home/home.html:21 offers/templates/offers/modals.html:48
-#: paysera/templates/base.html:35 paysera/templates/base.html:39
-msgid "Buy"
-msgstr "Achat"
 
 #: home/templates/home/home.html:22
 msgid ""
 "You need a Paysera credit but you can't find it or you can't trust dealers "
 "out there , send us a request and we will offer you a fast and secure deal !"
-msgstr ""
-"Vous avez besoin d’un crédit Paysera mais vous ne pouvez pas le trouver ou "
-"vous ne pouvez pas faire confiance aux concessionnaires là-bas, envoyez-nous "
-"une demande et nous vous offrirons une affaire rapide et sécurisée !"
+msgstr "Vous avez besoin d’un crédit Paysera mais vous ne pouvez pas le trouver ou vous ne pouvez pas faire confiance aux concessionnaires là-bas, envoyez-nous une demande et nous vous offrirons une affaire rapide et sécurisée !"
 
-#: home/templates/home/home.html:25 offers/templates/offers/modals.html:107
-#: paysera/templates/base.html:37 paysera/templates/base.html:41
-msgid "Sell"
-msgstr "Vente"
 
 #: home/templates/home/home.html:26
 msgid ""
 "You have a Paysera credit ? , you want to make a secure and fast deal to "
 "sell it , send us a request and we will make you happy !"
-msgstr ""
-"Vous avez un crédit Paysera ? , vous voulez faire une affaire sécurisée et "
-"rapide pour le vendre, nous envoyer une demande et nous vous rendrons "
-"heureux !"
+msgstr "Vous avez un crédit Paysera ? , vous voulez faire une affaire sécurisée et rapide pour le vendre, nous envoyer une demande et nous vous rendrons heureux !"
 
-#: home/templates/home/home.html:29
-#, fuzzy
-#| msgid "Partenership"
-msgid "Partnership"
-msgstr "Partenariat"
 
 #: home/templates/home/home.html:30
 msgid ""
 " we are always searching about new contributors to push this company to the "
 "limit , to make it vast and rich in the field of providing financial "
 "services ."
-msgstr ""
-"nous sommes toujours à la recherche de nouveaux contributeurs pour pousser "
-"cette entreprise à la limite , pour la rendre vaste et riche dans le domaine "
-"de la fourniture de services financiers"
+msgstr "nous sommes toujours à la recherche de nouveaux contributeurs pour pousser cette entreprise à la limite , pour la rendre vaste et riche dans le domaine de la fourniture de services financiers"
+
 
 #: home/templates/home/home.html:31
 msgid ""
 " we accept all kind of offers and ideas , so be happy to share it with us ."
-msgstr ""
-"nous acceptons toutes sortes d’offres et d’idées, alors soyez heureux de "
-"partager avec nous."
-
-#: home/templates/home/home.html:33 notifications/models.py:15
-#: offers/templates/offers/modals.html:136
-msgid "Donate"
-msgstr "Dons"
+msgstr "nous acceptons toutes sortes d’offres et d’idées, alors soyez heureux de partager avec nous."
 
 #: home/templates/home/home.html:34
 msgid ""
-"hard work needs some help , right ?, so we will be very happy and appreciate "
-"if you can give us some. "
-msgstr ""
-"Le dur labeur a besoin d’aide, n’est-ce pas ? , alors nous serons très "
-"heureux et apprécierons si vous pouvez nous en donner."
+"hard work needs some help , right ?, so we will be very happy and appreciate"
+" if you can give us some. "
+
+msgstr "Le dur labeur a besoin d’aide, n’est-ce pas ? , alors nous serons très heureux et apprécierons si vous pouvez nous en donner."
+
 
 #: notifications/models.py:13 offers/templates/offers/modals.html:134
 msgid "Bug"
@@ -436,6 +389,10 @@ msgstr "Bug"
 #: notifications/models.py:14 offers/templates/offers/modals.html:135
 msgid "Partenership"
 msgstr "Partenariat"
+
+#: notifications/models.py:15 offers/templates/offers/modals.html:136
+msgid "Donate"
+msgstr "Dons"
 
 #: notifications/models.py:16 offers/templates/offers/modals.html:137
 msgid "Other"
@@ -484,6 +441,11 @@ msgstr "votre prix en DA"
 msgid "your extra message (Optional less than 250 characters)."
 msgstr "votre message supplémentaire (optionnel moins de 250 caractères)."
 
+#: offers/templates/offers/modals.html:48 paysera/templates/base.html:35
+#: paysera/templates/base.html:39
+msgid "Buy"
+msgstr "Achat"
+
 #: offers/templates/offers/modals.html:53
 #: offers/templates/offers/modals.html:112
 #: offers/templates/offers/modals.html:160
@@ -494,7 +456,13 @@ msgstr "annuler"
 msgid "Sell Paysera"
 msgstr "Vends Paysera"
 
-#: offers/templates/offers/modals.html:124
+#: offers/templates/offers/modals.html:107 paysera/templates/base.html:37
+#: paysera/templates/base.html:41
+msgid "Sell"
+msgstr "Vente"
+
+#: offers/templates/offers/modals.html:124 paysera/templates/base.html:50
+#: paysera/templates/base.html:52
 msgid "Contact Us"
 msgstr "Contactez-nous"
 
@@ -506,9 +474,8 @@ msgstr "votre message (plus de 50 caractères)."
 msgid ""
 "your request is completed successfully , you will get a call as soon as "
 "possible , in this phone number {}."
-msgstr ""
-"votre demande est remplie avec succès, vous recevrez un appel dès que "
-"possible, dans ce numéro de téléphone {}."
+msgstr "votre demande est remplie avec succès, vous recevrez un appel dès que possible, dans ce numéro de téléphone {}."
+
 
 #: paysera/settings.py:188 paysera/templates/base.html:72
 #: paysera/templates/base.html:78
@@ -531,8 +498,6 @@ msgstr "Offres"
 #: paysera/templates/base.html:47
 msgid "More"
 msgstr "Plus"
-
-
 
 #: paysera/templates/base.html:55
 msgid "About Us"
@@ -558,7 +523,7 @@ msgstr "Inscription"
 msgid "Dash Board"
 msgstr "Dash Board"
 
-#: paysera/templates/base.html:124 profiles/templates/profiles/profile.html:44
+#: paysera/templates/base.html:124
 msgid "Settings"
 msgstr "paramètres"
 
@@ -610,9 +575,7 @@ msgid "Password Changed"
 msgstr "Mot de passe modifié"
 
 #: profiles/templates/profiles/changePasswordDone.html:9
-#, fuzzy
-#| msgid "You\thave\tsuccessfully\tchanged your Password"
-msgid "You\thave successfully\tchanged your Password"
+msgid "You\thave\tsuccessfully\tchanged your Password"
 msgstr "Vous avez réussi à modifier votre mot de passe"
 
 #: profiles/templates/profiles/changePasswordDone.html:10
@@ -644,6 +607,10 @@ msgstr "Afficher le profil"
 msgid "Delete Profile"
 msgstr "Supprimer votre profil"
 
+#: profiles/templates/profiles/profile.html:44
+msgid "Settings"
+msgstr "Paramètres"
+
 #: profiles/templates/profiles/profile.html:46
 msgid "change profile information"
 msgstr "modifier les informations du profil"
@@ -668,9 +635,8 @@ msgstr "Confirmer la suppression de votre compte"
 msgid ""
 "This step will delete your account and you will not be able to use it again ,"
 "click on Confirm to accomplish this step."
-msgstr ""
-"Cette étape supprimera votre compte et vous ne serez pas en mesure de "
-"l’utiliser à nouveau,cliquez sur Confirmer pour accomplir cette étape."
+msgstr "Cette étape supprimera votre compte et vous ne serez pas en mesure de l’utiliser à nouveau,cliquez sur Confirmer pour accomplir cette étape."
+
 
 #: profiles/templates/profiles/profile.html:93
 msgid "User name"
@@ -684,6 +650,10 @@ msgstr "Email"
 msgid "Phone"
 msgstr "Numéro de téléphone"
 
+#: profiles/templates/profiles/profile.html:110
+msgid "First Name"
+msgstr "Prénom"
+
 #: profiles/templates/profiles/profile.html:141
 msgid "Age"
 msgstr "Age"
@@ -694,9 +664,7 @@ msgstr "Enregistrer les modifications"
 
 #: profiles/templates/profiles/profile.html:146
 msgid "Some Errors occured when you tried to save your changes."
-msgstr ""
-"Certaines erreurs se sont produites lorsque vous avez essayé d’enregistrer "
-"vos modifications."
+msgstr "Certaines erreurs se sont produites lorsque vous avez essayé d’enregistrer vos modifications."
 
 #: profiles/templates/profiles/profile.html:148
 msgid "get my last correct information"
@@ -717,3 +685,4 @@ msgstr "Votre compte a été supprimé avec succès."
 #: profiles/views.py:112
 msgid "No data found."
 msgstr "Aucune donnée trouvée."
+
