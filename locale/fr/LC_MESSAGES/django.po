@@ -1,0 +1,677 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-06 06:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: accounts/decorators.py:23 accounts/views.py:82 accounts/views.py:87
+#: accounts/views.py:146 accounts/views.py:150
+msgid "Invalid reCAPTCHA. Please try again."
+msgstr ""
+
+#: accounts/forms.py:25
+msgid "email is taken"
+msgstr ""
+
+#: accounts/forms.py:32
+msgid "phone number already in use"
+msgstr ""
+
+#: accounts/forms.py:39
+msgid "username exists"
+msgstr ""
+
+#: accounts/forms.py:50
+msgid "Passwords don't match"
+msgstr ""
+
+#: accounts/forms.py:52
+msgid "Password length less than 8"
+msgstr ""
+
+#: accounts/models.py:30 offers/models.py:10
+#: profiles/templates/profiles/profile.html:119
+msgid "BUY"
+msgstr ""
+
+#: accounts/models.py:31 offers/models.py:11
+#: profiles/templates/profiles/profile.html:120
+msgid "SELL"
+msgstr ""
+
+#: accounts/models.py:32 profiles/templates/profiles/profile.html:121
+msgid "BOTH"
+msgstr ""
+
+#: accounts/models.py:35 profiles/templates/profiles/profile.html:130
+msgid "MALE"
+msgstr ""
+
+#: accounts/models.py:36 profiles/templates/profiles/profile.html:131
+msgid "FEMALE"
+msgstr ""
+
+#: accounts/models.py:41
+msgid "first name"
+msgstr ""
+
+#: accounts/models.py:41
+msgid "First Name"
+msgstr ""
+
+#: accounts/models.py:42
+msgid "last name"
+msgstr ""
+
+#: accounts/models.py:42 profiles/templates/profiles/profile.html:114
+msgid "Last Name"
+msgstr ""
+
+#: accounts/models.py:43
+msgid "gender"
+msgstr ""
+
+#: accounts/models.py:43
+msgid "Gender"
+msgstr ""
+
+#: accounts/models.py:44
+msgid "profile image"
+msgstr ""
+
+#: accounts/models.py:45
+msgid "cover image"
+msgstr ""
+
+#: accounts/models.py:47
+msgid "age"
+msgstr ""
+
+#: accounts/models.py:49
+msgid "addess"
+msgstr ""
+
+#: accounts/models.py:49
+msgid "address"
+msgstr ""
+
+#: accounts/models.py:50
+msgid "profile usage"
+msgstr ""
+
+#: accounts/models.py:50
+msgid "Profile Usage"
+msgstr ""
+
+#: accounts/templates/accounts/register.html:5
+#: accounts/templates/accounts/register.html:100
+#: paysera/templates/base.html:130
+msgid "Register"
+msgstr ""
+
+#: accounts/templates/accounts/register.html:24
+msgid "Sign Up"
+msgstr ""
+
+#: accounts/templates/accounts/register.html:28
+msgid "Your user Name"
+msgstr ""
+
+#: accounts/templates/accounts/register.html:42
+#: accounts/templates/accounts/registration/login.html:40
+#: accounts/templates/accounts/registration/password_reset.html:14
+msgid "Your Email"
+msgstr ""
+
+#: accounts/templates/accounts/register.html:54
+msgid "Your Dz Phone Number"
+msgstr ""
+
+#: accounts/templates/accounts/register.html:66
+#: accounts/templates/accounts/registration/login.html:52
+#: accounts/templates/accounts/registration/password_reset_confirm.html:16
+msgid "Password"
+msgstr ""
+
+#: accounts/templates/accounts/register.html:71
+msgid "Repeat your password"
+msgstr ""
+
+#: accounts/templates/accounts/register.html:84
+msgid "I agree all statements in  Terms of service"
+msgstr ""
+
+#: accounts/templates/accounts/register.html:106
+msgid "already have an account"
+msgstr ""
+
+#: accounts/templates/accounts/register_done.html:3
+msgid "Welcome"
+msgstr ""
+
+#: accounts/templates/accounts/register_done.html:8
+#, python-format
+msgid " Welcome\t%(new_user.username)s "
+msgstr ""
+
+#: accounts/templates/accounts/register_done.html:12
+msgid "log-in Now"
+msgstr ""
+
+#: accounts/templates/accounts/registration/activate_account.html:4
+#, python-format
+msgid ""
+" Hi %(user.username)s,\n"
+"Please click on the link to confirm your registration, "
+msgstr ""
+
+#: accounts/templates/accounts/registration/logged_out.html:3
+msgid "Logged\tout"
+msgstr ""
+
+#: accounts/templates/accounts/registration/logged_out.html:9
+msgid "Logged out"
+msgstr ""
+
+#: accounts/templates/accounts/registration/logged_out.html:10
+msgid "You\thave\tbeen\tsuccessfully\tlogged\tout."
+msgstr ""
+
+#: accounts/templates/accounts/registration/logged_out.html:11
+msgid "log-in\tagain"
+msgstr ""
+
+#: accounts/templates/accounts/registration/login.html:5
+#: accounts/templates/accounts/registration/login.html:62
+#: paysera/templates/base.html:128
+msgid "Login"
+msgstr ""
+
+#: accounts/templates/accounts/registration/login.html:24
+msgid "Create an account"
+msgstr ""
+
+#: accounts/templates/accounts/registration/login.html:26
+msgid "Forgot password ?"
+msgstr ""
+
+#: accounts/templates/accounts/registration/login.html:33
+msgid "Your\tusername\tand\tpassword\tdidn't\tmatch. Please\ttry\tagain."
+msgstr ""
+
+#: accounts/templates/accounts/registration/login.html:36
+msgid "Sign up"
+msgstr ""
+
+#: accounts/templates/accounts/registration/login.html:66
+msgid "or login with"
+msgstr ""
+
+#: accounts/templates/accounts/registration/password_reset.html:4
+msgid "Password reset"
+msgstr ""
+
+#: accounts/templates/accounts/registration/password_reset.html:10
+msgid "Reset your Password using your email address"
+msgstr ""
+
+#: accounts/templates/accounts/registration/password_reset.html:24
+#: offers/templates/offers/modals.html:155
+msgid "Send"
+msgstr ""
+
+#: accounts/templates/accounts/registration/password_reset_complete.html:3
+msgid "Password\treset"
+msgstr ""
+
+#: accounts/templates/accounts/registration/password_reset_complete.html:7
+msgid "Password\tset"
+msgstr ""
+
+#: accounts/templates/accounts/registration/password_reset_complete.html:8
+msgid "Your\tpassword\thas\tbeen\tseted."
+msgstr ""
+
+#: accounts/templates/accounts/registration/password_reset_complete.html:10
+msgid "login"
+msgstr ""
+
+#: accounts/templates/accounts/registration/password_reset_confirm.html:4
+#: accounts/templates/accounts/registration/password_reset_confirm.html:11
+msgid "Reset\tyour\tpassword"
+msgstr ""
+
+#: accounts/templates/accounts/registration/password_reset_confirm.html:22
+msgid "Confirm Password"
+msgstr ""
+
+#: accounts/templates/accounts/registration/password_reset_confirm.html:32
+#: profiles/templates/profiles/changePassword.html:46
+msgid "Change"
+msgstr ""
+
+#: accounts/templates/accounts/registration/password_reset_confirm.html:42
+msgid "Invalid Link"
+msgstr ""
+
+#: accounts/templates/accounts/registration/password_reset_confirm.html:43
+msgid ""
+"The\tpassword\treset\tlink\twas\tinvalid,\tpossibly\tbecause\tit\thas already"
+"\tbeen\tused.\tPlease\trequest\ta\tnew\tpassword\treset !"
+msgstr ""
+
+#: accounts/templates/accounts/registration/password_reset_confirm.html:44
+msgid "Reset your password"
+msgstr ""
+
+#: accounts/templates/accounts/registration/password_reset_done.html:3
+msgid "Confirm Your request"
+msgstr ""
+
+#: accounts/templates/accounts/registration/password_reset_done.html:7
+msgid "Email sent"
+msgstr ""
+
+#: accounts/templates/accounts/registration/password_reset_done.html:8
+msgid " We've\temailed\tyou\tinstructions\tfor\tsetting\tyour\tpassword."
+msgstr ""
+
+#: accounts/templates/accounts/registration/password_reset_done.html:10
+msgid ""
+"If\tyou\tdon't\treceive\tan\temail,\tplease\tmake\tsure\tyou've\tentered"
+"\tthe address\tyou\tregistered\twith."
+msgstr ""
+
+#: accounts/templates/accounts/registration/password_reset_email.html:2
+#, python-format
+msgid ""
+"\n"
+"Someone\tasked\tfor\tpassword\treset\tfor\temail\t%(email)s.\tFollow\tthe"
+"\tlink\n"
+"below:\n"
+msgstr ""
+
+#: accounts/templates/accounts/registration/password_reset_email.html:7
+#, python-format
+msgid ""
+"\n"
+"Your\tusername,\tin\tcase\tyou've\tforgotten:\t%(user.get_username)s\n"
+msgstr ""
+
+#: accounts/validators.py:13 accounts/validators.py:20
+msgid "phone number is not correct"
+msgstr ""
+
+#: accounts/validators.py:27
+msgid "invalide email"
+msgstr ""
+
+#: accounts/validators.py:33
+msgid "value must be positive"
+msgstr ""
+
+#: accounts/views.py:81 accounts/views.py:86 accounts/views.py:145
+#: accounts/views.py:149
+msgid "you must agree to all statements in Terms of service"
+msgstr ""
+
+#: accounts/views.py:169 accounts/views.py:180
+msgid "Activation link is invalid!"
+msgstr ""
+
+#: accounts/views.py:176
+msgid "Your account has been activated successfully"
+msgstr ""
+
+#: home/templates/home/home.html:16
+msgid ""
+"PayDz , for the first time , a small company that can provide some usefull "
+"services for the algerien people in the field of Paysera  , to make their "
+"search about paysera credit a lot easier , with fast and secure deals."
+msgstr ""
+
+#: home/templates/home/home.html:22
+msgid ""
+"You need a Paysera credit but you can't find it or you can't trust dealers "
+"out there , send us a request and we will offer you a fast and secure deal !"
+msgstr ""
+
+#: home/templates/home/home.html:26
+msgid ""
+"You have a Paysera credit ? , you want to make a secure and fast deal to "
+"sell it , send us a request and we will make you happy !"
+msgstr ""
+
+#: home/templates/home/home.html:30
+msgid ""
+" we are always searching about new contributors to push this company to the "
+"limit , to make it vast and rich in the field of providing financial "
+"services ."
+msgstr ""
+
+#: home/templates/home/home.html:31
+msgid ""
+" we accept all kind of offers and ideas , so be happy to share it with us ."
+msgstr ""
+
+#: home/templates/home/home.html:34
+msgid ""
+"hard work needs some help , right ?, so we will be very happy and appreciate "
+"if you can give us some. "
+msgstr ""
+
+#: notifications/models.py:13 offers/templates/offers/modals.html:134
+msgid "Bug"
+msgstr ""
+
+#: notifications/models.py:14 offers/templates/offers/modals.html:135
+msgid "Partenership"
+msgstr ""
+
+#: notifications/models.py:15 offers/templates/offers/modals.html:136
+msgid "Donate"
+msgstr ""
+
+#: notifications/models.py:16 offers/templates/offers/modals.html:137
+msgid "Other"
+msgstr ""
+
+#: notifications/models.py:30
+msgid "notification"
+msgstr ""
+
+#: notifications/models.py:31
+msgid "message"
+msgstr ""
+
+#: notifications/views.py:47
+msgid "thank you for your message , wait for our response."
+msgstr ""
+
+#: notifications/views.py:51 offers/views.py:43
+msgid "your data is invalid ,please check it again."
+msgstr ""
+
+#: notifications/views.py:55 offers/views.py:46
+msgid "your data is invalid ,please check it and reCAPTCHA."
+msgstr ""
+
+#: notifications/views.py:62
+msgid "Bad request , you can't access this page."
+msgstr ""
+
+#: offers/templates/offers/modals.html:6
+msgid "Buy Paysera"
+msgstr ""
+
+#: offers/templates/offers/modals.html:23
+#: offers/templates/offers/modals.html:83
+msgid "the amount"
+msgstr ""
+
+#: offers/templates/offers/modals.html:29
+#: offers/templates/offers/modals.html:89
+msgid "your price in DA"
+msgstr ""
+
+#: offers/templates/offers/modals.html:34
+#: offers/templates/offers/modals.html:94
+msgid "your extra message (Optional less than 250 characters)."
+msgstr ""
+
+#: offers/templates/offers/modals.html:48 paysera/templates/base.html:35
+#: paysera/templates/base.html:39
+msgid "Buy"
+msgstr ""
+
+#: offers/templates/offers/modals.html:53
+#: offers/templates/offers/modals.html:112
+#: offers/templates/offers/modals.html:160
+msgid "Cancel"
+msgstr ""
+
+#: offers/templates/offers/modals.html:65
+msgid "Sell Paysera"
+msgstr ""
+
+#: offers/templates/offers/modals.html:107 paysera/templates/base.html:37
+#: paysera/templates/base.html:41
+msgid "Sell"
+msgstr ""
+
+#: offers/templates/offers/modals.html:124 paysera/templates/base.html:50
+#: paysera/templates/base.html:52
+msgid "Contanct Us"
+msgstr ""
+
+#: offers/templates/offers/modals.html:142
+msgid "your message (More than 50 characters)."
+msgstr ""
+
+#: offers/views.py:40
+msgid ""
+"your request is completed successfully , you will get a call as soon as "
+"possible , in this phone number {}."
+msgstr ""
+
+#: paysera/settings.py:188 paysera/templates/base.html:72
+#: paysera/templates/base.html:78
+msgid "English"
+msgstr ""
+
+#: paysera/settings.py:189
+msgid "Arab"
+msgstr ""
+
+#: paysera/settings.py:190
+msgid "Frensh"
+msgstr ""
+
+#: paysera/templates/base.html:32 paysera/templates/paysera/dash_board.html:15
+#: profiles/templates/profiles/profile.html:55
+msgid "Offers"
+msgstr ""
+
+#: paysera/templates/base.html:47
+msgid "More"
+msgstr ""
+
+#: paysera/templates/base.html:55
+msgid "About Us"
+msgstr ""
+
+#: paysera/templates/base.html:61
+msgid "Language"
+msgstr ""
+
+#: paysera/templates/base.html:67 paysera/templates/base.html:76
+msgid "Arabic"
+msgstr ""
+
+#: paysera/templates/base.html:69 paysera/templates/base.html:74
+msgid "French"
+msgstr ""
+
+#: paysera/templates/base.html:115
+msgid "Registration"
+msgstr ""
+
+#: paysera/templates/base.html:120 paysera/templates/paysera/dash_board.html:4
+msgid "Dash Board"
+msgstr ""
+
+#: paysera/templates/base.html:124
+msgid "Settings"
+msgstr ""
+
+#: paysera/templates/base.html:126 profiles/templates/profiles/profile.html:40
+msgid "Logout"
+msgstr ""
+
+#: paysera/templates/paysera/dash_board.html:31
+msgid "with"
+msgstr ""
+
+#: paysera/templates/paysera/dash_board.html:34
+#, python-format
+msgid "%(offer.notif.date)s"
+msgstr ""
+
+#: paysera/templates/paysera/dash_board.html:40
+#: paysera/templates/paysera/dash_board.html:81
+msgid "Remove"
+msgstr ""
+
+#: paysera/templates/paysera/dash_board.html:43
+#: paysera/templates/paysera/dash_board.html:84
+msgid "Check"
+msgstr ""
+
+#: paysera/templates/paysera/dash_board.html:45
+#: paysera/templates/paysera/dash_board.html:86
+msgid "Checked"
+msgstr ""
+
+#: paysera/templates/paysera/dash_board.html:59
+#: profiles/templates/profiles/profile.html:54
+msgid "Messages"
+msgstr ""
+
+#: paysera/templates/paysera/dash_board.html:75
+#, python-format
+msgid "%(message.msg.date)s"
+msgstr ""
+
+#: profiles/templates/profiles/changePassword.html:3
+#: profiles/templates/profiles/changePassword.html:8
+msgid "Change\tyour\tpassword"
+msgstr ""
+
+#: profiles/templates/profiles/changePasswordDone.html:8
+msgid "Password Changed"
+msgstr ""
+
+#: profiles/templates/profiles/changePasswordDone.html:9
+msgid "You\thave\tbeen\tsuccessfully\tchanged your Password"
+msgstr ""
+
+#: profiles/templates/profiles/changePasswordDone.html:10
+msgid "Home page"
+msgstr ""
+
+#: profiles/templates/profiles/delete_profile.html:8
+msgid "Delete Account"
+msgstr ""
+
+#: profiles/templates/profiles/delete_profile.html:9
+msgid "Confirm you deletion by clicking on Confirm ."
+msgstr ""
+
+#: profiles/templates/profiles/delete_profile.html:10
+#: profiles/templates/profiles/profile.html:82
+msgid "Confirm"
+msgstr ""
+
+#: profiles/templates/profiles/profile.html:34
+msgid "Profile"
+msgstr ""
+
+#: profiles/templates/profiles/profile.html:36
+msgid "Show Profile"
+msgstr ""
+
+#: profiles/templates/profiles/profile.html:38
+msgid "Delete Profile"
+msgstr ""
+
+#: profiles/templates/profiles/profile.html:44
+msgid "Settngs"
+msgstr ""
+
+#: profiles/templates/profiles/profile.html:46
+msgid "change profile information"
+msgstr ""
+
+#: profiles/templates/profiles/profile.html:48
+msgid "change password"
+msgstr ""
+
+#: profiles/templates/profiles/profile.html:52
+msgid "Activities"
+msgstr ""
+
+#: profiles/templates/profiles/profile.html:71
+msgid " No data found !"
+msgstr ""
+
+#: profiles/templates/profiles/profile.html:78
+msgid "Confirm Account Deletion"
+msgstr ""
+
+#: profiles/templates/profiles/profile.html:80
+msgid ""
+"This step will delete your account and you will not be able to use it again ,"
+"click on Confirm to accomplish this step."
+msgstr ""
+
+#: profiles/templates/profiles/profile.html:93
+msgid "User name"
+msgstr ""
+
+#: profiles/templates/profiles/profile.html:98
+msgid "Email"
+msgstr ""
+
+#: profiles/templates/profiles/profile.html:103
+msgid "Phone"
+msgstr ""
+
+#: profiles/templates/profiles/profile.html:110
+msgid "Fist Name"
+msgstr ""
+
+#: profiles/templates/profiles/profile.html:141
+msgid "Age"
+msgstr ""
+
+#: profiles/templates/profiles/profile.html:144
+msgid "Save Changes"
+msgstr ""
+
+#: profiles/templates/profiles/profile.html:146
+msgid "Some Errors occured when you tried to save your changes."
+msgstr ""
+
+#: profiles/templates/profiles/profile.html:148
+msgid "get my last correct information"
+msgstr ""
+
+#: profiles/templates/profiles/profile.html:151
+msgid "Changes Saved successfully."
+msgstr ""
+
+#: profiles/templates/profiles/profile.html:206
+msgid "Edit information"
+msgstr ""
+
+#: profiles/views.py:62
+msgid "Your Account was deleted successfully."
+msgstr ""
+
+#: profiles/views.py:112
+msgid "No data found."
+msgstr ""
