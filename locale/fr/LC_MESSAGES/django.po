@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-07 13:42+0000\n"
+"POT-Creation-Date: 2019-10-07 21:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,24 +44,24 @@ msgid "Password length less than 8"
 msgstr "Longueur du mot de passe inférieure à 8"
 
 #: accounts/models.py:30 offers/models.py:10
-#: profiles/templates/profiles/profile.html:176
+#: profiles/templates/profiles/profile.html:182
 msgid "BUY"
 msgstr "ACHAT"
 
 #: accounts/models.py:31 offers/models.py:11
-#: profiles/templates/profiles/profile.html:177
+#: profiles/templates/profiles/profile.html:183
 msgid "SELL"
 msgstr "VENTE"
 
-#: accounts/models.py:32 profiles/templates/profiles/profile.html:178
+#: accounts/models.py:32 profiles/templates/profiles/profile.html:184
 msgid "BOTH"
 msgstr "TOUT"
 
-#: accounts/models.py:35 profiles/templates/profiles/profile.html:188
+#: accounts/models.py:35 profiles/templates/profiles/profile.html:194
 msgid "MALE"
 msgstr "HOMME"
 
-#: accounts/models.py:36 profiles/templates/profiles/profile.html:189
+#: accounts/models.py:36 profiles/templates/profiles/profile.html:195
 msgid "FEMALE"
 msgstr "FEMME"
 
@@ -69,9 +69,9 @@ msgstr "FEMME"
 msgid "first name"
 msgstr "prénom"
 
-#: accounts/models.py:41 profiles/templates/profiles/profile.html:107
-#: profiles/templates/profiles/profile.html:164
-#: profiles/templates/profiles/profile.html:165
+#: accounts/models.py:41 profiles/templates/profiles/profile.html:113
+#: profiles/templates/profiles/profile.html:170
+#: profiles/templates/profiles/profile.html:171
 msgid "First Name"
 msgstr "Prénom "
 
@@ -79,9 +79,9 @@ msgstr "Prénom "
 msgid "last name"
 msgstr "nom de famille"
 
-#: accounts/models.py:42 profiles/templates/profiles/profile.html:111
-#: profiles/templates/profiles/profile.html:169
-#: profiles/templates/profiles/profile.html:170
+#: accounts/models.py:42 profiles/templates/profiles/profile.html:117
+#: profiles/templates/profiles/profile.html:175
+#: profiles/templates/profiles/profile.html:176
 msgid "Last Name"
 msgstr "Nom de Famille"
 
@@ -89,8 +89,8 @@ msgstr "Nom de Famille"
 msgid "gender"
 msgstr "genre"
 
-#: accounts/models.py:43 profiles/templates/profiles/profile.html:121
-#: profiles/templates/profiles/profile.html:186
+#: accounts/models.py:43 profiles/templates/profiles/profile.html:127
+#: profiles/templates/profiles/profile.html:192
 msgid "Gender"
 msgstr "Genre"
 
@@ -116,16 +116,16 @@ msgstr "adresse"
 
 #: accounts/models.py:50
 msgid "profile usage"
-msgstr ""
+msgstr "utilisation du Profil"
 
-#: accounts/models.py:50 profiles/templates/profiles/profile.html:115
-#: profiles/templates/profiles/profile.html:174
+#: accounts/models.py:50 profiles/templates/profiles/profile.html:121
+#: profiles/templates/profiles/profile.html:180
 msgid "Profile Usage"
 msgstr "utilisation du Profil"
 
 #: accounts/templates/accounts/register.html:5
 #: accounts/templates/accounts/register.html:100
-#: paysera/templates/base.html:122
+#: paysera/templates/base.html:126
 msgid "Register"
 msgstr "Sinscrire"
 
@@ -144,13 +144,14 @@ msgid "Your Email"
 msgstr "Votre Email"
 
 #: accounts/templates/accounts/register.html:54
+#: profiles/templates/profiles/password_set.html:16
 msgid "Your Dz Phone Number"
 msgstr "Votre numéro de téléphone Dz"
 
 #: accounts/templates/accounts/register.html:66
 #: accounts/templates/accounts/registration/login.html:52
 #: accounts/templates/accounts/registration/password_reset_confirm.html:16
-#: profiles/templates/profiles/password_set.html:12
+#: profiles/templates/profiles/password_set.html:29
 msgid "Password"
 msgstr "mot de passe"
 
@@ -206,7 +207,7 @@ msgstr "Reconnecter"
 
 #: accounts/templates/accounts/registration/login.html:5
 #: accounts/templates/accounts/registration/login.html:62
-#: paysera/templates/base.html:120
+#: paysera/templates/base.html:124
 msgid "Login"
 msgstr "Connecter"
 
@@ -367,11 +368,11 @@ msgstr ""
 msgid "you must agree to all statements in Terms of service"
 msgstr "vous devez accepter tous les énoncés des conditions de service"
 
-#: accounts/views.py:163 accounts/views.py:174
+#: accounts/views.py:163 accounts/views.py:175
 msgid "Activation link is invalid!"
 msgstr "Le lien d’activation est invalide !"
 
-#: accounts/views.py:170
+#: accounts/views.py:171
 msgid "Your account has been activated successfully"
 msgstr "Votre compte a été activé avec succès"
 
@@ -388,6 +389,7 @@ msgstr ""
 
 #: home/templates/home/home.html:22 offers/templates/offers/modals.html:48
 #: paysera/templates/base.html:35 paysera/templates/base.html:39
+#: paysera/templates/base.html:43
 msgid "Buy"
 msgstr "Achat"
 
@@ -402,6 +404,7 @@ msgstr ""
 
 #: home/templates/home/home.html:26 offers/templates/offers/modals.html:107
 #: paysera/templates/base.html:37 paysera/templates/base.html:41
+#: paysera/templates/base.html:45
 msgid "Sell"
 msgstr "Vente"
 
@@ -529,7 +532,7 @@ msgstr ""
 "votre demande est remplie avec succès, vous recevrez un appel dès que "
 "possible, dans ce numéro de le numéro téléphone %(phone)s."
 
-#: paysera/settings.py:188 paysera/templates/base.html:70
+#: paysera/settings.py:188 paysera/templates/base.html:74
 msgid "English"
 msgstr "Anglais"
 
@@ -542,43 +545,43 @@ msgid "Frensh"
 msgstr "Francais"
 
 #: paysera/templates/base.html:32 paysera/templates/paysera/dash_board.html:15
-#: profiles/templates/profiles/profile.html:55
+#: profiles/templates/profiles/profile.html:61
 msgid "Offers"
 msgstr "Offres"
 
-#: paysera/templates/base.html:47
+#: paysera/templates/base.html:51
 msgid "More"
 msgstr "Plus"
 
-#: paysera/templates/base.html:50 paysera/templates/base.html:52
+#: paysera/templates/base.html:54 paysera/templates/base.html:56
 msgid "Contact Us"
 msgstr "Contactez-nous"
 
-#: paysera/templates/base.html:55
+#: paysera/templates/base.html:59
 msgid "About Us"
 msgstr "À propos de nous"
 
-#: paysera/templates/base.html:61
+#: paysera/templates/base.html:65
 msgid "Language"
 msgstr "Langue"
 
-#: paysera/templates/base.html:67
+#: paysera/templates/base.html:71
 msgid "French"
 msgstr "Francais"
 
-#: paysera/templates/base.html:107
+#: paysera/templates/base.html:111
 msgid "Registration"
 msgstr "Inscription"
 
-#: paysera/templates/base.html:112 paysera/templates/paysera/dash_board.html:4
+#: paysera/templates/base.html:116 paysera/templates/paysera/dash_board.html:4
 msgid "Dash Board"
 msgstr "Dash Board"
 
-#: paysera/templates/base.html:116 profiles/templates/profiles/profile.html:44
+#: paysera/templates/base.html:120 profiles/templates/profiles/profile.html:44
 msgid "Settings"
 msgstr "paramètres"
 
-#: paysera/templates/base.html:118 profiles/templates/profiles/profile.html:40
+#: paysera/templates/base.html:122 profiles/templates/profiles/profile.html:40
 msgid "Logout"
 msgstr "Déconnexion"
 
@@ -607,7 +610,7 @@ msgid "Checked"
 msgstr "ai vérifié"
 
 #: paysera/templates/paysera/dash_board.html:59
-#: profiles/templates/profiles/profile.html:54
+#: profiles/templates/profiles/profile.html:60
 msgid "Messages"
 msgstr "Messages"
 
@@ -654,22 +657,22 @@ msgid "Confirm you deletion by clicking on Confirm ."
 msgstr "Confirmer la suppression en cliquant sur Confirmer."
 
 #: profiles/templates/profiles/delete_profile.html:10
-#: profiles/templates/profiles/profile.html:82
+#: profiles/templates/profiles/profile.html:88
 msgid "Confirm"
 msgstr "Confirmer"
 
 #: profiles/templates/profiles/password_set.html:3
-
+#: profiles/templates/profiles/password_set.html:8
 msgid "Set\tyour\tpassword"
 msgstr "Définir votre mot de passe"
 
-#: profiles/templates/profiles/password_set.html:23
+#: profiles/templates/profiles/password_set.html:40
 #, fuzzy
 #| msgid "Confirm Password"
 msgid "confirm Password"
 msgstr "Confirmer le mot de passe"
 
-#: profiles/templates/profiles/password_set.html:35
+#: profiles/templates/profiles/password_set.html:52
 msgid "Set"
 msgstr "Définir"
 
@@ -689,23 +692,29 @@ msgstr "Supprimer votre profil"
 msgid "change profile information"
 msgstr "modifier les informations du profil"
 
-#: profiles/templates/profiles/profile.html:48
+#: profiles/templates/profiles/profile.html:49
 msgid "change password"
 msgstr "changer le mot de passe"
 
-#: profiles/templates/profiles/profile.html:52
+#: profiles/templates/profiles/profile.html:53
+#, fuzzy
+#| msgid "change password"
+msgid "Change password"
+msgstr "changer le mot de passe"
+
+#: profiles/templates/profiles/profile.html:58
 msgid "Activities"
 msgstr "Activités"
 
-#: profiles/templates/profiles/profile.html:71
+#: profiles/templates/profiles/profile.html:77
 msgid " No data found !"
 msgstr "Aucune donnée trouvée !"
 
-#: profiles/templates/profiles/profile.html:78
+#: profiles/templates/profiles/profile.html:84
 msgid "Confirm Account Deletion"
 msgstr "Confirmer la suppression de votre compte"
 
-#: profiles/templates/profiles/profile.html:80
+#: profiles/templates/profiles/profile.html:86
 msgid ""
 "This step will delete your account and you will not be able to use it again ,"
 "click on Confirm to accomplish this step."
@@ -713,71 +722,69 @@ msgstr ""
 "Cette étape supprimera votre compte et vous ne serez pas en mesure de "
 "l’utiliser à nouveau,cliquez sur Confirmer pour accomplir cette étape."
 
-#: profiles/templates/profiles/profile.html:92
-#: profiles/templates/profiles/profile.html:144
-#, fuzzy
-#| msgid "User name"
+#: profiles/templates/profiles/profile.html:98
+#: profiles/templates/profiles/profile.html:150
 msgid "User Name"
 msgstr "Nom d'utilisateur"
 
-#: profiles/templates/profiles/profile.html:96
-#: profiles/templates/profiles/profile.html:150
-#: profiles/templates/profiles/profile.html:151
+#: profiles/templates/profiles/profile.html:102
+#: profiles/templates/profiles/profile.html:156
+#: profiles/templates/profiles/profile.html:157
 msgid "Email"
 msgstr "Email"
 
-#: profiles/templates/profiles/profile.html:100
-#: profiles/templates/profiles/profile.html:156
-#: profiles/templates/profiles/profile.html:157
+#: profiles/templates/profiles/profile.html:106
+#: profiles/templates/profiles/profile.html:162
+#: profiles/templates/profiles/profile.html:163
 msgid "Phone"
 msgstr "Numéro de téléphone"
 
-#: profiles/templates/profiles/profile.html:125
-#: profiles/templates/profiles/profile.html:194
+#: profiles/templates/profiles/profile.html:131
+#: profiles/templates/profiles/profile.html:200
 msgid "Address"
 msgstr "Adresse"
 
-#: profiles/templates/profiles/profile.html:130
-#: profiles/templates/profiles/profile.html:200
-#: profiles/templates/profiles/profile.html:201
+#: profiles/templates/profiles/profile.html:136
+#: profiles/templates/profiles/profile.html:206
+#: profiles/templates/profiles/profile.html:207
 msgid "Age"
 msgstr "Age"
 
-#: profiles/templates/profiles/profile.html:134
+#: profiles/templates/profiles/profile.html:140
 msgid "Edit information"
 msgstr "modifier les informations"
 
-#: profiles/templates/profiles/profile.html:145
+#: profiles/templates/profiles/profile.html:151
 msgid "User name"
 msgstr "Nom d'utilisateur"
 
-#: profiles/templates/profiles/profile.html:204
+#: profiles/templates/profiles/profile.html:210
 msgid "Save Changes"
 msgstr "Enregistrer les modifications"
 
-#: profiles/templates/profiles/profile.html:206
+#: profiles/templates/profiles/profile.html:212
 msgid "Some Errors occured when you tried to save your changes."
 msgstr ""
 "Certaines erreurs se sont produites lorsque vous avez essayé d’enregistrer "
 "vos modifications."
 
-#: profiles/templates/profiles/profile.html:208
+#: profiles/templates/profiles/profile.html:214
 msgid "get my last correct information"
 msgstr "obtenir mes dernières informations exactes"
 
-#: profiles/templates/profiles/profile.html:211
+#: profiles/templates/profiles/profile.html:217
 msgid "Changes Saved successfully."
 msgstr "Modifications enregistrées avec succès."
 
-#: profiles/views.py:65
+#: profiles/views.py:67
 msgid "Your Account was deleted successfully."
 msgstr "Votre compte a été supprimé avec succès."
 
-#: profiles/views.py:108
+#: profiles/views.py:110
 msgid "No data found."
 msgstr "Aucune donnée trouvée."
 
-#: profiles/views.py:132
+#: profiles/views.py:136
 msgid "Your password was successfully seted!"
 msgstr "Votre mot de passe a été correctement défini !."
 

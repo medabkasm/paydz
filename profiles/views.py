@@ -13,9 +13,11 @@ from .forms import *
 from django.contrib.auth.forms import AdminPasswordChangeForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from accounts.models import *
-
+from accounts.forms import *
+from paysera.decorators import profile_done
 
 @login_required
+@profile_done
 def profile_view(request,username):
 
     if request.user.username == username:
@@ -124,21 +126,24 @@ def password_set_view(request,username):
         else:
             PasswordForm = AdminPasswordChangeForm
 
+        user = request.user
         if request.method == 'POST':
-            form = PasswordForm(request.user, request.POST)
-            if form.is_valid():
+            form = PasswordForm(user, data = request.POST)
+            userForm = userEditForm(instance = user , data = request.POST)
+            if form.is_valid() and userForm.is_valid():
                 form.save()
                 update_session_auth_hash(request, form.user)
                 message = _("Your password was successfully seted!")
-                user = User.objects.get(username = username)
+                userForm.save()
                 user.profile.profileComplete = True
                 user.save()
                 messages.info(request,message)
                 return redirect('home:posts')
             else:
-                return render(request, 'profiles/password_set.html', {'form': form})
+                return render(request, 'profiles/password_set.html', {'form': form , 'userForm' : userForm})
         else:
             form = PasswordForm(request.user)
-        return render(request, 'profiles/password_set.html', {'form': form})
+            userForm =  userEditForm(instance = user)
+        return render(request, 'profiles/password_set.html', {'form': form, 'userForm' : userForm})
     else:
         return redirect('profiles:password_set',request.user.username)

@@ -31,10 +31,14 @@
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "Offers" %}</a>
         <div class="dropdown-menu item" aria-labelledby="navbarDropdown">
-          {% if user.is_authenticated %}
+          {% if user.is_authenticated and user.profile.profileComplete == True %}
             <a class="dropdown-item item" data-toggle="modal" data-target="#buy"  id="buyOffer" href="#"><i class="cc visa icon"></i>{% trans "Buy" %}</a>
             <hr>
             <a class="dropdown-item item" data-toggle="modal" data-target="#sell"  id="sellOffer" href="#"><i class="money bill alternate icon"></i>{% trans "Sell" %}</a>
+          {% elif user.is_authenticated and user.profile.profileComplete == False %}
+          <a class="dropdown-item item"  href="{% url "profiles:password_set" user.username %}"><i class="cc visa icon"></i>{% trans "Buy" %}</a>
+          <hr>
+          <a class="dropdown-item item"  href="{% url "profiles:password_set" user.username %}"><i class="money bill alternate icon"></i>{% trans "Sell" %}</a>
           {% else %}
           <a class="dropdown-item item"  href="{% url "accounts:login" %}"><i class="cc visa icon"></i>{% trans "Buy" %}</a>
           <hr>
