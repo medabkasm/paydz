@@ -37,7 +37,8 @@ def offer_view(request,offer):
                 offerModel.cost = offerModel.price * offerModel.amount
                 offerModel.save()
                 phone = offerModel.user.phone
-                message = _("your request is completed successfully , you will get a call as soon as possible , in this phone number {}.".format(phone))
+                message = _("your request is completed successfully , you will get a call as soon as possible , in this phone number %(phone)s.")%{'phone':phone}
+
                 data = {"message":message}
             else:
                 message = _("your data is invalid ,please check it again.")

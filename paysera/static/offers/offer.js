@@ -46,7 +46,7 @@ $.ajaxSetup({
 
 
 
-
+        var code = window.location.pathname.split("/")[1]; // language code.
         var buyOffer = $("#buyOffer");
         var sellOffer = $("#sellOffer");
         var contactId = $("#contanctId");
@@ -103,11 +103,22 @@ function offerHanlder(offer){
     offer.messageAreaId.removeClass().text("");
     notValidPrice = ( !Number(offer.priceId.val()) || Number(offer.priceId.val()) <= 0 );
     if( notValidPrice ){
-      offer.priceErrorId.text("invalid price");
+      if(code == "fr"){
+        offer.priceErrorId.text("prix invalide.");
+      }
+      else{
+        offer.priceErrorId.text("invalid price.");
+      }
       offer.priceErrorId.removeClass("alert alert-success").addClass("alert alert-danger");
+
     }
     else{
-      offer.priceErrorId.text("valid price");
+      if(code == "fr"){
+        offer.priceErrorId.text("prix valide.");
+      }
+      else{
+        offer.priceErrorId.text("valid price.");
+      }
       offer.priceErrorId.removeClass("alert alert-danger").addClass("alert alert-success");
     }
 
@@ -118,11 +129,21 @@ function offerHanlder(offer){
     offer.messageAreaId.removeClass().text("");
     notValidAmount = ( !Number(offer.amountId.val()) || Number(offer.amountId.val()) <= 0 );
     if( notValidAmount ){
-      offer.amountErrorId.text("invalid amount");
+      if(code == "fr"){
+        offer.amountErrorId.text("montant invalide.");
+      }
+      else{
+        offer.amountErrorId.text("invalid amount.");
+      }
       offer.amountErrorId.removeClass("alert alert-success").addClass("alert alert-danger");
     }
     else{
-      offer.amountErrorId.text("valid amount");
+      if(code == "fr"){
+        offer.amountErrorId.text("montant nvalide.");
+      }
+      else{
+        offer.amountErrorId.text("valid amount.");
+      }
       offer.amountErrorId.removeClass("alert alert-danger").addClass("alert alert-success");
     }
 
@@ -134,10 +155,23 @@ function offerHanlder(offer){
 
     notValidMessage = ( offer.extraMessageId.val().length > 250 );
     if( notValidMessage ){
-      offer.extraMessageErrorId.text("invalid message.").removeClass("alert alert-success").addClass("alert alert-danger");
+
+      if(code == "fr"){
+        offer.extraMessageErrorId.text("message invalide.").removeClass("alert alert-success").addClass("alert alert-danger");
+      }
+      else{
+        offer.extraMessageErrorId.text("invalid message.").removeClass("alert alert-success").addClass("alert alert-danger");
+      }
+
     }
     else{
-      offer.extraMessageErrorId.text("accepted.").removeClass("alert alert-danger").addClass("alert alert-success");
+      if(code == "fr"){
+        offer.extraMessageErrorId.text("accepté.").removeClass("alert alert-danger").addClass("alert alert-success");
+      }
+      else{
+          offer.extraMessageErrorId.text("accepted.").removeClass("alert alert-danger").addClass("alert alert-success");
+      }
+
     }
   });
 
@@ -153,7 +187,7 @@ function handleSubmit(offer){
         if( !notValidData ){
           $.ajax({
             type : "POST",
-            url : offer.url,
+            url : "/" + code  + offer.url,
             data : $(this).serialize(),
             success : function(data,status,xhr){
 
@@ -184,7 +218,13 @@ function handleSubmit(offer){
 
         }
         else{
-          var errorMsg = "invalid Data , please check it again.";
+
+          if(code == "fr"){
+            var errorMsg = "Données invalides, veuillez les vérifier à nouveau.";
+          }
+          else{
+            var errorMsg = "invalid Data , please check it again.";
+          }
           offer.messageAreaId.text(errorMsg).removeClass("alert alert-primary").addClass("alert alert-danger");
           $(".offer-submit").removeAttr("disabled");
         }
@@ -203,14 +243,26 @@ function contactCLick(formId , messageArea , messageError ,contactMessage){
     messageError.removeClass().text("");
 
     contactMessage.change(function(){
-
       messageArea.removeClass().text("");
       notValidContactMessage = ( (contactMessage.val().length < 50) || (contactMessage.val().length > 380) || contactMessage.val().length == 0);
       if( notValidContactMessage ){
-        messageError.text("invalid message.").removeClass("alert alert-success").addClass("alert alert-danger");
+
+        if(code == "fr"){
+          messageError.text("message invalide.").removeClass("alert alert-success").addClass("alert alert-danger");
+        }
+        else{
+          messageError.text("invalid message.").removeClass("alert alert-success").addClass("alert alert-danger");
+        }
+
       }
       else{
-        messageError.text("accepted.").removeClass("alert alert-danger").addClass("alert alert-success");
+        if(code == "fr"){
+          messageError.text("accepté.").removeClass("alert  alert-danger").addClass("alert alert-success");
+        }
+        else{
+            messageError.text("accepted.").removeClass("alert alert-danger").addClass("alert alert-success");
+        }
+
       }
     });
 }
@@ -223,7 +275,7 @@ function contactSubmit(formId , messageArea,messageError , contactMessage){
       if( !notValidContactMessage ){
         $.ajax({
           type : "POST",
-          url : "/notification/message/",
+          url : "/" + code  + "/notification/message/",
           data : $(this).serialize(),
           success : function(data,status,xhr){
             if(data.error){
@@ -250,7 +302,13 @@ function contactSubmit(formId , messageArea,messageError , contactMessage){
         window.grecaptcha.reset(2);
       }
       else{
-        var errorMsg = "invalid Data , please check it again.";
+        if(code == "fr"){
+          var errorMsg = "Données invalides, veuillez les vérifier à nouveau.";
+        }
+        else{
+          var errorMsg = "invalid Data , please check it again.";
+        }
+
           messageArea.text(errorMsg).removeClass("alert alert-primary").addClass("alert alert-danger");
           $(".offer-submit").removeAttr("disabled");
 

@@ -1,17 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 
 from django.utils.safestring import mark_safe
 import json
 from django.views.generic import View
-
+from accounts.models import User
 
 
 class Index(View):  # render the home page.
     def get(self, request):
-        return render(request, 'home/home.html')
-
-def index(request):
-    return render(request, 'home/index.html', {})
-
-def room(request, room_name):
-    return render(request, 'home/room.html', {'room_name_json': mark_safe(json.dumps(room_name))})
+        try:
+            user = User.objects.get(username = request.user.username)
+            if user and user.is_authenticated:
+                if user.profile.profileComplete:
+                    return render(request, 'home/home.html')
+                else:
+                    return redirect("profiles:password_set",request.user.username)
+            else:
+                return render(request, 'home/home.html')
+        except:
+            return render(request, 'home/home.html')

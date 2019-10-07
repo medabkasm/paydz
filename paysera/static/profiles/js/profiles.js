@@ -30,6 +30,7 @@ window.addEventListener('load',function(){
         }
     });
 
+  var code = window.location.pathname.split("/")[1]; // language code.
   var show = document.getElementById("show");
   var show_messages = document.getElementById("show-messages");
   var show_offers = document.getElementById("show-offers");
@@ -69,7 +70,7 @@ window.addEventListener('load',function(){
               event.preventDefault();
               $.ajax({
                 type : "POST",
-                url : url,
+                url : "/" + code + url,
                 data : $(this).serialize(),
                 success : function(data,status,xhr){
                   editError.style.display = "none";
@@ -125,7 +126,7 @@ window.addEventListener('load',function(){
               alert.onclick = function(event){
                 $.ajax({
                   type: "POST",
-                  url: delete_profile.getAttribute("value"),
+                  url: "/" + code + delete_profile.getAttribute("value"),
                   data: "no data",
                   success : function(data,status,xhr){
                     console.log("account deleted");
@@ -189,7 +190,7 @@ function get_data(dataContainer,url,dataType){   // get data(messages or offers 
   show.style.display = "block";
   $.ajax({
     type : "POST",
-    url : url,
+    url : "/" + code + url,
     data : "no data",
     success : function(data,status,xhr){
       collect_data(dataContainer,dataType,data);
@@ -240,7 +241,13 @@ function collect_data(dataContainer,dataType,data){ // collect ajax data , and b
         h_4.textContent = data[i].activitiy + " - " + data[i].currency;
         date.textContent = data[i].date;
         p.textContent = data[i].message;
-        type.textContent = dataType;
+        if(code == "en"){
+          type.textContent = dataType;
+        }
+        else{
+          type.textContent = "offre";
+        }
+
       }
 
 

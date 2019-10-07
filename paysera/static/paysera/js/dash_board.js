@@ -1,1 +1,105 @@
-window.addEventListener("load",function(){var e=document.getElementById("messages"),t=document.getElementById("offers"),n=document.getElementsByClassName("remove-check");function s(){if(n)for(var e=0;e<n.length;e++)n[e].onclick=function(e){var s=this,t=this.textContent,o=this.getAttribute("value");if("Remove"==t){for(var c=this.parentElement;;){if("ui items"==c.getAttribute("class")){c=c.parentElement;break}c=c.parentElement}$.ajax({type:"POST",url:o,data:"no data",success:function(e,t,n){c.style.display="none"},error:function(e,t,n){console.log("Error with status : "+t)}})}else"Check"==t?$.ajax({type:"POST",url:o,data:"no data",success:function(e,t,n){s.setAttribute("class","remove-check checked"),o=o.split("/")[0]+"/checked/"+o.split("/")[2]+"/",s.setAttribute("value",o),s.textContent="Checked"},error:function(e,t,n){console.log("Error with status : "+t)}}):$.ajax({type:"POST",url:o,data:"no data",success:function(e,t,n){s.setAttribute("class","remove-check"),o=o.split("/")[0]+"/check/"+o.split("/")[2]+"/",s.setAttribute("value",o),s.textContent="Check"},error:function(e,t,n){console.log("Error with status : "+t)}})}}e&&e.addEventListener("click",function(e){$("#messagesBlock").toggle(),s(n)}),t&&t.addEventListener("click",function(e){$("#offersBlock").toggle(),s(n)})},!0);
+window.addEventListener('load',function(){
+  var messages = document.getElementById("messages");
+  var offers = document.getElementById("offers");
+  var remove_check = document.getElementsByClassName("remove-check");;
+  var code = window.location.pathname.split("/")[1]; // language code.
+
+  if(messages){
+    messages.addEventListener('click',function(event){
+      $("#messagesBlock").toggle();
+      load_remove_check(remove_check);
+    });
+  }
+  if(offers){
+    offers.addEventListener('click',function(event){
+      $("#offersBlock").toggle();
+      load_remove_check(remove_check);
+    });
+  }
+
+
+
+function load_remove_check(obj){
+if(remove_check){
+  for(var i = 0 ; i < remove_check.length ; i++){
+    remove_check[i].onclick = function(event){
+      var obj = this;
+      var text = this.textContent;
+      var url = this.getAttribute("value");
+      if(text == "Remove" || text == "Supprimer"){
+            var item = this.parentElement;
+            while(1){   // get the parent element of the message or the offer.
+              var className = item.getAttribute("class");
+              if(className == "ui items"){
+                item = item.parentElement;
+                break;
+              }
+              else{
+                item = item.parentElement;
+              }
+            }
+            $.ajax({
+              type: "POST",
+              url : url,
+              data : "no data",
+              success : function(data,status,xhr){
+                item.style.display = "none";   // remove the message or the offer from display. aflter success ajax response.
+              },
+              error : function(xhr,status,data){
+                console.log("Error with status : "+status);
+              },
+            });
+      }
+      else if (text == "Check" || text == "vérifier"){
+
+        $.ajax({
+          type: "POST",
+          url : url,
+          data : "no data",
+          success : function(data,status,xhr){
+            obj.setAttribute("class","remove-check checked"); // after success ajax response.
+            url = url.split("/")[0]+"/checked/"+url.split("/")[2]+"/";
+            obj.setAttribute("value",url);
+            if(code == "fr"){
+              obj.textContent = "ai vérifié";
+            }
+            else{
+                obj.textContent = "Checked";
+            }
+
+          },
+          error : function(xhr,status,data){
+            console.log("Error with status : "+status);
+          },
+        });
+      }
+      else{
+        $.ajax({
+          type: "POST",
+          url : url,
+          data : "no data",
+          success : function(data,status,xhr){
+            obj.setAttribute("class","remove-check"); // after success ajax response.
+            url = url.split("/")[0]+"/check/"+url.split("/")[2]+"/";
+            obj.setAttribute("value",url);
+            if(code == "fr"){
+              obj.textContent = "vérifier";
+            }
+            else{
+                obj.textContent = "Check";
+            }
+
+          },
+          error : function(xhr,status,data){
+            console.log("Error with status : "+status);
+          },
+        });
+      }
+
+    };
+
+    }
+
+  }
+  }
+},true);

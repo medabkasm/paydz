@@ -227,8 +227,8 @@ EMAIL_PORT = 1025
 '''
 
 # recaptcha configurations.
-CAPTCHA_SITE = vars['CAPTCHA_SITE']
-GOOGLE_RECAPTCHA_SECRET_KEY = vars['GOOGLE_RECAPTCHA_SECRET_KEY']
+CAPTCHA_SITE = vars['CAPTCHA_SITE2']
+GOOGLE_RECAPTCHA_SECRET_KEY = vars['GOOGLE_RECAPTCHA_SECRET_KEY2']
 
 # social django configurations.
 SOCIAL_AUTH_PIPELINE = (
@@ -266,7 +266,7 @@ SOCIAL_AUTH_FACEBOOK_KEY = vars['SOCIAL_AUTH_FACEBOOK_KEY']
 SOCIAL_AUTH_FACEBOOK_SECRET = vars['SOCIAL_AUTH_FACEBOOK_SECRET']
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-      'fields': 'id ,name'
+      'fields': 'id ,name , email ',
     }
 SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [                 # add this
         ('name', 'name'),

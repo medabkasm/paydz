@@ -686,3 +686,48 @@ msgstr "Votre compte a été supprimé avec succès."
 msgid "No data found."
 msgstr "Aucune donnée trouvée."
 
+
+
+
+
+
+
+
+
+
+#: profiles/templates/profiles/changePassword.html:3
+#: profiles/templates/profiles/changePassword.html:8
+msgid "Change\tyour\tpassword"
+msgstr "Changer votre mot de passe"
+
+#: profiles/templates/profiles/changePasswordDone.html:8
+msgid "Password Changed"
+msgstr "Mot de passe modifié"
+
+msgid "You\thave\tsuccessfully\tchanged your Password"
+msgstr "Vous avez réussi à modifier votre mot de passe"
+
+#: profiles/templates/profiles/changePasswordDone.html:10
+msgid "Home page"
+msgstr "Page d'accueil"
+
+
+
+
+
+
+#: offers/views.py:40
+msgid ""
+"your request is completed successfully , you will get a call as soon as "
+"possible , in this phone number {}."
+msgstr ""
+"votre demande est remplie avec succès, vous recevrez un appel dès que"
+"possible, dans ce numéro de téléphone {}."
+
+
+
+
+
+
+
+

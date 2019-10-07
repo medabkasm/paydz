@@ -3,5 +3,5 @@ from . import consumers
 
 
 websocket_urlpatterns = [
-    path('wss/notification/<name>/', consumers.NotificationConsumer),
+    path('ws/notification/<name>/', consumers.NotificationConsumer),
 ]

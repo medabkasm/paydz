@@ -44,9 +44,15 @@
               <h3 class="topicTitle"><i class="cogs icon"></i>{% trans "Settings" %}</h3>
               <ul class="topic">
                 <a href="#edit_profile"><li class="topicItems" id="edit-profile"><i class="pencil alternate icon"></i>{% trans "change profile information" %}</li></a>
+                {% if user.profile.profileComplete %}
                 <a href="#show"><li class="topicItems" ><a href='{% url "profiles:password_change" user.username %}'>
                   <i class="unlock alternate icon"></i>{% trans "change password" %}</a>
                 </li></a>
+                {% else %}
+                <a href="#show"><li class="topicItems" ><a href='{% url "profiles:password_set" user.username %}'>
+                  <i class="unlock alternate icon"></i>{% trans "Change password" %}</a>
+                </li></a>
+                {% endif %}
               </ul>
 
                 <h3 class="topicTitle" ><i class="coffee icon"></i>{% trans "Activities" %}</h3>
@@ -85,21 +91,75 @@
             </div>
 
 
+            <div class="row" id="profile">
+                <form id="profileForm">
+                            <div class="form-row">
+                              <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                                <small class="titling">{% trans "User Name" %}</small>
+                                <input type="text" class="form-control" value = {{user.username}}   disabled>
+                              </div>
+                              <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                                <small class="titling">{% trans "Email" %}</small>
+                                <input type="email" class="form-control" value={{user.email}}  disabled>
+                              </div>
+                              <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                                <small class="titling">{% trans "Phone" %}</small>
+                                <input type="text" class="form-control" value={{user.phone}}  disabled>
+                              </div>
+                            </div>
+
+                            <div class="form-row">
+                            <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                              <small class="titling">{% trans "First Name" %}</small>
+                              <input type="text" class="form-control first-name" id="first-name"  value={{user.profile.firstName}} disabled>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                              <small class="titling">{% trans "Last Name" %}</small>
+                              <input type="text" class="form-control last-name" id="last-name"  value={{user.profile.lastName}} disabled>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                              <small class="titling">{% trans "Profile Usage" %}</small>
+                                <input type="text" class="form-control profile-usage" value={{user.profile.pofileUsage}}  id="profile-usage"  disabled>
+                            </div>
+                            </div>
+                            <div class="form-row">
+                            <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                              <small class="titling">{% trans "Gender" %}</small>
+                                  <input type="text" class="form-control gender" id="gender" value= {{user.profile.gender}}  disabled>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                              <small class="titling">{% trans "Address" %}</small>
+                              <textarea name="address" class="form-control address" id="address" rows="1" cols="100" disabled>{{user.profile.address}}</textarea>
+                            </div>
+
+                            <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                            <small class="titling">{% trans "Age" %}</small>
+                            <input type="number" class="form-control age" id="age" value="{{user.profile.age}}" disabled>
+                              </div>
+                            </div>
+                            <button type="submit" class="btn btn-outline-secondary btn-block btn-md submited">{% trans "Edit information" %}</button>
+                          </form>
+
+              </div>
+
 
           <div class="row" id="edit_profile">
             <form method="POST" action="." id="edit-profile-form" data-url = "/profiles/{{user.username}}/edit/">{% csrf_token %}
                         <div class="form-row">
                           <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                            <small class="titling">{% trans "User Name" %}</small>
                             <input type="text" class="form-control" id="username" placeholder='{% trans "User name" %}' value = {{user.username}} disabled>
 
                             <div id="username-error" role="alert"></div>
                           </div>
                           <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                            <small class="titling">{% trans "Email" %}</small>
                             <input type="email" class="form-control" id="email" placeholder='{% trans "Email" %}' value={{user.email}} disabled>
 
                             <div id="email-error" role="alert"></div>
                           </div>
                           <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                            <small class="titling">{% trans "Phone" %}</small>
                             <input type="text" class="form-control" id="phone" placeholder='{% trans "Phone" %}' value={{user.phone}} disabled>
                             <div id="phone-error" role="alert"></div>
                           </div>
@@ -107,14 +167,17 @@
 
                         <div class="form-row">
                         <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                          <small class="titling">{% trans "First Name" %}</small>
                           <input type="text" class="form-control first-name" id="first-name-edit" name="firstName" placeholder='{% trans "First Name" %}' value={{user.profile.firstName}}>
                           <div id="first-name-error" role="alert"></div>
                         </div>
                         <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                          <small class="titling">{% trans "Last Name" %}</small>
                           <input type="text" class="form-control last-name" id="last-name-edit" name="lastName" placeholder='{% trans "Last Name" %}' v%alue={{user.profile.lastName}}>
                           <div id="last-name-error" role="alert"></div>
                         </div>
                         <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                          <small class="titling">{% trans "Profile Usage" %}</small>
                       <select type="text" class="form-control profile-usage" name="pofileUsage" id="profile-usage-edit">
                               <option value="BUY">{% trans "BUY" %}</option>
                               <option value="SELL">{% trans "SELL"%}</option>
@@ -126,6 +189,7 @@
                         </div>
                         <div class="form-row">
                         <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                          <small class="titling">{% trans "Gender" %}</small>
                           <select type="text" class="form-control gender" name="gender" id="gender-edit">
                               <option value="MALE">{% trans "MALE" %}</option>
                               <option value="FEMALE">{% trans "FEMALE" %}</option>
@@ -133,11 +197,13 @@
                           <div id="gender-error" role="alert"></div>
                         </div>
                         <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                          <small class="titling">{% trans "Address" %}</small>
                           <textarea name="address" value="{{user.profile.address}}" class="form-control address" placeholder="Address" id="address-edit" rows="1" cols="100">{{user.profile.address}}</textarea>
                           <div id="address-error" role="alert"></div>
                         </div>
 
                         <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+                          <small class="titling">{% trans "Age" %}</small>
                         <input type="number" class="form-control age" id="age-edit" name="age" placeholder='{% trans "Age" %}' value="{{user.profile.age}}">
                           </div>
                         </div>
@@ -166,47 +232,7 @@
 
 
 </div>
-<div class="row" id="profile">
-    <form id="profileForm">
-                <div class="form-row">
-                  <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                    <input type="text" class="form-control" value = {{user.username}}   disabled>
-                  </div>
-                  <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                    <input type="email" class="form-control" value={{user.email}}  disabled>
-                  </div>
-                  <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                    <input type="text" class="form-control" value={{user.phone}}  disabled>
-                  </div>
-                </div>
 
-                <div class="form-row">
-                <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                  <input type="text" class="form-control first-name" id="first-name"  value={{user.profile.firstName}} disabled>
-                </div>
-                <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                  <input type="text" class="form-control last-name" id="last-name"  value={{user.profile.lastName}} disabled>
-                </div>
-                <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                    <input type="text" class="form-control profile-usage" value={{user.profile.pofileUsage}} id="profile-usage"  disabled>
-                </div>
-                </div>
-                <div class="form-row">
-                <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                      <input type="text" class="form-control gender" id="gender" value={{user.profile.gender}} disabled>
-                </div>
-                <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                  <textarea name="address" class="form-control address" id="address" rows="1" cols="100" disabled>{{user.profile.address}}</textarea>
-                </div>
-
-                <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
-                <input type="number" class="form-control age" id="age" value="{{user.profile.age}}" disabled>
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-outline-secondary btn-block btn-md submited">{% trans "Edit information" %}</button>
-              </form>
-
-  </div>
 
     </div> <!--container-->
 

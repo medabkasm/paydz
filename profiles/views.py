@@ -10,6 +10,9 @@ from	django.utils.translation	import	gettext_lazy	as	_
 from django.contrib import messages
 from django.contrib.auth import logout
 from .forms import *
+from django.contrib.auth.forms import AdminPasswordChangeForm, PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+from accounts.models import *
 
 
 @login_required
@@ -69,13 +72,6 @@ def profile_delete_view_ajax(request,username):
 
 
 
-
-
-
-
-
-
-
 @login_required
 @require_POST
 def profile_view_ajax(request,username,data):
@@ -116,3 +112,33 @@ def profile_view_ajax(request,username,data):
 
     else:
         return redirect("home:posts")
+
+
+
+
+@login_required
+def password_set_view(request,username):
+    if request.user.username == username:
+        if request.user.has_usable_password():
+            return redirect('profiles:password_change',request.user.username)
+        else:
+            PasswordForm = AdminPasswordChangeForm
+
+        if request.method == 'POST':
+            form = PasswordForm(request.user, request.POST)
+            if form.is_valid():
+                form.save()
+                update_session_auth_hash(request, form.user)
+                message = _("Your password was successfully seted!")
+                user = User.objects.get(username = username)
+                user.profile.profileComplete = True
+                user.save()
+                messages.info(request,message)
+                return redirect('home:posts')
+            else:
+                return render(request, 'profiles/password_set.html', {'form': form})
+        else:
+            form = PasswordForm(request.user)
+        return render(request, 'profiles/password_set.html', {'form': form})
+    else:
+        return redirect('profiles:password_set',request.user.username)

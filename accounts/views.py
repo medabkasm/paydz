@@ -60,7 +60,7 @@ class	RegisterView(View):
                 new_user.is_active = False
                 new_user.save()
                 current_site = get_current_site(request)
-                email_subject = 'Activate Your Account'
+                email_subject = _('Activate Your Account')
                 message = render_to_string('accounts/registration/activate_account.html', {
                     'user': new_user,
                     'domain': current_site.domain,
@@ -71,10 +71,7 @@ class	RegisterView(View):
                 email = EmailMessage(email_subject, message, to=[to_email])
                 email.send()
 
-                message = """
-                            Your	account	has	been	successfully	created" ,we sent you an email message with a confirmation link
-                              , Please check your emai and follow the link ,to make activate your PayDz account .
-                        """
+                message = _("Your account has been successfully created ,we sent you an email message with   confirmation link, Please check your email and follow the link ,to make activate your PayDz account .")
                 messages.info(request,message)
                 return render(request,'accounts/register.html',{'form':form})
             else:
@@ -124,7 +121,7 @@ def	RegisterView_ajax(request):
                 new_user.is_active = False
                 new_user.save()
                 current_site = get_current_site(request)
-                email_subject = 'Activate Your Account'
+                email_subject = _('Activate Your Account')
                 message = render_to_string('accounts/registration/activate_account.html', {
                     'user': new_user,
                     'domain': current_site.domain,
@@ -135,10 +132,7 @@ def	RegisterView_ajax(request):
                 email = EmailMessage(email_subject, message, to=[to_email])
                 email.send()
 
-                message = """
-                            Your	account	has	been	successfully	created" ,we sent you an email message with a confirmation link
-                              , Please check your email and follow the link ,to activate your PayDz account .
-                        """
+                message = _("Your account has been successfully created ,we sent you an email message with   confirmation link, Please check your email and follow the link ,to make activate your PayDz account .")
 
                 return JsonResponse({"message":message},status =200 )
             else:
@@ -172,6 +166,7 @@ def user_activation_view(request, uidb64, token):
 
     if user  and account_activation_token.check_token(user, token):
         user.is_active = True
+        user.profile.profileComplete = True
         user.save()
         text = _('Your account has been activated successfully')
         messages.info(request,text)
