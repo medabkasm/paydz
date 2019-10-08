@@ -6,8 +6,8 @@ from django.contrib.auth import views as auth_views
 
 app_name = 'accounts'
 urlpatterns = [
-    path('register/',RegisterView.as_view(),name = 'register'),
     path('register/activate/<uidb64>/<token>/',user_activation_view , name = 'activate'),
+    path('register/',RegisterView.as_view(),name = 'register'),
     path('login/',auth_views.LoginView.as_view(template_name = 'accounts/registration/login.html' , redirect_authenticated_user = True),name = 'login'),
     path('logout/',auth_views.LogoutView.as_view(template_name = 'accounts/registration/logged_out.html'),name = 'logout'),
     path('password_reset/',auth_views.PasswordResetView.as_view(
