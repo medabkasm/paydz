@@ -1,4 +1,5 @@
 requests
+psycopg2-binary
 python-dotenv
 aioredis==1.2.0
 django-heroku
