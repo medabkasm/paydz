@@ -64,15 +64,9 @@
       <a class="nav-link dropdown-toggle" href="#" id="lanId" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         {% trans "Language" %}
       </a>
-      {%	get_current_language	as	LANGUAGE_CODE	%}
       <div class="dropdown-menu item" aria-labelledby="navbarDropdown">
-      <!-- if English is the current Language -->
-        {% if LANGUAGE_CODE == 'en' %}
         <a href="/fr/" class="dropdown-item item"><i class="france flag"></i>  {% trans "French" %}</a>
-        <!-- else -->
-        {% else %}
         <a href="/en/" class="dropdown-item item"><i class="us flag"></i> {% trans "English" %}</a>
-        {% endif %}
       </div>
       </li>
 
