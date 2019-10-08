@@ -31,7 +31,7 @@ class ProfileView(View):  # user profile reachable from  /profile/username URL ,
 
 
 # may way to handle form rendering.
-class	RegisterView(View):
+class	RegisterView_email(View):
     def post(self,request):
         form = RegisterForm(request.POST)
         #profileForm = profileEditForm(request.POST,request.FILES)
@@ -90,6 +90,74 @@ class	RegisterView(View):
 
         form = RegisterForm()
         return render(request,'accounts/register.html',{'form':form})
+
+
+class	RegisterView(View):
+    def post(self,request):
+        form = RegisterForm(request.POST)
+        #profileForm = profileEditForm(request.POST,request.FILES)
+        agree = request.POST.get('agree-term')
+
+        if	form.is_valid()  and agree:
+
+            # rechaptcha validation
+            recaptcha_response = request.POST.get('g-recaptcha-response')
+            data = {
+                'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+                'response': recaptcha_response
+            }
+            r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+            result = r.json()
+            # End reCAPTCHA validation
+
+            if result['success']:
+                #	Create	a	new	user	object	but	avoid	saving	it	yet
+                new_user = form.save(commit=False)
+                #	Set	the	chosen	password
+                new_user.set_password(form.cleaned_data['password1'])
+                #new_profile = profileForm.save()
+                #new_user.profile = new_profile
+                #	Save	the	User	object
+                new_user.is_active = False
+                new_user.save()
+
+                return redirect("accounts:login")
+            else:
+                agreeErrorText = _("you must agree to all statements in Terms of service")
+                recaptchaErrorText = _("Invalid reCAPTCHA. Please try again.")
+                return render(request,'accounts/register.html',{'form':form,'recaptcha':recaptchaErrorText})
+
+        else:
+            agreeErrorText = _("you must agree to all statements in Terms of service")
+            recaptchaErrorText = _("Invalid reCAPTCHA. Please try again.")
+            return render(request,'accounts/register.html',{'form':form,'agreeError':agreeErrorText,'recaptcha':recaptchaErrorText})
+
+    def get(self,request):
+        if request.user.is_authenticated:
+            return	render(request,'accounts/home.html')
+
+        form = RegisterForm()
+        return render(request,'accounts/register.html',{'form':form})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # may way to handle form rendering.
