@@ -118,9 +118,10 @@ class	RegisterView(View):
                 #new_profile = profileForm.save()
                 #new_user.profile = new_profile
                 #	Save	the	User	object
-                new_user.is_active = False
+                new_user.is_active = True
                 new_user.save()
-
+                message = _("Your account was created successfully , you can login now.")
+                messages.success(request,message)
                 return redirect("accounts:login")
             else:
                 agreeErrorText = _("you must agree to all statements in Terms of service")

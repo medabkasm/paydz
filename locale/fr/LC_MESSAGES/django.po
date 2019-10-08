@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-07 21:16+0000\n"
+"POT-Creation-Date: 2019-10-08 21:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: accounts/decorators.py:23 accounts/views.py:79 accounts/views.py:84
-#: accounts/views.py:140 accounts/views.py:144
+#: accounts/views.py:128 accounts/views.py:133 accounts/views.py:209
+#: accounts/views.py:213
 msgid "Invalid reCAPTCHA. Please try again."
 msgstr "ReCAPTCHA invalide. Veuillez réessayer."
 
@@ -69,30 +70,13 @@ msgstr "FEMME"
 msgid "first name"
 msgstr "prénom"
 
-#: accounts/models.py:41 profiles/templates/profiles/profile.html:113
-#: profiles/templates/profiles/profile.html:170
-#: profiles/templates/profiles/profile.html:171
-msgid "First Name"
-msgstr "Prénom "
-
 #: accounts/models.py:42
 msgid "last name"
 msgstr "nom de famille"
 
-#: accounts/models.py:42 profiles/templates/profiles/profile.html:117
-#: profiles/templates/profiles/profile.html:175
-#: profiles/templates/profiles/profile.html:176
-msgid "Last Name"
-msgstr "Nom de Famille"
-
 #: accounts/models.py:43
 msgid "gender"
 msgstr "genre"
-
-#: accounts/models.py:43 profiles/templates/profiles/profile.html:127
-#: profiles/templates/profiles/profile.html:192
-msgid "Gender"
-msgstr "Genre"
 
 #: accounts/models.py:44
 msgid "profile image"
@@ -110,22 +94,13 @@ msgstr "l'age"
 msgid "addess"
 msgstr "adresse"
 
-#: accounts/models.py:49
-msgid "address"
-msgstr "adresse"
-
 #: accounts/models.py:50
 msgid "profile usage"
 msgstr "utilisation du Profil"
 
-#: accounts/models.py:50 profiles/templates/profiles/profile.html:121
-#: profiles/templates/profiles/profile.html:180
-msgid "Profile Usage"
-msgstr "utilisation du Profil"
-
 #: accounts/templates/accounts/register.html:5
 #: accounts/templates/accounts/register.html:100
-#: paysera/templates/base.html:126
+#: paysera/templates/base.html:120
 msgid "Register"
 msgstr "Sinscrire"
 
@@ -181,10 +156,11 @@ msgid "log-in Now"
 msgstr "Se connecter maintenant"
 
 #: accounts/templates/accounts/registration/activate_account.html:4
-#, python-format
-msgid ""
-" Hi %(user.username)s,\n"
-"Please click on the link to confirm your registration, "
+#, fuzzy
+#| msgid ""
+#| " Hi %(user.username)s,\n"
+#| "Please click on the link to confirm your registration, "
+msgid "Please click on the link to confirm your registration,"
 msgstr ""
 "Salut %(user.username)s,\n"
 "Veuillez cliquer sur le lien pour confirmer votre inscription,"
@@ -207,7 +183,7 @@ msgstr "Reconnecter"
 
 #: accounts/templates/accounts/registration/login.html:5
 #: accounts/templates/accounts/registration/login.html:62
-#: paysera/templates/base.html:124
+#: paysera/templates/base.html:118
 msgid "Login"
 msgstr "Connecter"
 
@@ -327,16 +303,6 @@ msgstr ""
 "Quelqu’un a demandé la réinitialisation du mot de passe pour l’email\t"
 "%(email)s.suivre le lien ci-dessous:\n"
 
-#: accounts/templates/accounts/registration/password_reset_email.html:7
-#, python-format
-msgid ""
-"\n"
-"Your\tusername,\tin\tcase\tyou've\tforgotten:\t%(user.get_username)s\n"
-msgstr ""
-"\n"
-"Votre nom d’utilisateur, au cas où vous auriez oublié :\t"
-"%(user.get_username)s\n"
-
 #: accounts/validators.py:13 accounts/validators.py:20
 msgid "phone number is not correct"
 msgstr "le numéro de téléphone est incorrect"
@@ -349,11 +315,11 @@ msgstr "email invalide"
 msgid "value must be positive"
 msgstr "valeur doit être positive"
 
-#: accounts/views.py:63 accounts/views.py:124
+#: accounts/views.py:63 accounts/views.py:193
 msgid "Activate Your Account"
 msgstr "Activer votre compte"
 
-#: accounts/views.py:74 accounts/views.py:135
+#: accounts/views.py:74 accounts/views.py:204
 msgid ""
 "Your account has been successfully created ,we sent you an email message "
 "with   confirmation link, Please check your email and follow the link ,to "
@@ -363,16 +329,20 @@ msgstr ""
 "lien de confirmation, Veuillez vérifier votre e-mail et suivez le lien ,pour "
 "faire activer votre compte Paydz ."
 
-#: accounts/views.py:78 accounts/views.py:83 accounts/views.py:139
-#: accounts/views.py:143
+#: accounts/views.py:78 accounts/views.py:83 accounts/views.py:127
+#: accounts/views.py:132 accounts/views.py:208 accounts/views.py:212
 msgid "you must agree to all statements in Terms of service"
 msgstr "vous devez accepter tous les énoncés des conditions de service"
 
-#: accounts/views.py:163 accounts/views.py:175
+#: accounts/views.py:123
+msgid "Your account was created successfully , you can login now."
+msgstr "Votre compte a été créé avec succès, vous pouvez vous connecter maintenant."
+
+#: accounts/views.py:232 accounts/views.py:244
 msgid "Activation link is invalid!"
 msgstr "Le lien d’activation est invalide !"
 
-#: accounts/views.py:171
+#: accounts/views.py:240
 msgid "Your account has been activated successfully"
 msgstr "Votre compte a été activé avec succès"
 
@@ -532,7 +502,7 @@ msgstr ""
 "votre demande est remplie avec succès, vous recevrez un appel dès que "
 "possible, dans ce numéro de le numéro téléphone %(phone)s."
 
-#: paysera/settings.py:188 paysera/templates/base.html:74
+#: paysera/settings.py:188 paysera/templates/base.html:69
 msgid "English"
 msgstr "Anglais"
 
@@ -565,23 +535,23 @@ msgstr "À propos de nous"
 msgid "Language"
 msgstr "Langue"
 
-#: paysera/templates/base.html:71
+#: paysera/templates/base.html:68
 msgid "French"
 msgstr "Francais"
 
-#: paysera/templates/base.html:111
+#: paysera/templates/base.html:105
 msgid "Registration"
 msgstr "Inscription"
 
-#: paysera/templates/base.html:116 paysera/templates/paysera/dash_board.html:4
+#: paysera/templates/base.html:110 paysera/templates/paysera/dash_board.html:4
 msgid "Dash Board"
 msgstr "Dash Board"
 
-#: paysera/templates/base.html:120 profiles/templates/profiles/profile.html:44
+#: paysera/templates/base.html:114 profiles/templates/profiles/profile.html:44
 msgid "Settings"
 msgstr "paramètres"
 
-#: paysera/templates/base.html:122 profiles/templates/profiles/profile.html:40
+#: paysera/templates/base.html:116 profiles/templates/profiles/profile.html:40
 msgid "Logout"
 msgstr "Déconnexion"
 
@@ -739,6 +709,28 @@ msgstr "Email"
 msgid "Phone"
 msgstr "Numéro de téléphone"
 
+#: profiles/templates/profiles/profile.html:113
+#: profiles/templates/profiles/profile.html:170
+#: profiles/templates/profiles/profile.html:171
+msgid "First Name"
+msgstr "Prénom "
+
+#: profiles/templates/profiles/profile.html:117
+#: profiles/templates/profiles/profile.html:175
+#: profiles/templates/profiles/profile.html:176
+msgid "Last Name"
+msgstr "Nom de Famille"
+
+#: profiles/templates/profiles/profile.html:121
+#: profiles/templates/profiles/profile.html:180
+msgid "Profile Usage"
+msgstr "utilisation du Profil"
+
+#: profiles/templates/profiles/profile.html:127
+#: profiles/templates/profiles/profile.html:192
+msgid "Gender"
+msgstr "Genre"
+
 #: profiles/templates/profiles/profile.html:131
 #: profiles/templates/profiles/profile.html:200
 msgid "Address"
@@ -787,6 +779,17 @@ msgstr "Aucune donnée trouvée."
 #: profiles/views.py:136
 msgid "Your password was successfully seted!"
 msgstr "Votre mot de passe a été correctement défini !."
+
+#~ msgid "address"
+#~ msgstr "adresse"
+
+#~ msgid ""
+#~ "\n"
+#~ "Your\tusername,\tin\tcase\tyou've\tforgotten:\t%(user.get_username)s\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Votre nom d’utilisateur, au cas où vous auriez oublié :\t%(user."
+#~ "get_username)s\n"
 
 #, fuzzy
 #~| msgid "Phone"
