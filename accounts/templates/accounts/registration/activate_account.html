@@ -1,7 +1,7 @@
-{% autoescape off %}
 {% load i18n %}
 
 Hi {{user.username}},
 {% trans "Please click on the link to confirm your registration," %}
 {{protocol}}://{{ domain }}{% url "accounts:activate" uidb64=uid token=token %}
-{% endautoescape %}
+https://{{ domain }}{% url "accounts:activate" uidb64=uid token=token %}
+{{ protocol }}://{{ domain }}{% url "accounts:activate" uidb64=uid token=token %}
