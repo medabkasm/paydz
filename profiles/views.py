@@ -15,6 +15,7 @@ from django.contrib.auth import update_session_auth_hash
 from accounts.models import *
 from accounts.forms import *
 from paysera.decorators import profile_done
+from accounts.forms import *
 
 @login_required
 @profile_done
@@ -41,17 +42,25 @@ def profile_edit_view_ajax(request,username):
     if request.method == "POST" and request.is_ajax() and request.user.username == username :
         user = request.user
         profile = Profile.objects.get(user = user)
-        profileEdit = profileEditForm(instance = profile , data = request.POST)
 
-        if profileEdit.is_valid():
-            print(profile)
+        profileEdit = profileEditForm(instance = profile , data = request.POST)
+        userForm = userEditForm(instance = user , data = request.POST)
+
+        if profileEdit.is_valid() and userForm.is_valid():
+            userForm.save()
             profileEdit.save()
+            user = User.objects.get(username = user.username)
             profileJson = serializers.serialize('json',[user.profile,])  # json data with wrapper with [].
+            userJson = serializers.serialize('json',[user,])  # json data with wrapper with [].
             profile = json.loads(profileJson)
-            return JsonResponse({"profile" : profile[0]['fields']},status = 200)
+            user = json.loads(userJson)
+
+            return JsonResponse({"profile" :profile[0]['fields']},status = 200)
         else:
+            print(userForm.errors)
             print(profileEdit.errors)
-            return JsonResponse({"data":profileEdit.errors},status = 500)
+            print(profileEdit.errors)
+            return JsonResponse({"data":[profileEdit.errors,userForm.errors]},status = 500)
     else:
         return redirect("home:posts")
 

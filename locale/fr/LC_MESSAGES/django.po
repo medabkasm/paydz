@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-08 21:39+0000\n"
+"POT-Creation-Date: 2019-10-08 22:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -336,7 +336,8 @@ msgstr "vous devez accepter tous les énoncés des conditions de service"
 
 #: accounts/views.py:123
 msgid "Your account was created successfully , you can login now."
-msgstr "Votre compte a été créé avec succès, vous pouvez vous connecter maintenant."
+msgstr ""
+"Votre compte a été créé avec succès, vous pouvez vous connecter maintenant."
 
 #: accounts/views.py:232 accounts/views.py:244
 msgid "Activation link is invalid!"
@@ -651,8 +652,8 @@ msgid "Profile"
 msgstr "Profil"
 
 #: profiles/templates/profiles/profile.html:36
-msgid "Show Profile"
-msgstr "Afficher le profil"
+msgid "Show Profile information"
+msgstr "Afficher les informations du profil"
 
 #: profiles/templates/profiles/profile.html:38
 msgid "Delete Profile"
@@ -667,10 +668,8 @@ msgid "change password"
 msgstr "changer le mot de passe"
 
 #: profiles/templates/profiles/profile.html:53
-#, fuzzy
-#| msgid "change password"
 msgid "Change password"
-msgstr "changer le mot de passe"
+msgstr "Changer le mot de passe"
 
 #: profiles/templates/profiles/profile.html:58
 msgid "Activities"
@@ -779,6 +778,9 @@ msgstr "Aucune donnée trouvée."
 #: profiles/views.py:136
 msgid "Your password was successfully seted!"
 msgstr "Votre mot de passe a été correctement défini !."
+
+#~ msgid "Show Profile"
+#~ msgstr "Afficher le profil"
 
 #~ msgid "address"
 #~ msgstr "adresse"

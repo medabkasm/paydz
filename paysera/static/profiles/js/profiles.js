@@ -75,27 +75,35 @@ window.addEventListener('load',function(){
                 success : function(data,status,xhr){
                   editError.style.display = "none";
                   editSuccess.style.display = "block";
+                  if(data.profile){
+                    $("#first-name").val(data.profile.firstName);
+                    $("#last-name").val(data.profile.lastName);
+                    $("#profile-usage").val(data.profile.pofileUsage);
+                    $("#gender").val(data.profile.gender);
+                    $("#age").val(data.profile.age);
+                    $("#address").val(data.profile.address);
+                  }
+                  window.location.reload(true);
 
-                  $("#first-name").val(data.profile.firstName);
-                  $("#last-name").val(data.profile.lastName);
-                  $("#profile-usage").val(data.profile.pofileUsage);
-                  $("#gender").val(data.profile.gender);
-                  $("#age").val(data.profile.age);
-                  $("#address").val(data.profile.address);
+
 
                 },
                 error : function(xhr,status,data){
+                  console.error("error");
                   editSuccess.style.display = "none";
                   editError.style.display = "block";
-                  $("#resetInfo").click(function(){
+                  var resetInfo = document.getElementById("resetInfo");
+                  resetInfo.onclick = function(event){  // in case of validations errors , get your old data.
 
+                    editError.style.display = "none";
+                    $("#phone-edit").val($("#phone").val());
                     $("#first-name-edit").val($("#first-name").val());
                     $("#last-name-edit").val($("#last-name").val());
                     $("#profile-usage-edit").val($("#profile-usage").val());
                     $("#gender-edit").val($("#gender").val());
-                    $("#age"-edit).val($("#age").val());
+                    $("#age-edit").val($("#age").val());
                     $("#address-edit").val($("#address").val());
-                  });
+                  };
 
                 }
               });
@@ -130,7 +138,7 @@ window.addEventListener('load',function(){
                   data: "no data",
                   success : function(data,status,xhr){
                     console.log("account deleted");
-                    window.location.replace("/accounts/register/");
+                    window.location.replace("/" + code + "/accounts/register/");
                   },
                   error : function(xhr,status,data){
                     console.log(status);

@@ -33,7 +33,7 @@
             <ul id="sidePanel">
               <h3 class="topicTitle"><i class="user circle icon"></i>{% trans "Profile" %}</h3>
               <ul class="topic">
-                <a href="#profile"><li class="topicItems" id="show-profile"><i class="info circle icon"></i>{% trans "Show Profile" %}</li></a>
+                <a href="#profile"><li class="topicItems" id="show-profile"><i class="info circle icon"></i>{% trans "Show Profile information" %}</li></a>
                 <a href="#alertBlock"><li class="topicItems" id="delete_profile" value="/profiles/{{user.username}}/delete/">
                   <i class="ban icon" ></i>{% trans "Delete Profile" %}</li>
                 <a href="#show"><li class="topicItems"><a href="{% url "accounts:logout" %}">
@@ -96,15 +96,15 @@
                             <div class="form-row">
                               <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
                                 <small class="titling">{% trans "User Name" %}</small>
-                                <input type="text" class="form-control" value ={{user.username}}   disabled>
+                                <input type="text" class="form-control" id="username" value ={{user.username}}   disabled>
                               </div>
                               <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
                                 <small class="titling">{% trans "Email" %}</small>
-                                <input type="email" class="form-control" value={{user.email}}  disabled>
+                                <input type="email" class="form-control" id="email" value={{user.email}}  disabled>
                               </div>
                               <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
                                 <small class="titling">{% trans "Phone" %}</small>
-                                <input type="text" class="form-control" value={{user.phone}}  disabled>
+                                <input type="text" class="form-control" id="phone" value={{user.phone}}  disabled>
                               </div>
                             </div>
 
@@ -118,14 +118,15 @@
                               <input type="text" class="form-control last-name" id="last-name"  value={{user.profile.lastName}} disabled>
                             </div>
                             <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
+
                               <small class="titling">{% trans "Profile Usage" %}</small>
-                                <input type="text" class="form-control profile-usage" value={{user.profile.pofileUsage}}  id="profile-usage"  disabled>
+                                <input type="text" class="form-control profile-usage" value='{% trans user.profile.pofileUsage %}'  id="profile-usage"  disabled>
                             </div>
                             </div>
                             <div class="form-row">
                             <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
                               <small class="titling">{% trans "Gender" %}</small>
-                                  <input type="text" class="form-control gender" id="gender" value= {{user.profile.gender}}  disabled>
+                                  <input type="text" class="form-control gender" id="gender" value= '{% trans user.profile.gender %}' disabled>
                             </div>
                             <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
                               <small class="titling">{% trans "Address" %}</small>
@@ -148,19 +149,19 @@
                         <div class="form-row">
                           <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
                             <small class="titling">{% trans "User Name" %}</small>
-                            <input type="text" class="form-control" id="username" placeholder='{% trans "User name" %}' value = {{user.username}} disabled>
-
+                            <input type="text" class="form-control" name="username" id="username-edit" placeholder='{% trans "User name" %}' value ={{user.username}} disabled>
+                            <input type="hidden" class="form-control" name="username"  placeholder='{% trans "User name" %}' value ={{user.username}}>
                             <div id="username-error" role="alert"></div>
                           </div>
                           <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
                             <small class="titling">{% trans "Email" %}</small>
-                            <input type="email" class="form-control" id="email" placeholder='{% trans "Email" %}' value={{user.email}} disabled>
-
+                            <input type="email" class="form-control"  id="email-edit" placeholder='{% trans "Email" %}' value={{user.email}} disabled>
+                            <input type="hidden" name="email" value={{user.email}}>
                             <div id="email-error" role="alert"></div>
                           </div>
                           <div class="form-group col-lg-4 col-md-4 col-sm-12 col-12">
                             <small class="titling">{% trans "Phone" %}</small>
-                            <input type="text" class="form-control" id="phone" placeholder='{% trans "Phone" %}' value={{user.phone}} disabled>
+                            <input type="text" class="form-control" name="phone" id="phone-edit" placeholder='{% trans "Phone" %}' value={{user.phone}} >
                             <div id="phone-error" role="alert"></div>
                           </div>
                         </div>
